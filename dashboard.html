@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NFR Process Intelligence — Accenture NFR Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+:root{
+  --canvas:#08081A;
+  --surface:#0F0F22;
+  --s1:#131325;
+  --s2:#1A1A30;
+  --tp:#EDE8F7;
+  --ts:#B5AECF;
+  --tm:#7A7295;
+  --brand:#C77BFF;
+  --brandMid:#A100FF;
+  --brandLight:rgba(161,0,255,.08);
+  --border:rgba(161,0,255,.18);
+  --radius:8px;
+  --radiusL:12px;
+  --pink:#FF50C8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;scroll-padding-top:60px;}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--canvas);
+  color:var(--tp);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;letter-spacing:-.02em;line-height:1.15;}
+a{color:inherit;text-decoration:none;}
+::selection{background:rgba(161,0,255,.35);color:#fff;}
+
+/* ---------- SCROLLBAR ---------- */
+::-webkit-scrollbar{width:11px;height:11px;}
+::-webkit-scrollbar-track{background:var(--canvas);}
+::-webkit-scrollbar-thumb{background:rgba(161,0,255,.25);border-radius:6px;border:2px solid var(--canvas);}
+::-webkit-scrollbar-thumb:hover{background:rgba(161,0,255,.45);}
+
+/* ---------- TOPBAR ---------- */
+.topbar{
+  position:sticky;top:0;z-index:100;height:54px;
+  background:linear-gradient(90deg,#160029 0%,#A100FF 100%);
+  border-bottom:1px solid rgba(255,255,255,.09);
+  overflow:hidden;
+}
+#topbarCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.55;}
+.topbar-inner{
+  position:relative;z-index:2;height:100%;
+  max-width:1320px;margin:0 auto;padding:0 26px;
+  display:flex;align-items:center;gap:22px;
+}
+.tb-brand{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.tb-brand svg{width:22px;height:22px;flex-shrink:0;}
+.tb-brand span{font-family:'Space Grotesk',sans-serif;font-size:13.5px;font-weight:600;color:#fff;white-space:nowrap;letter-spacing:.01em;}
+.tb-nav{display:flex;align-items:center;gap:3px;margin:0 auto;}
+.tb-nav a{
+  font-family:'Inter',sans-serif;font-size:12.5px;font-weight:500;
+  color:rgba(255,255,255,.72);padding:6px 12px;border-radius:6px;
+  transition:background .15s,color .15s;white-space:nowrap;
+}
+.tb-nav a:hover{background:rgba(255,255,255,.13);color:#fff;}
+.tb-badge{
+  flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:#fff;
+  padding:6px 13px;border:1px solid rgba(255,255,255,.32);border-radius:20px;
+  background:rgba(255,255,255,.08);white-space:nowrap;
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:radial-gradient(ellipse 65% 90% at 78% -8%,rgba(80,10,140,.98) 0%,transparent 50%),
+             radial-gradient(ellipse 55% 60% at -5% 100%,rgba(55,0,95,.8) 0%,transparent 50%),
+             #06001A;
+  border-bottom:1px solid var(--border);
+}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.7;}
+.hero-inner{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:86px 26px 74px;}
+.hero-eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--pink);margin-bottom:22px;
+}
+.hero h1{font-size:clamp(38px,6vw,66px);font-weight:700;color:#fff;margin-bottom:22px;}
+.hero h1 .grad{background:linear-gradient(90deg,#C77BFF,#FF50C8);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-sub{font-size:clamp(15px,1.7vw,18.5px);color:var(--ts);max-width:760px;line-height:1.65;margin-bottom:46px;}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:840px;}
+.stat-card{
+  background:rgba(20,10,40,.55);border:1px solid var(--border);border-radius:var(--radiusL);
+  padding:22px 20px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  transition:border-color .25s,transform .25s;
+}
+.stat-card:hover{border-color:rgba(199,123,255,.5);transform:translateY(-3px);}
+.stat-num{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;
+  background:linear-gradient(90deg,#C77BFF,#FF50C8);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;margin-bottom:8px;}
+.stat-label{font-size:12.5px;color:var(--ts);font-weight:500;}
+
+/* ---------- SECTION SHELL ---------- */
+section{max-width:1320px;margin:0 auto;padding:78px 26px;}
+.sec-head{margin-bottom:44px;max-width:820px;}
+.sec-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--brand);
+  padding:5px 12px;border:1px solid var(--border);border-radius:20px;
+  background:var(--brandLight);margin-bottom:18px;
+}
+.sec-head h2{font-size:clamp(28px,3.6vw,40px);font-weight:700;color:var(--tp);margin-bottom:14px;}
+.sec-head p{font-size:15.5px;color:var(--ts);line-height:1.65;}
+
+/* ---------- REVEAL ANIM ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:none;}
+
+/* ---------- UNIVERSE GRID ---------- */
+.universe-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.uni-card{
+  position:relative;cursor:pointer;
+  background:var(--s1);border:1px solid var(--border);
+  border-left:4px solid var(--pc,var(--brand));border-radius:var(--radiusL);
+  padding:24px 22px 22px;overflow:hidden;
+  transition:transform .25s cubic-bezier(.2,.7,.2,1),border-color .25s,box-shadow .25s;
+}
+.uni-card::before{
+  content:"";position:absolute;inset:0;border-radius:var(--radiusL);
+  background:radial-gradient(circle at 12% 0%,var(--pcGlow,rgba(161,0,255,.14)) 0%,transparent 62%);
+  opacity:.9;pointer-events:none;
+}
+.uni-card:hover{transform:scale(1.02);box-shadow:0 18px 44px rgba(0,0,0,.5),0 0 0 1px var(--pc,var(--brand));}
+.uni-ico{
+  position:relative;z-index:1;width:46px;height:46px;border-radius:11px;
+  display:flex;align-items:center;justify-content:center;font-size:24px;
+  color:var(--pc);background:var(--pcGlow,rgba(161,0,255,.12));border:1px solid var(--pcBorder,rgba(161,0,255,.3));
+  margin-bottom:16px;
+}
+.uni-badge{
+  position:relative;z-index:1;display:inline-block;
+  font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.1em;
+  color:var(--pc);background:var(--pcGlow,rgba(161,0,255,.12));
+  padding:3px 9px;border-radius:5px;margin-bottom:10px;
+}
+.uni-card h3{position:relative;z-index:1;font-size:16px;font-weight:600;color:var(--tp);margin-bottom:9px;line-height:1.25;}
+.uni-desc{position:relative;z-index:1;font-size:12.8px;color:var(--ts);line-height:1.55;margin-bottom:16px;min-height:60px;}
+.uni-ai{position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;
+  font-size:11.5px;font-weight:600;color:var(--brand);
+  padding-top:12px;border-top:1px solid var(--border);width:100%;}
+.uni-ai i{font-size:14px;}
+.uni-card .go-arrow{position:absolute;top:22px;right:20px;z-index:1;color:var(--tm);font-size:17px;transition:transform .25s,color .25s;}
+.uni-card:hover .go-arrow{transform:translateX(3px);color:var(--pc);}
+
+/* ---------- PROCESS DETAIL ---------- */
+.proc{
+  background:var(--surface);border:1px solid var(--border);
+  border-left:4px solid var(--pc,var(--brand));border-radius:16px;
+  overflow:hidden;margin-bottom:34px;scroll-margin-top:66px;
+}
+.proc-head{
+  display:flex;gap:20px;align-items:flex-start;
+  padding:30px 32px 26px;position:relative;
+  background:linear-gradient(120deg,var(--pcGlow,rgba(161,0,255,.09)) 0%,transparent 55%);
+  border-bottom:1px solid var(--border);
+}
+.proc-ico{
+  flex-shrink:0;width:60px;height:60px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;font-size:31px;
+  color:var(--pc);background:var(--pcGlow,rgba(161,0,255,.12));border:1px solid var(--pcBorder,rgba(161,0,255,.3));
+}
+.proc-head-body{flex:1;min-width:0;}
+.proc-title-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px;}
+.proc-title-row h3{font-size:23px;font-weight:700;color:var(--tp);}
+.proc-abbr{
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.08em;
+  color:var(--pc);background:var(--pcGlow,rgba(161,0,255,.14));border:1px solid var(--pcBorder,rgba(161,0,255,.3));
+  padding:3px 10px;border-radius:6px;
+}
+.proc-desc{font-size:14px;color:var(--ts);line-height:1.6;margin-bottom:14px;max-width:900px;}
+.reg-tags{display:flex;flex-wrap:wrap;gap:7px;}
+.reg-pill{
+  font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:500;
+  color:var(--ts);background:var(--s2);border:1px solid var(--border);
+  padding:4px 10px;border-radius:20px;
+}
+.proc-body{padding:30px 32px 34px;}
+.block-label{
+  display:flex;align-items:center;gap:9px;
+  font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;letter-spacing:.02em;
+  color:var(--tp);text-transform:uppercase;margin-bottom:20px;
+}
+.block-label i{color:var(--pc);font-size:16px;}
+.block-label .ln{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent);}
+
+/* ---------- FLOW ---------- */
+.flow{display:flex;flex-wrap:wrap;gap:0;margin-bottom:40px;}
+.flow-step{
+  position:relative;flex:1 1 150px;min-width:150px;padding:0 16px 0 0;
+  display:flex;gap:13px;align-items:flex-start;
+}
+.flow-num{
+  flex-shrink:0;width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:#fff;
+  background:var(--pc,var(--brand));box-shadow:0 0 0 4px var(--pcGlow,rgba(161,0,255,.14));
+}
+.flow-step:not(:last-child)::after{
+  content:"";position:absolute;top:16px;left:44px;right:14px;height:2px;
+  background:linear-gradient(90deg,var(--pcBorder,rgba(161,0,255,.4)),rgba(161,0,255,.08));
+}
+.flow-txt{padding-top:1px;}
+.flow-txt h5{font-size:13px;font-weight:600;color:var(--tp);margin-bottom:4px;line-height:1.3;font-family:'Space Grotesk',sans-serif;}
+.flow-txt p{font-size:11.6px;color:var(--tm);line-height:1.5;}
+
+/* ---------- AI OPPS ---------- */
+.ai-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:38px;}
+.ai-op{
+  position:relative;background:linear-gradient(150deg,rgba(161,0,255,.09),rgba(161,0,255,.02));
+  border:1px solid var(--border);border-radius:var(--radiusL);padding:20px 20px 18px;
+  transition:border-color .2s,transform .2s;
+}
+.ai-op:hover{border-color:rgba(199,123,255,.5);transform:translateY(-2px);}
+.ai-op-top{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
+.ai-type{
+  font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.06em;
+  padding:3px 9px;border-radius:5px;text-transform:uppercase;
+}
+.ai-type.GenAI{color:#FF8AD8;background:rgba(255,80,200,.13);border:1px solid rgba(255,80,200,.32);}
+.ai-type.ML{color:#8FB4FF;background:rgba(60,120,255,.13);border:1px solid rgba(60,120,255,.32);}
+.ai-type.NLP{color:#6EE7C7;background:rgba(20,200,150,.13);border:1px solid rgba(20,200,150,.32);}
+.ai-type.Automation{color:#FFC46B;background:rgba(255,170,50,.13);border:1px solid rgba(255,170,50,.32);}
+.ai-type.Analytics{color:#C99BFF;background:rgba(161,0,255,.15);border:1px solid rgba(161,0,255,.35);}
+.effort{
+  margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;
+  letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:20px;
+}
+.effort.Low{color:#7CE7A8;background:rgba(30,180,90,.14);border:1px solid rgba(30,180,90,.3);}
+.effort.Medium{color:#FFCF7A;background:rgba(230,150,30,.14);border:1px solid rgba(230,150,30,.32);}
+.effort.High{color:#FF9090;background:rgba(220,50,50,.14);border:1px solid rgba(220,50,50,.32);}
+.ai-op h5{font-size:14.5px;font-weight:600;color:var(--tp);margin-bottom:8px;font-family:'Space Grotesk',sans-serif;line-height:1.3;}
+.ai-op p{font-size:12.6px;color:var(--ts);line-height:1.6;}
+
+/* ---------- OUTPUTS + REG ---------- */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+.col-box{background:var(--s1);border:1px solid var(--border);border-radius:var(--radiusL);padding:22px 22px 20px;}
+.col-box h6{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--brand);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.out-list{list-style:none;}
+.out-list li{position:relative;padding:7px 0 7px 22px;font-size:13px;color:var(--ts);line-height:1.5;border-bottom:1px solid rgba(161,0,255,.07);}
+.out-list li:last-child{border-bottom:none;}
+.out-list li::before{content:"";position:absolute;left:2px;top:14px;width:6px;height:6px;border-radius:50%;background:var(--pc,var(--brand));}
+.reg-list{display:flex;flex-direction:column;gap:12px;}
+.reg-item{display:flex;flex-direction:column;gap:3px;}
+.reg-item .rt{font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;color:var(--tp);}
+.reg-item .rd{font-size:11.8px;color:var(--tm);line-height:1.45;}
+
+/* ---------- AI MATRIX ---------- */
+.matrix-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:16px;background:var(--surface);}
+.matrix{border-collapse:collapse;width:100%;min-width:720px;}
+.matrix th,.matrix td{padding:0;text-align:center;}
+.matrix thead th{
+  padding:20px 12px 18px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;
+  letter-spacing:.05em;color:var(--ts);border-bottom:1px solid var(--border);
+  text-transform:uppercase;white-space:nowrap;
+}
+.matrix thead th:first-child{text-align:left;padding-left:24px;}
+.matrix thead th span{display:block;font-size:9.5px;font-weight:500;color:var(--tm);letter-spacing:.03em;margin-top:3px;text-transform:none;font-family:'Inter',sans-serif;}
+.matrix tbody th{
+  text-align:left;padding:0 20px;height:62px;white-space:nowrap;
+  border-bottom:1px solid rgba(161,0,255,.07);
+}
+.mx-proc{display:flex;align-items:center;gap:11px;}
+.mx-dot{width:11px;height:11px;border-radius:3px;flex-shrink:0;background:var(--pc);}
+.mx-proc .abbr{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--tp);}
+.mx-proc .nm{font-size:11px;color:var(--tm);}
+.matrix tbody td{height:62px;border-bottom:1px solid rgba(161,0,255,.07);border-left:1px solid rgba(161,0,255,.05);}
+.mx-cell{display:flex;align-items:center;justify-content:center;height:100%;}
+.mx-chip{
+  border-radius:50%;transform:scale(0);opacity:0;
+  transition:transform .5s cubic-bezier(.34,1.56,.64,1),opacity .4s;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;font-weight:700;color:#fff;
+}
+.matrix.in .mx-chip{transform:scale(1);opacity:1;}
+.mx-chip.High{width:40px;height:40px;font-size:9px;background:radial-gradient(circle at 35% 30%,#FF6ECF,#A100FF);box-shadow:0 0 18px rgba(255,80,200,.5);}
+.mx-chip.Medium{width:31px;height:31px;font-size:8px;background:radial-gradient(circle at 35% 30%,#C77BFF,#7A15C9);box-shadow:0 0 12px rgba(161,0,255,.35);}
+.mx-chip.Low{width:22px;height:22px;font-size:0;background:rgba(161,0,255,.28);border:1px solid rgba(161,0,255,.5);}
+.mx-legend{display:flex;flex-wrap:wrap;gap:26px;margin-top:26px;align-items:center;}
+.mx-leg-item{display:flex;align-items:center;gap:11px;font-size:12.5px;color:var(--ts);}
+.mx-leg-item .lchip{border-radius:50%;flex-shrink:0;}
+.mx-leg-note{font-size:12px;color:var(--tm);flex:1;min-width:220px;line-height:1.5;}
+
+/* ---------- INTERCONNECT ---------- */
+.ic-wrap{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px;}
+#icSvg{width:100%;height:auto;display:block;}
+.ic-node-label{font-family:'JetBrains Mono',monospace;font-weight:700;fill:#fff;text-anchor:middle;dominant-baseline:central;}
+.ic-flow-label{font-family:'Inter',sans-serif;font-size:10px;fill:var(--ts);text-anchor:middle;}
+.ic-legend{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 30px;margin-top:26px;}
+.ic-leg{display:flex;align-items:flex-start;gap:12px;font-size:12.6px;color:var(--ts);line-height:1.45;padding:10px 14px;background:var(--s1);border:1px solid var(--border);border-radius:var(--radius);}
+.ic-leg .fromto{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;white-space:nowrap;flex-shrink:0;}
+.ic-leg .fl{display:block;color:var(--tm);font-size:11.5px;margin-top:2px;}
+
+/* ---------- FOOTER ---------- */
+footer{border-top:1px solid var(--border);background:#06001A;margin-top:20px;}
+.foot-inner{max-width:1320px;margin:0 auto;padding:34px 26px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.foot-txt{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--tm);letter-spacing:.03em;}
+.foot-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--brand);padding:9px 18px;border:1px solid var(--border);border-radius:22px;background:var(--brandLight);transition:background .2s,border-color .2s,transform .2s;}
+.foot-link:hover{background:rgba(161,0,255,.18);border-color:var(--brand);transform:translateX(2px);}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:1080px){
+  .universe-grid{grid-template-columns:repeat(2,1fr);}
+  .hero-stats{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:820px){
+  .tb-nav{display:none;}
+  .ai-grid{grid-template-columns:1fr;}
+  .two-col{grid-template-columns:1fr;}
+  .ic-legend{grid-template-columns:1fr;}
+}
+@media (max-width:560px){
+  .universe-grid{grid-template-columns:1fr;}
+  .hero-stats{grid-template-columns:1fr 1fr;}
+  .proc-head{flex-direction:column;gap:14px;}
+  section{padding:56px 18px;}
+  .hero-inner{padding:64px 18px 54px;}
+}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none;}
+  .mx-chip{transform:scale(1);opacity:1;transition:none;}
+}
+</style>
+<script>
+/* Gate check */
+if (sessionStorage.getItem('nfr_auth') !== '1') { location.replace('index.html'); }
+</script>
+</head>
+<body>
+
+<!-- ===================== TOPBAR ===================== -->
+<header class="topbar">
+  <canvas id="topbarCanvas" aria-hidden="true"></canvas>
+  <div class="topbar-inner">
+    <a class="tb-brand" href="#top">
+      <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <path d="M18 10 L58 50 L18 90 L32 90 L72 50 L32 10 Z" fill="#fff"/>
+      </svg>
+      <span>Accenture NFR Practice</span>
+    </a>
+    <nav class="tb-nav">
+      <a href="#universe">Process Universe</a>
+      <a href="#processes">Processes</a>
+      <a href="#ai-matrix">AI Matrix</a>
+      <a href="#interconnect">Interconnections</a>
+    </nav>
+    <span class="tb-badge">NFR Process Intelligence</span>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<div class="hero" id="top">
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Accenture NFR Practice · Non-Financial Risk Intelligence</div>
+    <h1>NFR Process <span class="grad">Intelligence</span></h1>
+    <p class="hero-sub">A comprehensive visual map of Non-Financial Risk processes — from TPRM and RCSA to BCM and Compliance — with AI opportunity overlays across the full process chain.</p>
+    <div class="hero-stats">
+      <div class="stat-card"><div class="stat-num">8</div><div class="stat-label">NFR Processes</div></div>
+      <div class="stat-card"><div class="stat-num">32+</div><div class="stat-label">AI Opportunities</div></div>
+      <div class="stat-card"><div class="stat-num">12</div><div class="stat-label">Regulatory Frameworks</div></div>
+      <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">NFR Coverage</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SECTION 1: UNIVERSE ===================== -->
+<section id="universe">
+  <div class="sec-head reveal">
+    <div class="sec-tag"><i class="ti ti-atom-2"></i> Process Universe</div>
+    <h2>The Eight Pillars of Non-Financial Risk</h2>
+    <p>Every discipline the NFR Practice covers, at a glance. Each pillar is a self-contained process chain with dedicated regulatory drivers and its own set of AI opportunities. Select any card to jump to its detailed breakdown.</p>
+  </div>
+  <div class="universe-grid" id="universeGrid"></div>
+</section>
+
+<!-- ===================== SECTION 2: PROCESSES ===================== -->
+<section id="processes">
+  <div class="sec-head reveal">
+    <div class="sec-tag"><i class="ti ti-route-2"></i> Process Detail</div>
+    <h2>Process Chains & AI Opportunity Overlays</h2>
+    <p>For each NFR process: the end-to-end lifecycle, the specific AI applications that accelerate it, and the deliverables and regulatory frameworks that anchor it. All AI opportunities reflect proven, real-world use cases.</p>
+  </div>
+  <div id="processDetail"></div>
+</section>
+
+<!-- ===================== SECTION 3: AI MATRIX ===================== -->
+<section id="ai-matrix">
+  <div class="sec-head reveal">
+    <div class="sec-tag"><i class="ti ti-grid-dots"></i> AI Opportunity Matrix</div>
+    <h2>Where AI Delivers Across the NFR Landscape</h2>
+    <p>A heatmap of AI applicability and expected impact across all eight processes and five technology categories. Larger, brighter chips indicate higher-impact opportunities.</p>
+  </div>
+  <div class="matrix-wrap reveal">
+    <table class="matrix" id="matrix">
+      <thead>
+        <tr>
+          <th>NFR Process</th>
+          <th>GenAI<span>Generative</span></th>
+          <th>ML<span>Predictive</span></th>
+          <th>NLP<span>Text / Language</span></th>
+          <th>Automation<span>Workflow</span></th>
+          <th>Analytics<span>Data / Pattern</span></th>
+        </tr>
+      </thead>
+      <tbody id="matrixBody"></tbody>
+    </table>
+  </div>
+  <div class="mx-legend reveal">
+    <div class="mx-leg-item"><span class="lchip" style="width:40px;height:40px;background:radial-gradient(circle at 35% 30%,#FF6ECF,#A100FF);box-shadow:0 0 14px rgba(255,80,200,.5)"></span> High impact</div>
+    <div class="mx-leg-item"><span class="lchip" style="width:31px;height:31px;background:radial-gradient(circle at 35% 30%,#C77BFF,#7A15C9)"></span> Medium impact</div>
+    <div class="mx-leg-item"><span class="lchip" style="width:22px;height:22px;background:rgba(161,0,255,.28);border:1px solid rgba(161,0,255,.5)"></span> Low / emerging</div>
+    <div class="mx-leg-note">Impact reflects the relative maturity and value of the AI application for that process, based on proven industry use cases — not a forecast of savings.</div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 4: INTERCONNECT ===================== -->
+<section id="interconnect">
+  <div class="sec-head reveal">
+    <div class="sec-tag"><i class="ti ti-affiliate"></i> Process Interconnections</div>
+    <h2>How the Processes Feed One Another</h2>
+    <p>Non-Financial Risk is a connected system. Incidents, model failures, vendor events and regulatory changes flow between processes — the operational risk loss database and the RCSA risk register act as the two central hubs.</p>
+  </div>
+  <div class="ic-wrap reveal">
+    <svg id="icSvg" viewBox="0 0 1000 580" role="img" aria-label="Process interconnection diagram"></svg>
+  </div>
+  <div class="ic-legend" id="icLegend"></div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-txt">Accenture NFR Practice&nbsp;&nbsp;·&nbsp;&nbsp;Financial Risk &amp; AI Governance&nbsp;&nbsp;·&nbsp;&nbsp;NFR Process Intelligence</div>
+    <a class="foot-link" href="https://tzijlstra-acn.github.io/NFRAIAssets/">All NFR Assets <i class="ti ti-arrow-right"></i></a>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   DATA MODEL — 8 NFR PROCESSES
+   ============================================================ */
+var PROCESSES = [
+  {
+    id:'tprm', abbr:'TPRM', name:'Third Party Risk Management',
+    icon:'ti-building-community', color:'#2563EB',
+    desc:'End-to-end management of risks arising from third-party relationships — vendors, suppliers, outsourcing arrangements, and ICT service providers.',
+    regShort:['DORA Art.28–30','EBA Outsourcing Guidelines (2019)','Basel Op Risk Framework'],
+    flow:[
+      {t:'Vendor Identification', d:'Catalogue all third-party relationships; classify by criticality and service type'},
+      {t:'Due Diligence', d:'Financial health check; security posture; concentration risk; sub-outsourcing review'},
+      {t:'Risk Assessment', d:'Inherent risk scoring; residual risk after controls; materiality determination'},
+      {t:'Contractual Review', d:'SLA negotiation; data protection clauses; exit provisions; audit rights (DORA Art.30)'},
+      {t:'Onboarding & Monitoring', d:'Register entry; ongoing KPI tracking; periodic re-assessment; event monitoring'},
+      {t:'Offboarding', d:'Data deletion; access revocation; knowledge transfer; lessons learned'}
+    ],
+    ai:[
+      {type:'ML', effort:'Medium', title:'Automated Vendor Risk Scoring', d:'Machine learning models trained on vendor financial statements, cybersecurity ratings, and operational data to generate dynamic risk scores, reducing manual assessment time for routine reviews.'},
+      {type:'NLP', effort:'Medium', title:'Contract Clause Analysis', d:'NLP extraction of key contractual obligations, missing clauses, and non-compliant terms from vendor contracts, flagging gaps against DORA Art.30 requirements and internal standards.'},
+      {type:'Automation', effort:'Low', title:'Continuous Vendor Event Monitoring', d:'Real-time aggregation and classification of vendor news, regulatory sanctions, credit rating changes, and cyber breach disclosures to trigger proactive re-assessment.'},
+      {type:'Analytics', effort:'Medium', title:'Concentration Risk Analytics', d:'Automated mapping of fourth-party dependencies and geographic/sector concentration to quantify systemic exposure and support ICT concentration risk reporting under DORA.'}
+    ],
+    outputs:['Third-party register','Vendor risk assessments','DORA ICT register','Concentration risk reports','Exit plans'],
+    reg:[
+      {t:'DORA Art.28–30', d:'ICT third-party risk management and contractual requirements'},
+      {t:'EBA/GL/2019/02', d:'Guidelines on outsourcing arrangements'},
+      {t:'Basel Op Risk Framework', d:'Operational risk treatment of outsourcing exposures'}
+    ],
+    matrix:{GenAI:'Medium', ML:'High', NLP:'High', Automation:'High', Analytics:'Medium'}
+  },
+  {
+    id:'bcm', abbr:'BCM', name:'Business Continuity Management',
+    icon:'ti-refresh-alert', color:'#16A34A',
+    desc:'Framework ensuring the organisation can sustain critical operations and recover effectively following disruptive events, meeting recovery time and recovery point objectives.',
+    regShort:['ISO 22301:2019','EBA/GL/2019/02','DORA resilience testing'],
+    flow:[
+      {t:'Governance & Scope', d:'BCM policy; programme scope; BIA criteria; ownership assignment'},
+      {t:'Business Impact Analysis', d:'Critical process identification; RTO/RPO definition; dependency mapping; maximum tolerable downtime'},
+      {t:'Continuity Strategy', d:'Recovery options; resource requirements; workaround procedures; alternate site arrangements'},
+      {t:'Plan Development', d:'BCP/DRP documentation; communication trees; escalation procedures; role assignments'},
+      {t:'Testing & Exercising', d:'Tabletop exercises; simulation drills; failover tests; TLPT under DORA'},
+      {t:'Maintenance & Review', d:'Post-incident review; plan updates; annual review; regulatory reporting'}
+    ],
+    ai:[
+      {type:'ML', effort:'Medium', title:'AI-Augmented Business Impact Analysis', d:'ML models analyse process interdependencies, transaction volumes, and system logs to objectively quantify business impact and suggest RTO/RPO thresholds, reducing subjectivity in BIA workshops.'},
+      {type:'GenAI', effort:'Low', title:'Crisis Scenario Generation', d:'Large language models generate realistic crisis scenarios tailored to the organisation’s risk profile — cyber attacks, extreme weather, key personnel unavailability — to enrich tabletop exercises and stress tests.'},
+      {type:'Analytics', effort:'High', title:'Predictive Disruption Early Warning', d:'Predictive models combining operational telemetry, weather data, and geopolitical signals to identify elevated disruption probability and trigger pre-emptive response activities.'},
+      {type:'GenAI', effort:'Low', title:'Automated Plan Maintenance', d:'GenAI-assisted identification of outdated BCP content following organisational changes, system upgrades, or regulatory updates, generating draft amendments for human review.'}
+    ],
+    outputs:['BIA reports','BCP/DRP documents','Exercise reports','DORA resilience reports','Recovery playbooks'],
+    reg:[
+      {t:'ISO 22301:2019', d:'Business continuity management systems standard'},
+      {t:'EBA/GL/2019/02', d:'Business continuity within outsourcing arrangements'},
+      {t:'DORA Art.11', d:'ICT business continuity policy and response plans'},
+      {t:'DORA Art.26', d:'Threat-led penetration testing (TLPT)'}
+    ],
+    matrix:{GenAI:'High', ML:'Medium', NLP:'Low', Automation:'High', Analytics:'Medium'}
+  },
+  {
+    id:'rcsa', abbr:'RCSA', name:'Risk and Control Self-Assessment',
+    icon:'ti-clipboard-check', color:'#EA580C',
+    desc:'Structured process by which business lines identify, assess, and document operational risks and evaluate the design and effectiveness of associated controls.',
+    regShort:['Basel III/IV Op Risk','EBA Operational Risk Guidelines','ECB Supervisory Expectations'],
+    flow:[
+      {t:'Risk Identification', d:'Process decomposition; risk taxonomy application; brainstorming workshops; horizon risk input'},
+      {t:'Risk Assessment', d:'Inherent likelihood & impact scoring; risk rating; heat map positioning; risk appetite alignment'},
+      {t:'Control Mapping', d:'Control inventory linkage; categorisation (preventive/detective/corrective); design assessment'},
+      {t:'Control Effectiveness Testing', d:'Key Control Indicators; sample-based testing; control gap identification'},
+      {t:'Gap Remediation', d:'Action plan definition; ownership assignment; timeline commitment; risk acceptance where applicable'},
+      {t:'Continuous Monitoring', d:'KRI tracking; trigger-based reassessment; quarterly management reporting; audit linkage'}
+    ],
+    ai:[
+      {type:'NLP', effort:'Medium', title:'AI-Assisted Risk Identification', d:'NLP analysis of process documentation, incident logs, audit findings, and industry loss data to surface emerging risks that may be missed in workshop-based identification, enriching the risk taxonomy.'},
+      {type:'ML', effort:'High', title:'Automated Control Effectiveness Scoring', d:'ML models integrating KCI data, testing results, and incident patterns to produce continuous control effectiveness scores, replacing point-in-time manual assessments with dynamic ratings.'},
+      {type:'NLP', effort:'Low', title:'Incident-to-Risk Linkage', d:'Automated classification and mapping of operational incidents to RCSA risk entries using NLP, ensuring the risk register reflects actual loss experience and supports causal analysis.'},
+      {type:'Automation', effort:'Medium', title:'Dynamic RCSA Triggering', d:'Rule-based and ML-driven triggers that automatically initiate RCSA updates when material changes occur — new products, system changes, regulatory updates, or significant incidents.'}
+    ],
+    outputs:['Risk register','Control library','Heat maps','KRI dashboards','Remediation trackers','Management reports'],
+    reg:[
+      {t:'Basel III/IV', d:'Operational risk identification and control standards'},
+      {t:'EBA Op Risk Guidelines', d:'Supervisory expectations for operational risk management'},
+      {t:'BCBS 239', d:'Risk data aggregation and reporting principles'}
+    ],
+    matrix:{GenAI:'Medium', ML:'High', NLP:'High', Automation:'High', Analytics:'Low'}
+  },
+  {
+    id:'pks', abbr:'PKS', name:'Policy & Key Standards',
+    icon:'ti-book-2', color:'#0891B2',
+    desc:'Lifecycle management of internal policies, key standards, and procedures — ensuring they remain current, compliant, and embedded across the organisation through effective communication and monitoring.',
+    regShort:['EBA/GL/2021/04','CRR/CRD requirements','ISO 9001'],
+    flow:[
+      {t:'Policy Initiation', d:'Regulatory trigger; gap identification; owner assignment; stakeholder scoping'},
+      {t:'Drafting & Review', d:'Content development; legal and compliance review; cross-policy consistency check; SME input'},
+      {t:'Approval', d:'Governance committee sign-off; board-level approval for material policies; version control'},
+      {t:'Communication & Training', d:'Distribution to impacted staff; mandatory training assignment; attestation collection'},
+      {t:'Compliance Monitoring', d:'Adherence tracking; breach identification; exception management; KCI reporting'},
+      {t:'Review & Update Cycle', d:'Trigger-based or scheduled annual review; regulatory change assessment; version archiving'}
+    ],
+    ai:[
+      {type:'GenAI', effort:'Low', title:'GenAI Policy Drafting & Gap Analysis', d:'Large language models assist policy owners in drafting new policies or updating existing ones, cross-referencing relevant regulations and internal standards to identify coverage gaps and inconsistencies.'},
+      {type:'NLP', effort:'Medium', title:'Cross-Policy Consistency Checking', d:'NLP tools compare terminology, definitions, and requirements across the entire policy library to detect contradictions, duplications, and alignment gaps before approval.'},
+      {type:'NLP', effort:'Medium', title:'Regulatory Change Impact Assessment', d:'Automated analysis of new regulatory publications to identify policies requiring update, estimate the scope of change, and generate a prioritised remediation roadmap.'},
+      {type:'Automation', effort:'Low', title:'Attestation & Compliance Tracking', d:'Automated tracking of staff training completion and policy attestation, with targeted escalation workflows for overdue acknowledgements and management dashboards for completion rates.'}
+    ],
+    outputs:['Policy library','Standards register','Compliance monitoring reports','Training completion records','Exception logs'],
+    reg:[
+      {t:'EBA/GL/2021/04', d:'Internal governance arrangements'},
+      {t:'CRD V', d:'Governance and internal control requirements'},
+      {t:'EBA/GL/2017/11', d:'Internal governance and control framework'},
+      {t:'DORA governance', d:'ICT governance and policy requirements'}
+    ],
+    matrix:{GenAI:'High', ML:'Low', NLP:'High', Automation:'High', Analytics:'Low'}
+  },
+  {
+    id:'orm', abbr:'ORM', name:'Operational Risk Management',
+    icon:'ti-alert-triangle', color:'#DC2626',
+    desc:'Systematic identification, measurement, monitoring, and control of operational risks — including process failures, human error, system outages, fraud, and external events — to minimise financial and reputational losses.',
+    regShort:['Basel II/III/IV (Op Risk SMA)','EBA Op Risk Guidelines','ORX loss data standards'],
+    flow:[
+      {t:'Risk Taxonomy & Appetite', d:'Basel Event Type taxonomy; risk appetite statement; tolerance thresholds; KRI definition'},
+      {t:'Incident Capture', d:'Loss event recording; near-miss logging; threshold-based escalation; timeline documentation'},
+      {t:'Loss Assessment', d:'Direct and indirect loss quantification; recovery tracking; insurance recovery; gross/net determination'},
+      {t:'Causal Analysis', d:'Root cause identification; control failure assessment; process vulnerability mapping; lessons learned'},
+      {t:'Reporting & Escalation', d:'Management MI; board risk reporting; regulatory reporting (EBA, SSM); risk committee escalation'},
+      {t:'Capital & Stress Testing', d:'Basel SMA calculation; stress scenario application; ICAAP integration; forward-looking assessment'}
+    ],
+    ai:[
+      {type:'NLP', effort:'Low', title:'Automated Incident Classification', d:'NLP models classify operational incidents against the Basel Event Type taxonomy and internal risk categories in real time, reducing manual effort and improving consistency of loss data quality for regulatory and internal reporting.'},
+      {type:'ML', effort:'High', title:'Predictive Loss Modeling', d:'ML models trained on internal loss history, industry ORX data, and operational KPIs to predict loss frequency and severity distributions, supporting dynamic risk appetite calibration and proactive risk management.'},
+      {type:'Analytics', effort:'Medium', title:'Near-Miss Pattern Detection', d:'Analytics over near-miss and incident data to identify systemic patterns and emerging operational vulnerabilities before they materialise as losses, enabling targeted control enhancement.'},
+      {type:'Automation', effort:'Medium', title:'Automated Regulatory Reporting', d:'Automated aggregation and formatting of loss data for EBA/SSM operational risk reporting requirements and Basel SMA calculations, reducing manual preparation effort and reporting error risk.'}
+    ],
+    outputs:['Loss database','Incident reports','Causal analysis reports','Basel SMA capital figure','Management MI','ICAAP input'],
+    reg:[
+      {t:'Basel II/III/IV', d:'Operational risk capital under the Standardised Measurement Approach'},
+      {t:'EBA/GL/2019/13', d:'Common procedures for the supervisory review process'},
+      {t:'EBA/GL/2021/03', d:'Supervisory reporting on operational risk'},
+      {t:'ORX / ABA standards', d:'Industry operational loss data consortium standards'}
+    ],
+    matrix:{GenAI:'Low', ML:'High', NLP:'High', Automation:'High', Analytics:'High'}
+  },
+  {
+    id:'compliance', abbr:'Compliance', name:'Regulatory Compliance Management',
+    icon:'ti-scale', color:'#7C3AED',
+    desc:'Proactive management of compliance obligations across the full regulatory landscape — from horizon scanning and impact assessment to evidence management and regulatory reporting.',
+    regShort:['DORA','GDPR','EU AI Act','MiCA','PSD2','EMIR','CRR/CRD IV/V','MAR'],
+    flow:[
+      {t:'Horizon Scanning', d:'Regulatory tracker maintenance; consultation paper monitoring; supervisory expectation tracking; industry engagement'},
+      {t:'Impact Assessment', d:'Obligation extraction; gap analysis against current state; business impact quantification; prioritisation'},
+      {t:'Implementation Planning', d:'Project scoping; workstream definition; resource allocation; milestone planning; governance sign-off'},
+      {t:'Remediation Execution', d:'Policy updates; process changes; system configuration; staff training; controls implementation'},
+      {t:'Evidence Management', d:'Compliance evidence collection; document repository management; audit trail maintenance; retention schedules'},
+      {t:'Regulatory Reporting', d:'Returns preparation; supervisory submissions; self-assessment questionnaires; dialogue management'}
+    ],
+    ai:[
+      {type:'NLP', effort:'Medium', title:'AI Regulatory Horizon Scanning', d:'NLP-powered monitoring of regulatory publications, consultation papers, supervisory speeches, and industry guidance to automatically identify relevant developments, extract obligations, and alert compliance teams with summarised impact notes.'},
+      {type:'GenAI', effort:'Medium', title:'Automated Gap Analysis', d:'GenAI models compare new regulatory requirements against the existing compliance framework — policies, controls, processes — to generate a structured gap report with suggested remediation steps, significantly reducing manual analysis time.'},
+      {type:'GenAI', effort:'Low', title:'Regulatory Text Interpretation', d:'Large language models provide plain-language interpretation of complex regulatory provisions, cross-reference related requirements, and answer compliance team queries with citations, improving the speed and accuracy of obligation mapping.'},
+      {type:'Automation', effort:'Low', title:'Automated Evidence Collection', d:'Workflow automation tools systematically collect, index, and store compliance evidence — approvals, test results, training records, meeting minutes — against mapped obligations, creating a continuously maintained audit-ready repository.'}
+    ],
+    outputs:['Regulatory inventory','Gap assessments','Compliance programmes','Evidence repository','Regulatory returns','MI reports'],
+    reg:[
+      {t:'DORA', d:'Digital operational resilience for the financial sector'},
+      {t:'GDPR Art.30–31', d:'Records of processing and cooperation with supervisors'},
+      {t:'EU AI Act Art.9–17', d:'Risk management and requirements for high-risk AI systems'},
+      {t:'CRR/CRD V · EMIR · PSD2 · MiCA · MAR', d:'Prudential, derivatives, payments, crypto-asset and market abuse regimes'}
+    ],
+    matrix:{GenAI:'High', ML:'Low', NLP:'High', Automation:'High', Analytics:'Low'}
+  },
+  {
+    id:'mrm', abbr:'MRM', name:'Model Risk Management',
+    icon:'ti-brain', color:'#9333EA',
+    desc:'End-to-end governance of quantitative models — from initial validation through ongoing performance monitoring — ensuring models are fit for purpose and comply with regulatory model risk standards.',
+    regShort:['SR 11-7 (Federal Reserve)','EBA GL 2021/04','ECB TRIM','BCBS model risk guidance'],
+    flow:[
+      {t:'Model Inventory', d:'Model registration; materiality tiering (High/Medium/Low); ownership assignment; use case documentation'},
+      {t:'Initial Validation', d:'Conceptual soundness review; data quality assessment; performance testing; limitations documentation'},
+      {t:'Approval & Governance', d:'Model Risk Committee sign-off; risk acceptance for limitations; conditions of use; review schedule'},
+      {t:'Ongoing Monitoring', d:'KPI tracking (accuracy, stability, discrimination); threshold breaches; drift detection; output sampling'},
+      {t:'Periodic Review', d:'Full re-validation; challenger model assessment; methodology review; regulatory alignment check'},
+      {t:'Model Retirement', d:'Use case decommission; documentation archiving; replacement transition; regulatory notification'}
+    ],
+    ai:[
+      {type:'ML', effort:'Medium', title:'Automated Model Performance Monitoring', d:'Continuous ML-based monitoring of deployed models against key performance indicators — predictive accuracy, discriminatory power, population stability — with automated alerts when thresholds are breached, enabling real-time identification of model degradation.'},
+      {type:'ML', effort:'High', title:'AI-Assisted Model Validation', d:'ML tools that systematically stress-test model assumptions, apply benchmarking approaches, and generate challenger model outputs, supporting independent validators with objective data-driven evidence and reducing validation cycle time.'},
+      {type:'Analytics', effort:'Medium', title:'LLM Evaluation Frameworks', d:'RAGAS and similar evaluation frameworks applied to LLM and GenAI models to assess faithfulness, answer relevance, and context precision — extending traditional MRM methodology to AI/ML models used in risk and compliance applications.'},
+      {type:'GenAI', effort:'Low', title:'Automated Model Documentation', d:'GenAI tools that generate structured model documentation — technical specifications, data lineage descriptions, assumption summaries — from model code and validation findings, ensuring documentation standards are maintained consistently.'}
+    ],
+    outputs:['Model inventory','Validation reports','Monitoring dashboards','MRC minutes','Model cards','TRIM self-assessments'],
+    reg:[
+      {t:'SR 11-7', d:'Federal Reserve supervisory guidance on model risk management'},
+      {t:'EBA GL 2021/04', d:'Internal governance including model governance'},
+      {t:'ECB TRIM', d:'Targeted Review of Internal Models'},
+      {t:'BCBS Op Risk', d:'Model risk component of operational risk guidance'}
+    ],
+    matrix:{GenAI:'Medium', ML:'High', NLP:'Low', Automation:'Low', Analytics:'High'}
+  },
+  {
+    id:'isrisk', abbr:'IS Risk', name:'Information Security Risk',
+    icon:'ti-shield-lock', color:'#0F766E',
+    desc:'Identification, assessment, and management of information security and cyber risks — spanning threat intelligence, vulnerability management, access control, and incident response — in line with DORA and NIS2 requirements.',
+    regShort:['DORA TLPT (Art.26)','NIS2 Directive','ISO 27001:2022','NIST CSF 2.0'],
+    flow:[
+      {t:'Threat Intelligence', d:'Threat landscape monitoring; ISAC participation; vulnerability feeds; sector-specific threat briefings'},
+      {t:'Risk Assessment', d:'Asset inventory; threat-vulnerability mapping; inherent risk scoring; residual risk after controls'},
+      {t:'Control Implementation', d:'Security control design; access management; encryption; patch management; SIEM deployment'},
+      {t:'Continuous Monitoring', d:'Real-time log analysis; anomaly detection; security operations centre (SOC) alerting; KRI dashboards'},
+      {t:'Incident Response', d:'Detection and triage; containment and eradication; forensic investigation; regulatory notification (DORA 4h/72h)'},
+      {t:'Recovery & Lessons Learned', d:'Service restoration; post-incident review; control enhancement; DORA incident reporting submission'}
+    ],
+    ai:[
+      {type:'ML', effort:'High', title:'AI-Powered Threat Detection', d:'ML models trained on network traffic, user behaviour, and system logs to detect anomalous patterns indicative of intrusion, insider threat, or data exfiltration, improving detection accuracy and reducing mean time to detect (MTTD) compared to rule-based SIEM approaches.'},
+      {type:'ML', effort:'Medium', title:'Automated Vulnerability Prioritisation', d:'ML models that combine CVSS scores, asset criticality, exploitability data, and threat intelligence feeds to prioritise vulnerability remediation, ensuring limited patching resources are directed at the highest-impact exposures first.'},
+      {type:'Automation', effort:'Medium', title:'AI Incident Triage & Response', d:'Automated triage of security alerts using ML classification to distinguish true positives from false positives, route confirmed incidents to appropriate response playbooks, and draft initial incident notifications, reducing analyst alert fatigue.'},
+      {type:'Analytics', effort:'Medium', title:'Behavioural Analytics', d:'User and Entity Behaviour Analytics (UEBA) models establishing behavioural baselines for users, devices, and applications, detecting deviations that may indicate credential compromise, insider threat, or supply chain attack patterns.'}
+    ],
+    outputs:['Risk register','Vulnerability reports','Incident logs','DORA incident reports','Threat intelligence bulletins','SOC dashboards'],
+    reg:[
+      {t:'DORA Art.26', d:'Threat-led penetration testing (TLPT)'},
+      {t:'DORA Art.19–20', d:'ICT-related incident reporting to competent authorities'},
+      {t:'NIS2 Art.21', d:'Cybersecurity risk management measures'},
+      {t:'ISO 27001:2022 · NIST CSF 2.0', d:'Information security management and cybersecurity frameworks'}
+    ],
+    matrix:{GenAI:'Low', ML:'High', NLP:'Low', Automation:'High', Analytics:'High'}
+  }
+];
+
+var MATRIX_COLS = ['GenAI','ML','NLP','Automation','Analytics'];
+
+/* helper: hex -> rgba */
+function hexRgba(hex,a){var h=hex.replace('#','');var r=parseInt(h.substr(0,2),16),g=parseInt(h.substr(2,2),16),b=parseInt(h.substr(4,2),16);return 'rgba('+r+','+g+','+b+','+a+')';}
+function styleVars(p){return '--pc:'+p.color+';--pcGlow:'+hexRgba(p.color,.12)+';--pcBorder:'+hexRgba(p.color,.35)+';';}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+/* ============================================================
+   RENDER: UNIVERSE GRID
+   ============================================================ */
+(function(){
+  var html='';
+  PROCESSES.forEach(function(p){
+    html+='<div class="uni-card reveal" style="'+styleVars(p)+'" data-target="proc-'+p.id+'">'
+      +'<i class="ti ti-arrow-up-right go-arrow"></i>'
+      +'<div class="uni-ico"><i class="ti '+p.icon+'"></i></div>'
+      +'<span class="uni-badge">'+esc(p.abbr)+'</span>'
+      +'<h3>'+esc(p.name)+'</h3>'
+      +'<p class="uni-desc">'+esc(p.desc)+'</p>'
+      +'<div class="uni-ai"><i class="ti ti-sparkles"></i> '+p.ai.length+' AI opportunities</div>'
+      +'</div>';
+  });
+  document.getElementById('universeGrid').innerHTML=html;
+  document.querySelectorAll('.uni-card').forEach(function(c){
+    c.addEventListener('click',function(){
+      var el=document.getElementById(c.getAttribute('data-target'));
+      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
+})();
+
+/* ============================================================
+   RENDER: PROCESS DETAIL
+   ============================================================ */
+(function(){
+  var html='';
+  PROCESSES.forEach(function(p){
+    var flow='';
+    p.flow.forEach(function(s,i){
+      flow+='<div class="flow-step"><div class="flow-num">'+(i+1)+'</div><div class="flow-txt"><h5>'+esc(s.t)+'</h5><p>'+esc(s.d)+'</p></div></div>';
+    });
+    var ai='';
+    p.ai.forEach(function(o){
+      ai+='<div class="ai-op"><div class="ai-op-top"><span class="ai-type '+o.type+'">'+o.type+'</span>'
+        +'<span class="effort '+o.effort+'">'+o.effort+' effort</span></div>'
+        +'<h5>'+esc(o.title)+'</h5><p>'+esc(o.d)+'</p></div>';
+    });
+    var outs='';
+    p.outputs.forEach(function(o){outs+='<li>'+esc(o)+'</li>';});
+    var regs='';
+    p.reg.forEach(function(r){regs+='<div class="reg-item"><span class="rt">'+esc(r.t)+'</span><span class="rd">'+esc(r.d)+'</span></div>';});
+    var pills='';
+    p.regShort.forEach(function(r){pills+='<span class="reg-pill">'+esc(r)+'</span>';});
+
+    html+='<div class="proc reveal" id="proc-'+p.id+'" style="'+styleVars(p)+'">'
+      +'<div class="proc-head">'
+        +'<div class="proc-ico"><i class="ti '+p.icon+'"></i></div>'
+        +'<div class="proc-head-body">'
+          +'<div class="proc-title-row"><h3>'+esc(p.name)+'</h3><span class="proc-abbr">'+esc(p.abbr)+'</span></div>'
+          +'<p class="proc-desc">'+esc(p.desc)+'</p>'
+          +'<div class="reg-tags">'+pills+'</div>'
+        +'</div>'
+      +'</div>'
+      +'<div class="proc-body">'
+        +'<div class="block-label"><i class="ti ti-timeline-event"></i> Process Flow <span class="ln"></span></div>'
+        +'<div class="flow">'+flow+'</div>'
+        +'<div class="block-label"><i class="ti ti-sparkles"></i> AI Opportunities <span class="ln"></span></div>'
+        +'<div class="ai-grid">'+ai+'</div>'
+        +'<div class="block-label"><i class="ti ti-checklist"></i> Key Outputs & Regulatory Alignment <span class="ln"></span></div>'
+        +'<div class="two-col">'
+          +'<div class="col-box"><h6><i class="ti ti-file-text"></i> Key Deliverables</h6><ul class="out-list">'+outs+'</ul></div>'
+          +'<div class="col-box"><h6><i class="ti ti-gavel"></i> Regulatory Frameworks</h6><div class="reg-list">'+regs+'</div></div>'
+        +'</div>'
+      +'</div>'
+    +'</div>';
+  });
+  document.getElementById('processDetail').innerHTML=html;
+})();
+
+/* ============================================================
+   RENDER: AI MATRIX
+   ============================================================ */
+(function(){
+  var html='';
+  PROCESSES.forEach(function(p){
+    html+='<tr><th><div class="mx-proc"><span class="mx-dot" style="background:'+p.color+'"></span>'
+      +'<span class="abbr">'+esc(p.abbr)+'</span><span class="nm">'+esc(p.name)+'</span></div></th>';
+    MATRIX_COLS.forEach(function(c){
+      var lvl=p.matrix[c];
+      var label=lvl==='High'?'H':lvl==='Medium'?'M':'';
+      html+='<td title="'+esc(p.abbr)+' · '+c+' — '+lvl+' impact"><div class="mx-cell"><span class="mx-chip '+lvl+'">'+label+'</span></div></td>';
+    });
+    html+='</tr>';
+  });
+  document.getElementById('matrixBody').innerHTML=html;
+})();
+
+/* ============================================================
+   RENDER: INTERCONNECT DIAGRAM (SVG)
+   ============================================================ */
+(function(){
+  var svg=document.getElementById('icSvg');
+  var C={};PROCESSES.forEach(function(p){C[p.abbr.replace(' ','')]=p.color;});
+  var nodes={
+    TPRM:{x:290,y:90,c:C.TPRM,label:'TPRM'},
+    ISRisk:{x:720,y:90,c:C.ISRisk,label:'IS Risk'},
+    BCM:{x:120,y:300,c:C.BCM,label:'BCM'},
+    RCSA:{x:360,y:300,c:C.RCSA,label:'RCSA',hub:true},
+    ORM:{x:720,y:300,c:C.ORM,label:'ORM',hub:true},
+    MRM:{x:120,y:500,c:C.MRM,label:'MRM'},
+    Compliance:{x:430,y:500,c:C.Compliance,label:'Compliance'},
+    PKS:{x:820,y:500,c:C.PKS,label:'PKS'}
+  };
+  var edges=[
+    {f:'RCSA',t:'ORM',l:'incident data feeds risk register',curve:0},
+    {f:'TPRM',t:'ORM',l:'vendor incidents feed loss DB',curve:-40},
+    {f:'Compliance',t:'PKS',l:'reg changes trigger policy updates',curve:-40},
+    {f:'MRM',t:'RCSA',l:'model failures are op-risk events',curve:20},
+    {f:'ISRisk',t:'ORM',l:'cyber incidents feed loss DB',curve:0},
+    {f:'BCM',t:'RCSA',l:'continuity risks feed register',curve:0},
+    {f:'BCM',t:'ISRisk',l:'ICT recovery aligns with cyber resilience',curve:-60},
+    {f:'Compliance',t:'TPRM',l:'obligations drive vendor requirements',curve:60}
+  ];
+  var NS='http://www.w3.org/2000/svg';
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+  var R=36;
+
+  // defs: arrow markers per edge color
+  var defs=el('defs',{});
+  edges.forEach(function(e,i){
+    var col=nodes[e.f].c;
+    var m=el('marker',{id:'arr'+i,markerWidth:'9',markerHeight:'9',refX:'7',refY:'3',orient:'auto',markerUnits:'strokeWidth'});
+    m.appendChild(el('path',{d:'M0,0 L7,3 L0,6 Z',fill:col}));
+    defs.appendChild(m);
+  });
+  svg.appendChild(defs);
+
+  // edges (curved) with labels, trimmed to node radius
+  edges.forEach(function(e,i){
+    var a=nodes[e.f],b=nodes[e.t],col=a.c;
+    var dx=b.x-a.x,dy=b.y-a.y,len=Math.sqrt(dx*dx+dy*dy);
+    var ux=dx/len,uy=dy/len;
+    var x1=a.x+ux*R,y1=a.y+uy*R,x2=b.x-ux*(R+9),y2=b.y-uy*(R+9);
+    var mx=(x1+x2)/2,my=(y1+y2)/2;
+    var nx=-uy,ny=ux;var cx=mx+nx*e.curve,cy=my+ny*e.curve;
+    var path='M'+x1+','+y1+' Q'+cx+','+cy+' '+x2+','+y2;
+    svg.appendChild(el('path',{d:path,fill:'none',stroke:col,'stroke-width':'2','stroke-opacity':'.55','marker-end':'url(#arr'+i+')'}));
+    // label at curve midpoint
+    var lx=(x1+2*cx+x2)/4,ly=(y1+2*cy+y2)/4;
+    var t=el('text',{x:lx,y:ly-3,class:'ic-flow-label'});
+    // wrap long labels into two lines
+    var words=e.l.split(' ');var line1=[],line2=[],half=Math.ceil(words.length/2);
+    words.forEach(function(w,wi){(wi<half?line1:line2).push(w);});
+    var bg=el('rect',{x:lx-Math.max(line1.join(' ').length,line2.join(' ').length)*2.6-6,y:ly-16,width:Math.max(line1.join(' ').length,line2.join(' ').length)*5.2+12,height:'26',rx:'5',fill:'#0F0F22','fill-opacity':'.82',stroke:hexRgbaJS(col,.4)});
+    svg.appendChild(bg);
+    var ts1=el('tspan',{x:lx,dy:'0'});ts1.textContent=line1.join(' ');
+    var ts2=el('tspan',{x:lx,dy:'12'});ts2.textContent=line2.join(' ');
+    t.appendChild(ts1);t.appendChild(ts2);
+    svg.appendChild(t);
+  });
+
+  function hexRgbaJS(hex,al){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+al+')';}
+
+  // nodes on top
+  for(var key in nodes){
+    var n=nodes[key];
+    var g=el('g',{});
+    if(n.hub){g.appendChild(el('circle',{cx:n.x,cy:n.y,r:R+7,fill:'none',stroke:n.c,'stroke-opacity':'.3','stroke-width':'1.5'}));}
+    g.appendChild(el('circle',{cx:n.x,cy:n.y,r:R,fill:hexRgbaJS(n.c,.18),stroke:n.c,'stroke-width':'2.2'}));
+    var lbl=el('text',{x:n.x,y:n.y,class:'ic-node-label','font-size':n.label.length>5?'11':'14'});
+    lbl.textContent=n.label;
+    g.appendChild(lbl);
+    if(n.hub){var hb=el('text',{x:n.x,y:n.y+R+15,class:'ic-flow-label','font-weight':'700',fill:n.c});hb.textContent='HUB';g.appendChild(hb);}
+    svg.appendChild(g);
+  }
+
+  // legend
+  var legHtml='';
+  edges.forEach(function(e){
+    var col=nodes[e.f].c;
+    legHtml+='<div class="ic-leg"><span class="fromto" style="color:'+col+'">'+nodes[e.f].label+' → '+nodes[e.t].label+'</span><span>'+esc(e.l)+'</span></div>';
+  });
+  document.getElementById('icLegend').innerHTML=legHtml;
+})();
+
+/* ============================================================
+   INTERSECTION OBSERVER — reveals + matrix animation
+   ============================================================ */
+(function(){
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+    });
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+
+  var mx=document.getElementById('matrix');
+  var mio=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');mio.unobserve(en.target);}});
+  },{threshold:.2});
+  if(mx)mio.observe(mx);
+})();
+
+/* ============================================================
+   NEURAL NETWORK CANVAS ANIMATION
+   ============================================================ */
+var neuralNet = (function(canvasId, density, maxDist, speed) {
+  var canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var ctx = canvas.getContext('2d'), W, H, pts = [], sparks = [];
+  function rnd(a, b) { return a + Math.random() * (b - a); }
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+    var n = Math.min(Math.max(Math.floor(W * H / density), 20), 80);
+    pts = Array.from({length: n}, function() {
+      var hub = Math.random() < 0.08;
+      return { x: rnd(0,W), y: rnd(0,H), vx: rnd(-speed,speed), vy: rnd(-speed*.7,speed*.7),
+               r: hub ? rnd(3,5) : rnd(1,2.5), hub: hub, hue: Math.random()<.6?274:316, ph: rnd(0,6.28) };
+    });
+  }
+  setInterval(function() {
+    if (sparks.length > 10) return;
+    var a = Math.floor(Math.random()*pts.length), b = Math.floor(Math.random()*pts.length);
+    if (a === b) return;
+    var dx = pts[a].x-pts[b].x, dy = pts[a].y-pts[b].y;
+    if (Math.sqrt(dx*dx+dy*dy) < maxDist) sparks.push({a:a,b:b,t:0});
+  }, 400);
+  function draw(ts) {
+    ctx.clearRect(0,0,W,H);
+    pts.forEach(function(p) { p.x+=p.vx; p.y+=p.vy; if(p.x<0||p.x>W)p.vx*=-1; if(p.y<0||p.y>H)p.vy*=-1; });
+    for (var i=0;i<pts.length;i++) for (var j=i+1;j<pts.length;j++) {
+      var dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y, d=Math.sqrt(dx*dx+dy*dy);
+      if (d<maxDist) { ctx.beginPath(); ctx.moveTo(pts[i].x,pts[i].y); ctx.lineTo(pts[j].x,pts[j].y);
+        ctx.strokeStyle='rgba(161,0,255,'+Math.pow(1-d/maxDist,2)*.35+')'; ctx.lineWidth=.6; ctx.stroke(); }
+    }
+    sparks = sparks.filter(function(s) {
+      s.t += 0.008; if (s.t>=1) return false;
+      var a=pts[s.a], b=pts[s.b], sx=a.x+(b.x-a.x)*s.t, sy=a.y+(b.y-a.y)*s.t;
+      var g=ctx.createRadialGradient(sx,sy,0,sx,sy,6);
+      g.addColorStop(0,'rgba(255,80,200,.9)'); g.addColorStop(1,'rgba(255,80,200,0)');
+      ctx.beginPath(); ctx.arc(sx,sy,6,0,6.28); ctx.fillStyle=g; ctx.fill(); return true;
+    });
+    var t = ts * 0.001;
+    pts.forEach(function(p) {
+      var pulse = Math.sin(t+p.ph)*.5+.5;
+      if (p.hub) { var g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*8);
+        g.addColorStop(0,'hsla('+p.hue+',100%,70%,'+(0.25+pulse*.15)+')'); g.addColorStop(1,'rgba(0,0,0,0)');
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r*8,0,6.28); ctx.fillStyle=g; ctx.fill(); }
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.28);
+      ctx.fillStyle=p.hub?'hsla('+p.hue+',100%,78%,'+(0.8+pulse*.2)+')':'rgba(200,160,255,'+(0.15+pulse*.12)+')';
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize', resize);
+  resize(); requestAnimationFrame(draw);
+});
+neuralNet('topbarCanvas', 12000, 110, 0.12);
+neuralNet('heroCanvas', 9000, 130, 0.08);
+</script>
+</body>
+</html>
