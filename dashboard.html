@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NFR Process Intelligence — Accenture NFR Practice</title>
+<title>NFR Process Intelligence — Accenture NFR AI Risk Practice</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -55,7 +55,7 @@ a{color:inherit;text-decoration:none;}
 #topbarCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.55;}
 .topbar-inner{
   position:relative;z-index:2;height:100%;
-  max-width:1320px;margin:0 auto;padding:0 26px;
+  max-width:1400px;margin:0 auto;padding:0 26px;
   display:flex;align-items:center;gap:22px;
 }
 .tb-brand{display:flex;align-items:center;gap:10px;flex-shrink:0;}
@@ -84,15 +84,15 @@ a{color:inherit;text-decoration:none;}
   border-bottom:1px solid var(--border);
 }
 #heroCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.7;}
-.hero-inner{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:86px 26px 74px;}
+.hero-inner{position:relative;z-index:2;max-width:1120px;margin:0 auto;padding:86px 26px 74px;}
 .hero-eyebrow{
   font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;
   letter-spacing:.22em;text-transform:uppercase;color:var(--pink);margin-bottom:22px;
 }
 .hero h1{font-size:clamp(38px,6vw,66px);font-weight:700;color:#fff;margin-bottom:22px;}
 .hero h1 .grad{background:linear-gradient(90deg,#C77BFF,#FF50C8);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-.hero-sub{font-size:clamp(15px,1.7vw,18.5px);color:var(--ts);max-width:760px;line-height:1.65;margin-bottom:46px;}
-.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:840px;}
+.hero-sub{font-size:clamp(15px,1.7vw,18.5px);color:var(--ts);max-width:820px;line-height:1.65;margin-bottom:46px;}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:900px;}
 .stat-card{
   background:rgba(20,10,40,.55);border:1px solid var(--border);border-radius:var(--radiusL);
   padding:22px 20px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
@@ -104,8 +104,8 @@ a{color:inherit;text-decoration:none;}
 .stat-label{font-size:12.5px;color:var(--ts);font-weight:500;}
 
 /* ---------- SECTION SHELL ---------- */
-section{max-width:1320px;margin:0 auto;padding:78px 26px;}
-.sec-head{margin-bottom:44px;max-width:820px;}
+section{max-width:1400px;margin:0 auto;padding:78px 26px;}
+.sec-head{margin-bottom:44px;max-width:860px;}
 .sec-tag{
   display:inline-flex;align-items:center;gap:8px;
   font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;
@@ -148,7 +148,7 @@ section{max-width:1320px;margin:0 auto;padding:78px 26px;}
   padding:3px 9px;border-radius:5px;margin-bottom:10px;
 }
 .uni-card h3{position:relative;z-index:1;font-size:16px;font-weight:600;color:var(--tp);margin-bottom:9px;line-height:1.25;}
-.uni-desc{position:relative;z-index:1;font-size:12.8px;color:var(--ts);line-height:1.55;margin-bottom:16px;min-height:60px;}
+.uni-desc{position:relative;z-index:1;font-size:12.8px;color:var(--ts);line-height:1.55;margin-bottom:16px;min-height:78px;}
 .uni-ai{position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;
   font-size:11.5px;font-weight:600;color:var(--brand);
   padding-top:12px;border-top:1px solid var(--border);width:100%;}
@@ -181,86 +181,151 @@ section{max-width:1320px;margin:0 auto;padding:78px 26px;}
   color:var(--pc);background:var(--pcGlow,rgba(161,0,255,.14));border:1px solid var(--pcBorder,rgba(161,0,255,.3));
   padding:3px 10px;border-radius:6px;
 }
-.proc-desc{font-size:14px;color:var(--ts);line-height:1.6;margin-bottom:14px;max-width:900px;}
+.proc-desc{font-size:13.6px;color:var(--ts);line-height:1.65;margin-bottom:14px;max-width:1000px;}
 .reg-tags{display:flex;flex-wrap:wrap;gap:7px;}
 .reg-pill{
   font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:500;
   color:var(--ts);background:var(--s2);border:1px solid var(--border);
   padding:4px 10px;border-radius:20px;
 }
-.proc-body{padding:30px 32px 34px;}
+.proc-body{padding:26px 32px 34px;}
 .block-label{
   display:flex;align-items:center;gap:9px;
   font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;letter-spacing:.02em;
-  color:var(--tp);text-transform:uppercase;margin-bottom:20px;
+  color:var(--tp);text-transform:uppercase;margin-bottom:18px;
 }
 .block-label i{color:var(--pc);font-size:16px;}
 .block-label .ln{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent);}
 
-/* ---------- FLOW ---------- */
-.flow{display:flex;flex-wrap:wrap;gap:0;margin-bottom:40px;}
-.flow-step{
-  position:relative;flex:1 1 150px;min-width:150px;padding:0 16px 0 0;
-  display:flex;gap:13px;align-items:flex-start;
+/* ---------- TOGGLE BAR ---------- */
+.toggle-bar{
+  display:flex;flex-wrap:wrap;gap:9px;margin-bottom:14px;padding:14px 16px;
+  background:var(--s1);border:1px solid var(--border);border-radius:var(--radiusL);align-items:center;
 }
-.flow-num{
-  flex-shrink:0;width:34px;height:34px;border-radius:50%;
+.toggle-bar .tgl-lead{
+  font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--tm);margin-right:4px;
+}
+.tgl{
+  display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--ts);
+  background:var(--s2);border:1px solid var(--border);border-radius:20px;padding:7px 14px;
+  cursor:pointer;transition:background .18s,border-color .18s,color .18s,box-shadow .18s;
+  user-select:none;font-family:'Inter',sans-serif;
+}
+.tgl i{font-size:14px;}
+.tgl .dot{width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.4;flex-shrink:0;}
+.tgl:hover{border-color:rgba(199,123,255,.5);color:var(--tp);}
+.tgl.active{
+  background:linear-gradient(90deg,rgba(161,0,255,.4),rgba(199,123,255,.28));
+  border-color:var(--brand);color:#fff;box-shadow:0 0 14px rgba(161,0,255,.3);
+}
+.tgl.active .dot,.tgl.locked .dot{opacity:1;box-shadow:0 0 8px currentColor;}
+.tgl.locked{
+  cursor:default;color:#fff;border-color:var(--brand);
+  background:linear-gradient(90deg,rgba(161,0,255,.4),rgba(199,123,255,.28));
+}
+.swim-hint{
+  font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--tm);
+  margin:0 0 12px 2px;display:flex;align-items:center;gap:6px;
+}
+.swim-hint i{font-size:13px;color:var(--brand);}
+
+/* ---------- SWIMLANE ---------- */
+.swim-wrap{
+  overflow-x:auto;overflow-y:hidden;border:1px solid var(--border);
+  border-radius:var(--radiusL);background:var(--surface);
+}
+.swim{
+  display:grid;position:relative;
+  grid-template-columns:172px repeat(var(--cols),minmax(224px,1fr));
+  grid-auto-rows:minmax(150px,auto);
+  min-width:max-content;
+}
+.conn-layer{position:absolute;left:0;top:0;pointer-events:none;z-index:1;overflow:visible;}
+.lane-band{
+  background:linear-gradient(var(--laneBg),var(--laneBg));
+  border-bottom:1px solid var(--border);z-index:0;
+}
+.lane-label{
+  position:sticky;left:0;z-index:6;display:flex;flex-direction:column;justify-content:center;gap:5px;
+  padding:12px 14px;border-right:2px solid var(--laneBd);border-bottom:1px solid var(--border);
+  background:linear-gradient(var(--laneBg),var(--laneBg)),#0b0b1a;
+}
+.lane-label .ll-name{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:var(--tp);line-height:1.25;}
+.lane-label .ll-role{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--tm);letter-spacing:.02em;line-height:1.3;}
+.lane-label .ll-chip{width:22px;height:5px;border-radius:3px;background:var(--laneBd);margin-bottom:3px;}
+.lane-note{
+  display:flex;align-items:center;z-index:1;padding:14px 22px;
+  font-size:11.5px;font-style:italic;color:var(--tm);line-height:1.5;
+  border-bottom:1px solid var(--border);
+}
+.lane-note i{color:var(--laneBd);font-size:15px;margin-right:9px;flex-shrink:0;font-style:normal;}
+
+/* STEP CARD */
+.step-card{
+  position:relative;z-index:2;display:flex;flex-direction:column;gap:8px;
+  margin:13px 15px;padding:13px 14px 12px;
+  background:var(--s1);border:1px solid var(--border);border-left:3px solid var(--laneBd);
+  border-radius:10px;transition:border-color .25s,box-shadow .25s,transform .2s;
+}
+.step-card:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.45);}
+.step-header{display:flex;align-items:center;gap:9px;}
+.step-num{
+  flex-shrink:0;width:26px;height:26px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
-  font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:#fff;
-  background:var(--pc,var(--brand));box-shadow:0 0 0 4px var(--pcGlow,rgba(161,0,255,.14));
+  font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;color:#fff;
+  background:var(--laneBd);box-shadow:0 0 0 3px var(--laneBg);
 }
-.flow-step:not(:last-child)::after{
-  content:"";position:absolute;top:16px;left:44px;right:14px;height:2px;
-  background:linear-gradient(90deg,var(--pcBorder,rgba(161,0,255,.4)),rgba(161,0,255,.08));
-}
-.flow-txt{padding-top:1px;}
-.flow-txt h5{font-size:13px;font-weight:600;color:var(--tp);margin-bottom:4px;line-height:1.3;font-family:'Space Grotesk',sans-serif;}
-.flow-txt p{font-size:11.6px;color:var(--tm);line-height:1.5;}
+.step-title{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--tp);line-height:1.25;}
+.step-desc{font-size:11.4px;color:var(--ts);line-height:1.5;}
 
-/* ---------- AI OPPS ---------- */
-.ai-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:38px;}
-.ai-op{
-  position:relative;background:linear-gradient(150deg,rgba(161,0,255,.09),rgba(161,0,255,.02));
-  border:1px solid var(--border);border-radius:var(--radiusL);padding:20px 20px 18px;
-  transition:border-color .2s,transform .2s;
-}
-.ai-op:hover{border-color:rgba(199,123,255,.5);transform:translateY(-2px);}
-.ai-op-top{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
-.ai-type{
-  font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.06em;
-  padding:3px 9px;border-radius:5px;text-transform:uppercase;
-}
-.ai-type.GenAI{color:#FF8AD8;background:rgba(255,80,200,.13);border:1px solid rgba(255,80,200,.32);}
-.ai-type.ML{color:#8FB4FF;background:rgba(60,120,255,.13);border:1px solid rgba(60,120,255,.32);}
-.ai-type.NLP{color:#6EE7C7;background:rgba(20,200,150,.13);border:1px solid rgba(20,200,150,.32);}
-.ai-type.Automation{color:#FFC46B;background:rgba(255,170,50,.13);border:1px solid rgba(255,170,50,.32);}
-.ai-type.Analytics{color:#C99BFF;background:rgba(161,0,255,.15);border:1px solid rgba(161,0,255,.35);}
-.effort{
-  margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;
-  letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:20px;
-}
-.effort.Low{color:#7CE7A8;background:rgba(30,180,90,.14);border:1px solid rgba(30,180,90,.3);}
-.effort.Medium{color:#FFCF7A;background:rgba(230,150,30,.14);border:1px solid rgba(230,150,30,.32);}
-.effort.High{color:#FF9090;background:rgba(220,50,50,.14);border:1px solid rgba(220,50,50,.32);}
-.ai-op h5{font-size:14.5px;font-weight:600;color:var(--tp);margin-bottom:8px;font-family:'Space Grotesk',sans-serif;line-height:1.3;}
-.ai-op p{font-size:12.6px;color:var(--ts);line-height:1.6;}
+/* OVERLAY LAYERS — hidden by default */
+.step-roles,.step-data,.step-ai-overlay,.step-regs,.step-handoff{display:none;}
+.show-roles .step-roles{display:flex;}
+.show-roles .step-handoff{display:inline-flex;}
+.show-data .step-data{display:flex;}
+.show-ai .step-ai-overlay{display:flex;}
+.show-regs .step-regs{display:flex;}
 
-/* ---------- OUTPUTS + REG ---------- */
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
-.col-box{background:var(--s1);border:1px solid var(--border);border-radius:var(--radiusL);padding:22px 22px 20px;}
-.col-box h6{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--brand);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
-.out-list{list-style:none;}
-.out-list li{position:relative;padding:7px 0 7px 22px;font-size:13px;color:var(--ts);line-height:1.5;border-bottom:1px solid rgba(161,0,255,.07);}
-.out-list li:last-child{border-bottom:none;}
-.out-list li::before{content:"";position:absolute;left:2px;top:14px;width:6px;height:6px;border-radius:50%;background:var(--pc,var(--brand));}
-.reg-list{display:flex;flex-direction:column;gap:12px;}
-.reg-item{display:flex;flex-direction:column;gap:3px;}
-.reg-item .rt{font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;color:var(--tp);}
-.reg-item .rd{font-size:11.8px;color:var(--tm);line-height:1.45;}
+.step-roles{
+  align-items:center;gap:7px;font-size:10.5px;color:var(--ts);
+  background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:6px;padding:6px 9px;line-height:1.35;
+}
+.step-roles i{color:var(--laneBd);font-size:13px;flex-shrink:0;}
+.step-data{flex-direction:column;gap:5px;font-family:'JetBrains Mono',monospace;font-size:9.5px;line-height:1.45;}
+.step-data .data-in{color:#8FB4FF;}
+.step-data .data-out{color:#6EE7C7;}
+.step-data b{font-weight:700;letter-spacing:.04em;}
+.step-ai-overlay{
+  align-items:flex-start;gap:8px;font-size:10.8px;color:#F3DBFF;line-height:1.45;
+  background:linear-gradient(135deg,rgba(161,0,255,.2),rgba(255,80,200,.08));
+  border:1px solid rgba(199,123,255,.4);border-radius:8px;padding:9px 10px;
+}
+.step-ai-overlay i{color:var(--brand);font-size:14px;flex-shrink:0;margin-top:1px;}
+.step-regs{flex-wrap:wrap;gap:5px;}
+.reg-tag{
+  font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--ts);
+  background:var(--s2);border:1px solid var(--border);padding:2px 7px;border-radius:5px;
+}
+.step-handoff{
+  align-items:center;gap:5px;margin-top:1px;
+  font-size:9.5px;font-weight:700;letter-spacing:.02em;color:var(--pink);
+}
+.step-handoff i{font-size:13px;}
+
+/* AI GLOW when show-ai active */
+.show-ai .step-card.has-ai{
+  border-color:var(--brand);
+  animation:aiPulse 2.4s ease-in-out infinite;
+}
+@keyframes aiPulse{
+  0%,100%{box-shadow:0 0 0 1px rgba(161,0,255,.5),0 0 12px rgba(161,0,255,.22);}
+  50%{box-shadow:0 0 0 1px var(--brand),0 0 24px rgba(161,0,255,.55);}
+}
 
 /* ---------- AI MATRIX ---------- */
 .matrix-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:16px;background:var(--surface);}
-.matrix{border-collapse:collapse;width:100%;min-width:720px;}
+.matrix{border-collapse:collapse;width:100%;min-width:760px;}
 .matrix th,.matrix td{padding:0;text-align:center;}
 .matrix thead th{
   padding:20px 12px 18px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;
@@ -302,11 +367,10 @@ section{max-width:1320px;margin:0 auto;padding:78px 26px;}
 .ic-legend{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 30px;margin-top:26px;}
 .ic-leg{display:flex;align-items:flex-start;gap:12px;font-size:12.6px;color:var(--ts);line-height:1.45;padding:10px 14px;background:var(--s1);border:1px solid var(--border);border-radius:var(--radius);}
 .ic-leg .fromto{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;white-space:nowrap;flex-shrink:0;}
-.ic-leg .fl{display:block;color:var(--tm);font-size:11.5px;margin-top:2px;}
 
 /* ---------- FOOTER ---------- */
 footer{border-top:1px solid var(--border);background:#06001A;margin-top:20px;}
-.foot-inner{max-width:1320px;margin:0 auto;padding:34px 26px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.foot-inner{max-width:1400px;margin:0 auto;padding:34px 26px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
 .foot-txt{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--tm);letter-spacing:.03em;}
 .foot-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--brand);padding:9px 18px;border:1px solid var(--border);border-radius:22px;background:var(--brandLight);transition:background .2s,border-color .2s,transform .2s;}
 .foot-link:hover{background:rgba(161,0,255,.18);border-color:var(--brand);transform:translateX(2px);}
@@ -318,8 +382,6 @@ footer{border-top:1px solid var(--border);background:#06001A;margin-top:20px;}
 }
 @media (max-width:820px){
   .tb-nav{display:none;}
-  .ai-grid{grid-template-columns:1fr;}
-  .two-col{grid-template-columns:1fr;}
   .ic-legend{grid-template-columns:1fr;}
 }
 @media (max-width:560px){
@@ -328,10 +390,12 @@ footer{border-top:1px solid var(--border);background:#06001A;margin-top:20px;}
   .proc-head{flex-direction:column;gap:14px;}
   section{padding:56px 18px;}
   .hero-inner{padding:64px 18px 54px;}
+  .proc-body{padding:22px 16px 26px;}
 }
 @media (prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none;}
   .mx-chip{transform:scale(1);opacity:1;transition:none;}
+  .show-ai .step-card.has-ai{animation:none;box-shadow:0 0 0 1px var(--brand),0 0 16px rgba(161,0,255,.4);}
 }
 </style>
 <script>
@@ -349,7 +413,7 @@ if (sessionStorage.getItem('nfr_auth') !== '1') { location.replace('index.html')
       <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
         <path d="M18 10 L58 50 L18 90 L32 90 L72 50 L32 10 Z" fill="#fff"/>
       </svg>
-      <span>Accenture NFR Practice</span>
+      <span>Accenture NFR AI Risk Practice</span>
     </a>
     <nav class="tb-nav">
       <a href="#universe">Process Universe</a>
@@ -365,14 +429,14 @@ if (sessionStorage.getItem('nfr_auth') !== '1') { location.replace('index.html')
 <div class="hero" id="top">
   <canvas id="heroCanvas" aria-hidden="true"></canvas>
   <div class="hero-inner">
-    <div class="hero-eyebrow">Accenture NFR Practice · Non-Financial Risk Intelligence</div>
+    <div class="hero-eyebrow">Accenture NFR Practice · DACH Bank · Non-Financial Risk</div>
     <h1>NFR Process <span class="grad">Intelligence</span></h1>
-    <p class="hero-sub">A comprehensive visual map of Non-Financial Risk processes — from TPRM and RCSA to BCM and Compliance — with AI opportunity overlays across the full process chain.</p>
+    <p class="hero-sub">A detailed, interactive process map of the eight Non-Financial Risk disciplines at a mid-to-large bank in Germany, Austria and Switzerland. Swimlane diagrams with five toggleable data layers — roles, data &amp; systems, AI opportunities and regulatory touch points (BaFin MaRisk, BAIT, DORA, FINMA, KWG/BWG).</p>
     <div class="hero-stats">
       <div class="stat-card"><div class="stat-num">8</div><div class="stat-label">NFR Processes</div></div>
-      <div class="stat-card"><div class="stat-num">32+</div><div class="stat-label">AI Opportunities</div></div>
-      <div class="stat-card"><div class="stat-num">12</div><div class="stat-label">Regulatory Frameworks</div></div>
-      <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">NFR Coverage</div></div>
+      <div class="stat-card"><div class="stat-num">63</div><div class="stat-label">Process Steps</div></div>
+      <div class="stat-card"><div class="stat-num">5</div><div class="stat-label">Data Layers per Process</div></div>
+      <div class="stat-card"><div class="stat-num">25+</div><div class="stat-label">Regulatory Anchors</div></div>
     </div>
   </div>
 </div>
@@ -382,7 +446,7 @@ if (sessionStorage.getItem('nfr_auth') !== '1') { location.replace('index.html')
   <div class="sec-head reveal">
     <div class="sec-tag"><i class="ti ti-atom-2"></i> Process Universe</div>
     <h2>The Eight Pillars of Non-Financial Risk</h2>
-    <p>Every discipline the NFR Practice covers, at a glance. Each pillar is a self-contained process chain with dedicated regulatory drivers and its own set of AI opportunities. Select any card to jump to its detailed breakdown.</p>
+    <p>Every discipline the NFR Practice covers, at a glance. Each pillar is a self-contained process chain with dedicated regulatory drivers and its own AI opportunities. Select any card to jump to its detailed swimlane diagram.</p>
   </div>
   <div class="universe-grid" id="universeGrid"></div>
 </section>
@@ -391,8 +455,8 @@ if (sessionStorage.getItem('nfr_auth') !== '1') { location.replace('index.html')
 <section id="processes">
   <div class="sec-head reveal">
     <div class="sec-tag"><i class="ti ti-route-2"></i> Process Detail</div>
-    <h2>Process Chains & AI Opportunity Overlays</h2>
-    <p>For each NFR process: the end-to-end lifecycle, the specific AI applications that accelerate it, and the deliverables and regulatory frameworks that anchor it. All AI opportunities reflect proven, real-world use cases.</p>
+    <h2>Swimlane Process Diagrams &amp; Data Layers</h2>
+    <p>For each NFR process: a compact framing, the end-to-end swimlane diagram with the actors involved (lines of defence), and five additive, toggleable data layers. Enable "AI Opportunities" to highlight the steps with AI use cases, or "Regulatory Touch Points" to reveal the supervisory anchors on each step.</p>
   </div>
   <div id="processDetail"></div>
 </section>
@@ -402,7 +466,7 @@ if (sessionStorage.getItem('nfr_auth') !== '1') { location.replace('index.html')
   <div class="sec-head reveal">
     <div class="sec-tag"><i class="ti ti-grid-dots"></i> AI Opportunity Matrix</div>
     <h2>Where AI Delivers Across the NFR Landscape</h2>
-    <p>A heatmap of AI applicability and expected impact across all eight processes and five technology categories. Larger, brighter chips indicate higher-impact opportunities.</p>
+    <p>A heatmap of AI applicability and expected impact across all eight processes and five technology categories. Larger, brighter chips mark higher-impact use cases.</p>
   </div>
   <div class="matrix-wrap reveal">
     <table class="matrix" id="matrix">
@@ -423,7 +487,7 @@ if (sessionStorage.getItem('nfr_auth') !== '1') { location.replace('index.html')
     <div class="mx-leg-item"><span class="lchip" style="width:40px;height:40px;background:radial-gradient(circle at 35% 30%,#FF6ECF,#A100FF);box-shadow:0 0 14px rgba(255,80,200,.5)"></span> High impact</div>
     <div class="mx-leg-item"><span class="lchip" style="width:31px;height:31px;background:radial-gradient(circle at 35% 30%,#C77BFF,#7A15C9)"></span> Medium impact</div>
     <div class="mx-leg-item"><span class="lchip" style="width:22px;height:22px;background:rgba(161,0,255,.28);border:1px solid rgba(161,0,255,.5)"></span> Low / emerging</div>
-    <div class="mx-leg-note">Impact reflects the relative maturity and value of the AI application for that process, based on proven industry use cases — not a forecast of savings.</div>
+    <div class="mx-leg-note">Impact reflects the relative maturity and value of the AI application for that process — based on proven industry use cases, not a forecast of savings.</div>
   </div>
 </section>
 
@@ -432,10 +496,10 @@ if (sessionStorage.getItem('nfr_auth') !== '1') { location.replace('index.html')
   <div class="sec-head reveal">
     <div class="sec-tag"><i class="ti ti-affiliate"></i> Process Interconnections</div>
     <h2>How the Processes Feed One Another</h2>
-    <p>Non-Financial Risk is a connected system. Incidents, model failures, vendor events and regulatory changes flow between processes — the operational risk loss database and the RCSA risk register act as the two central hubs.</p>
+    <p>Non-Financial Risk is a connected system. Incidents, model failures, third-party events and regulatory changes flow between the processes — the operational loss database (ORM) and the RCSA risk register form the two central hubs.</p>
   </div>
   <div class="ic-wrap reveal">
-    <svg id="icSvg" viewBox="0 0 1000 580" role="img" aria-label="Process interconnection diagram"></svg>
+    <svg id="icSvg" viewBox="0 0 1000 600" role="img" aria-label="Process interconnection diagram"></svg>
   </div>
   <div class="ic-legend" id="icLegend"></div>
 </section>
@@ -443,246 +507,238 @@ if (sessionStorage.getItem('nfr_auth') !== '1') { location.replace('index.html')
 <!-- ===================== FOOTER ===================== -->
 <footer>
   <div class="foot-inner">
-    <div class="foot-txt">Accenture NFR Practice&nbsp;&nbsp;·&nbsp;&nbsp;Financial Risk &amp; AI Governance&nbsp;&nbsp;·&nbsp;&nbsp;NFR Process Intelligence</div>
-    <a class="foot-link" href="https://tzijlstra-acn.github.io/NFRAIAssets/">All NFR Assets <i class="ti ti-arrow-right"></i></a>
+    <div class="foot-txt">Accenture NFR AI Risk Practice&nbsp;&nbsp;·&nbsp;&nbsp;DACH Banking&nbsp;&nbsp;·&nbsp;&nbsp;NFR Process Intelligence</div>
+    <a class="foot-link" href="https://tzijlstra-acn.github.io/NFRAIAssets/">Alle NFR-Assets <i class="ti ti-arrow-right"></i></a>
   </div>
 </footer>
 
 <script>
 /* ============================================================
-   DATA MODEL — 8 NFR PROCESSES
+   LANE STYLE PALETTE (by actor / line-of-defence type)
+   ============================================================ */
+var LANE_STYLE = {
+  business:  {bg:'rgba(37,99,235,.15)',  bd:'#2563EB'},
+  risk:      {bg:'rgba(220,38,38,.12)',  bd:'#DC2626'},
+  compliance:{bg:'rgba(124,58,237,.15)', bd:'#7C3AED'},
+  it:        {bg:'rgba(8,145,178,.12)',  bd:'#0891B2'},
+  sourcing:  {bg:'rgba(245,158,11,.10)', bd:'#F59E0B'},
+  audit:     {bg:'rgba(15,118,110,.12)', bd:'#0F766E'},
+  board:     {bg:'rgba(236,72,153,.10)', bd:'#EC4899'},
+  extern:    {bg:'rgba(107,114,128,.10)',bd:'#6B7280'}
+};
+
+/* ============================================================
+   DATA MODEL — 8 NFR PROCESSES (DACH bank base case)
    ============================================================ */
 var PROCESSES = [
   {
-    id:'tprm', abbr:'TPRM', name:'Third Party Risk Management',
-    icon:'ti-building-community', color:'#2563EB',
-    desc:'End-to-end management of risks arising from third-party relationships — vendors, suppliers, outsourcing arrangements, and ICT service providers.',
-    regShort:['DORA Art.28–30','EBA Outsourcing Guidelines (2019)','Basel Op Risk Framework'],
-    flow:[
-      {t:'Vendor Identification', d:'Catalogue all third-party relationships; classify by criticality and service type'},
-      {t:'Due Diligence', d:'Financial health check; security posture; concentration risk; sub-outsourcing review'},
-      {t:'Risk Assessment', d:'Inherent risk scoring; residual risk after controls; materiality determination'},
-      {t:'Contractual Review', d:'SLA negotiation; data protection clauses; exit provisions; audit rights (DORA Art.30)'},
-      {t:'Onboarding & Monitoring', d:'Register entry; ongoing KPI tracking; periodic re-assessment; event monitoring'},
-      {t:'Offboarding', d:'Data deletion; access revocation; knowledge transfer; lessons learned'}
+    id:'tprm', abbr:'TPRM', name:'Third-Party Risk Management', icon:'ti-building-community', color:'#2563EB',
+    sdesc:'Management of all risks from outsourcing and ICT third parties — from pre-screening and approval through to controlled offboarding.',
+    intro:'Third-Party Risk Management (TPRM) governs all risks arising from the bank\'s relationships with external vendors, outsourcing providers and ICT service providers. For a DACH bank, the process is anchored in §25b KWG (DE), §25 BWG (AT) or FINMA Circular 2018/3 (CH) — and, for EU institutions, in DORA Art.28–30 for ICT third parties. Material outsourcing requires prior notification to BaFin/FMA and explicit contractual audit rights. The DORA ICT third-party register must be maintained and submitted to BaFin annually from 2025.',
+    regShort:['§25b KWG','§25 BWG','FINMA Circ. 2018/3','DORA Art.28–30','GwG','GDPR'],
+    lanes:[
+      {key:'fb',label:'Business Unit (1LoD)',type:'business',role:'Head of Business Unit · Product Mgmt'},
+      {key:'er',label:'Procurement & Legal',type:'sourcing',role:'Procurement Manager · Legal Counsel'},
+      {key:'rm',label:'Risk Management (2LoD)',type:'risk',role:'Senior Risk Manager · 2LoD'},
+      {key:'it',label:'IT Security',type:'it',role:'Information Security Officer (ISO)'},
+      {key:'vs',label:'Management Board',type:'board',role:'Board Member (CRO/COO) · Risk Committee'},
+      {key:'ir',label:'Internal Audit (3LoD)',type:'audit',role:'Auditor · Internal Audit',note:'Independent review of outsourcing governance (§25b KWG, MaRisk AT 9) as part of the risk-based audit plan.'}
     ],
-    ai:[
-      {type:'ML', effort:'Medium', title:'Automated Vendor Risk Scoring', d:'Machine learning models trained on vendor financial statements, cybersecurity ratings, and operational data to generate dynamic risk scores, reducing manual assessment time for routine reviews.'},
-      {type:'NLP', effort:'Medium', title:'Contract Clause Analysis', d:'NLP extraction of key contractual obligations, missing clauses, and non-compliant terms from vendor contracts, flagging gaps against DORA Art.30 requirements and internal standards.'},
-      {type:'Automation', effort:'Low', title:'Continuous Vendor Event Monitoring', d:'Real-time aggregation and classification of vendor news, regulatory sanctions, credit rating changes, and cyber breach disclosures to trigger proactive re-assessment.'},
-      {type:'Analytics', effort:'Medium', title:'Concentration Risk Analytics', d:'Automated mapping of fourth-party dependencies and geographic/sector concentration to quantify systemic exposure and support ICT concentration risk reporting under DORA.'}
-    ],
-    outputs:['Third-party register','Vendor risk assessments','DORA ICT register','Concentration risk reports','Exit plans'],
-    reg:[
-      {t:'DORA Art.28–30', d:'ICT third-party risk management and contractual requirements'},
-      {t:'EBA/GL/2019/02', d:'Guidelines on outsourcing arrangements'},
-      {t:'Basel Op Risk Framework', d:'Operational risk treatment of outsourcing exposures'}
+    steps:[
+      {n:1,lane:'fb',t:'Identify Business Need',d:'The business line identifies the need for a third-party service and builds a business case with scope, cost estimate and criticality classification (critical / non-critical).',r:'Head of Business Unit, Product Manager',din:'Business requirements, cost estimates, vendor shortlist',dout:'Business case, service specification',ai:'NLP-based vendor market scan to enrich the shortlist from public sources.',rg:['§25b KWG Abs.1']},
+      {n:2,lane:'er',t:'Vendor Pre-Screening',d:'Procurement screens the vendor: sanctions check (EU, UN, OFAC lists), adverse media, AML screening and a check against the existing register.',r:'Procurement Manager, Compliance Analyst',din:'Vendor details, EU sanctions list, BaFin enforcement database',dout:'Sanctions clearance note, AML screening result',ai:'ML-based name matching to cut sanctions false-positives; automated adverse-media NLP scan.',rg:['EU Reg. 269/2014','GwG §§15–17','DORA Art.28(1)(a)']},
+      {n:3,lane:'rm',t:'Due Diligence Assessment',d:'Deep assessment: financial health (annual report, Creditreform), certifications (ISO 27001, ISAE 3402/SOC 2 Type II), sub-outsourcing chains and data residency (GDPR Art.44–49).',r:'Risk Manager, Information Security Officer, Data Protection Officer',din:'Financial statements, ISO 27001 certificate, ISAE 3402 report, sub-contractor list',dout:'Due-diligence report, vendor risk profile',ai:'ML financial-health scoring from structured data; NLP extraction of key findings from ISAE 3402 reports.',rg:['MaRisk AT 9 Tz.7','GDPR Art.28','GDPR Art.44','DORA Art.28(4)(a)']},
+      {n:4,lane:'rm',t:'Risk Assessment & Classification',d:'Risk rating via internal matrix: data sensitivity, systemic importance, substitutability, concentration and geographic risk (Russia, China, high-risk jurisdictions).',r:'Senior Risk Manager, Risk Committee Secretariat',din:'Due-diligence report, risk appetite, third-party inventory',dout:'Risk score, materiality assessment (material / non-material)',ai:'ML-based composite risk scoring; concentration-risk analytics across the vendor graph.',rg:['§25b KWG Abs.2','EBA/GL/2019/02 Tz.49–60']},
+      {n:5,lane:'vs',t:'Approval',d:'For material outsourcing: board-level approval required; BaFin pre-notification for outsourcing of critical functions; for non-material, risk-management approval is sufficient.',r:'Board Member (CRO/COO), Risk Committee',din:'Risk assessment, business case, cost-benefit analysis',dout:'Approval memorandum, BaFin notification letter (if applicable)',ai:'GenAI-assisted board memorandum drafting from structured input data.',rg:['§25b KWG Abs.4','MaRisk AT 9 Tz.9','DORA Art.28(2)']},
+      {n:6,lane:'er',t:'Contract Design',d:'Contract negotiation: SLAs, DORA Art.30 mandatory clauses (audit rights, data portability, incident notification ≤24h), exit provisions, data processing agreement (GDPR Art.28), BaFin audit right (§44 KWG).',r:'Lawyer, Procurement Manager, Data Protection Officer',din:'Approved risk assessment, vendor proposal, DORA Art.30 clause library',dout:'Signed contract, DPA, SLA schedule, exit plan',ai:'NLP contract analysis to check completeness of DORA Art.30 mandatory clauses.',rg:['DORA Art.30','GDPR Art.28','§44 KWG','MaRisk AT 9 Tz.12']},
+      {n:7,lane:'it',t:'Onboarding & Registration',d:'IT access provisioning (least privilege), VPN/API setup, entry in the §25b outsourcing register, update of the DORA ICT third-party register and an IT security baseline check.',r:'IT Administrator, Information Security Officer, Risk Manager',din:'Signed contract, approved access requirements, IT security policy',dout:'§25b register entry, DORA ICT register entry, access rights documentation',ai:'Automated register population from NLP contract extraction.',rg:['§25b KWG Abs.3','DORA Art.28(3)','GDPR Art.30']},
+      {n:8,lane:'rm',t:'Ongoing Monitoring',d:'Quarterly KPI reviews (SLA compliance, incident rates, financial health), an annual full re-assessment, event-triggered reviews (cyber breaches, rating downgrades, M&A) and concentration monitoring.',r:'Risk Manager, Vendor Manager (1LoD), ISO (for ICT providers)',din:'SLA reports, vendor incident notifications, rating updates, news feeds',dout:'Monitoring dashboards, escalation reports, re-assessment triggers',ai:'AI news monitoring + NLP event classification; ML anomaly detection on SLA KPIs; automated concentration alerts.',rg:['MaRisk AT 9 Tz.13–14','DORA Art.28(6)','EBA/GL/2019/02 Tz.85–98']},
+      {n:9,lane:'er',t:'Offboarding',d:'Controlled exit: access revocation, contractual data deletion/return, knowledge transfer, execution of the DPA termination clause, de-registration and lessons learned.',r:'Procurement Manager, IT Administrator, Data Protection Officer',din:'Exit plan, contractual deletion obligation, access inventory',dout:'Data deletion certificate, de-registration from §25b register, exit report',ai:'Automated checklist generation and tracking of offboarding obligations.',rg:['DORA Art.28(7)','GDPR Art.17','MaRisk AT 9 Tz.16']}
     ],
     matrix:{GenAI:'Medium', ML:'High', NLP:'High', Automation:'High', Analytics:'Medium'}
   },
   {
-    id:'bcm', abbr:'BCM', name:'Business Continuity Management',
-    icon:'ti-refresh-alert', color:'#16A34A',
-    desc:'Framework ensuring the organisation can sustain critical operations and recover effectively following disruptive events, meeting recovery time and recovery point objectives.',
-    regShort:['ISO 22301:2019','EBA/GL/2019/02','DORA resilience testing'],
-    flow:[
-      {t:'Governance & Scope', d:'BCM policy; programme scope; BIA criteria; ownership assignment'},
-      {t:'Business Impact Analysis', d:'Critical process identification; RTO/RPO definition; dependency mapping; maximum tolerable downtime'},
-      {t:'Continuity Strategy', d:'Recovery options; resource requirements; workaround procedures; alternate site arrangements'},
-      {t:'Plan Development', d:'BCP/DRP documentation; communication trees; escalation procedures; role assignments'},
-      {t:'Testing & Exercising', d:'Tabletop exercises; simulation drills; failover tests; TLPT under DORA'},
-      {t:'Maintenance & Review', d:'Post-incident review; plan updates; annual review; regulatory reporting'}
+    id:'bcm', abbr:'BCM', name:'Business Continuity Management', icon:'ti-refresh-alert', color:'#16A34A',
+    sdesc:'Sustaining and recovering critical business processes after disruptive events — anchored in MaRisk AT 7.3, BAIT and DORA Art.11.',
+    intro:'Business Continuity Management (BCM) ensures the bank can sustain and recover its critical business processes following disruptive events — from IT outages and cyber attacks to floods and key-person loss. In Germany, requirements stem from MaRisk AT 7.3 and the BaFin BAIT (IT contingency management). DORA Art.11 mandates ICT business continuity plans for EU credit institutions from January 2025; the Swiss counterpart is FINMA Circular 2023/1. BCM is closely linked to DORA resilience testing (TLPT) under Art.26.',
+    regShort:['MaRisk AT 7.3','BAIT','DORA Art.11','DORA Art.26 (TLPT)','FINMA Circ. 2023/1'],
+    lanes:[
+      {key:'bcm',label:'BCM Function (2LoD)',type:'risk',role:'BCM Manager · 2LoD'},
+      {key:'fb',label:'Business Unit (1LoD)',type:'business',role:'Process Owner · 1LoD'},
+      {key:'it',label:'IT Department',type:'it',role:'IT Operations Lead · IT'},
+      {key:'kt',label:'Crisis Team / Board',type:'board',role:'Crisis Team · Management Board'},
+      {key:'ir',label:'Internal Audit (3LoD)',type:'audit',role:'Auditor · Internal Audit',note:'Attends and independently reviews continuity exercises and assesses the BCM framework (MaRisk AT 7.3, BAIT).'},
+      {key:'ex',label:'External / Regulator',type:'extern',role:'BaFin · Bundesbank',note:'Regulatory touch point: DORA incident notification (Art.19) and annual BCM reporting to the supervisor.'}
     ],
-    ai:[
-      {type:'ML', effort:'Medium', title:'AI-Augmented Business Impact Analysis', d:'ML models analyse process interdependencies, transaction volumes, and system logs to objectively quantify business impact and suggest RTO/RPO thresholds, reducing subjectivity in BIA workshops.'},
-      {type:'GenAI', effort:'Low', title:'Crisis Scenario Generation', d:'Large language models generate realistic crisis scenarios tailored to the organisation’s risk profile — cyber attacks, extreme weather, key personnel unavailability — to enrich tabletop exercises and stress tests.'},
-      {type:'Analytics', effort:'High', title:'Predictive Disruption Early Warning', d:'Predictive models combining operational telemetry, weather data, and geopolitical signals to identify elevated disruption probability and trigger pre-emptive response activities.'},
-      {type:'GenAI', effort:'Low', title:'Automated Plan Maintenance', d:'GenAI-assisted identification of outdated BCP content following organisational changes, system upgrades, or regulatory updates, generating draft amendments for human review.'}
-    ],
-    outputs:['BIA reports','BCP/DRP documents','Exercise reports','DORA resilience reports','Recovery playbooks'],
-    reg:[
-      {t:'ISO 22301:2019', d:'Business continuity management systems standard'},
-      {t:'EBA/GL/2019/02', d:'Business continuity within outsourcing arrangements'},
-      {t:'DORA Art.11', d:'ICT business continuity policy and response plans'},
-      {t:'DORA Art.26', d:'Threat-led penetration testing (TLPT)'}
+    steps:[
+      {n:1,lane:'bcm',t:'Governance & Scope',d:'Establish the BCM policy, assign process owners in each business unit, define scope (MaRisk AT 7.3 requires all critical processes) and set the programme calendar.',din:'Organisational chart, product inventory, prior BaFin audit findings',dout:'BCM policy, scope document, responsibility matrix',ai:'GenAI-assisted BCM policy drafting from regulatory templates.',rg:['MaRisk AT 7.3 Tz.1','BAIT Tz.51–52','DORA Art.11(1)']},
+      {n:2,lane:'fb',t:'Business Impact Analysis (BIA)',d:'Each process owner quantifies the impact of disruption: revenue loss per hour, regulatory breach risk, reputational impact, and MTD, RTO, RPO and MBCO.',din:'Process inventory, system dependency maps, revenue/cost data, regulatory SLAs',dout:'BIA report per process, RTO/RPO matrix, critical-process list',ai:'ML models to objectively estimate disruption cost from transactional and operational data; automated dependency mapping from the IT CMDB.',rg:['MaRisk AT 7.3 Tz.3','DORA Art.11(5)','EBA/GL/2019/02']},
+      {n:3,lane:'it',t:'Threat Scenarios & Risk Analysis',d:'Define threat scenarios: ICT outage, cyber attack/ransomware, pandemic, extreme weather (flooding in Rhine-Main, Vienna/Danube), key-person loss and power-grid failure.',din:'Threat intelligence, historical incident data, BaFin sector threat reports, climate risk data',dout:'Scenario catalogue, risk heat map, likelihood/impact matrix per scenario',ai:'GenAI scenario enrichment from industry data; ML-based scenario-likelihood estimation.',rg:['DORA Art.11(5)','MaRisk AT 7.3 Tz.4','EBA stress-testing guidelines']},
+      {n:4,lane:'bcm',t:'Continuity Strategy',d:'Define recovery strategies: alternate site (e.g. Eschborn data centre), cloud failover, manual workarounds, mutual-aid agreements; board approval of the strategy.',din:'BIA report, IT infrastructure inventory, site capacity data, DR service contracts',dout:'Strategy document, alternate-site agreement, approved recovery resource plan',ai:'Optimisation analytics for recovery-resource allocation; scenario simulation.',rg:['DORA Art.11(3)','BAIT Tz.53','MaRisk AT 7.3 Tz.5']},
+      {n:5,lane:'bcm',t:'BCP/DRP Development',d:'Document business continuity plans per critical process and IT disaster recovery plans; communication tree, escalation paths and emergency handbook.',din:'Strategy document, process documentation, system architecture, staff contact lists',dout:'BCP documents, DRP runbooks, emergency handbook, communication tree',ai:'GenAI-assisted BCP drafting and gap identification against MaRisk/DORA requirements.',rg:['MaRisk AT 7.3 Tz.6–7','BAIT Tz.54–58','DORA Art.11(6)']},
+      {n:6,lane:'bcm',t:'Training & Awareness',d:'Annual BCM training for all staff; specific training for the crisis team; BCP awareness sessions; updates after plan changes.',din:'BCP/DRP documents, training curriculum, staff records',dout:'Training completion records, awareness metrics',ai:'AI-personalised training delivery; NLP-based quiz generation from BCP content.',rg:['MaRisk AT 7.3 Tz.8','DORA Art.13']},
+      {n:7,lane:'bcm',t:'Testing & Exercises',d:'Tabletop exercises at least annually; technical failover tests of critical systems; DORA TLPT for systemically important institutions; Internal Audit attends and reviews.',din:'Test plans, BCP/DRP documents, exercise scripts, TLPT scope from BaFin',dout:'Exercise report, TLPT report, gap list, audit observation',ai:'AI-generated realistic crisis scenarios for exercises; automated test-result analysis.',rg:['DORA Art.26','BAIT Tz.59–60','MaRisk AT 7.3 Tz.9']},
+      {n:8,lane:'kt',t:'Crisis Management & Activation',d:'Crisis invocation: crisis-team activation, BCP execution, regulator notification (BaFin/DORA Art.19: 4h initial, 72h detailed), stakeholder communication (Bundesbank, customers).',din:'Incident alert, BCP/DRP, contact trees, DORA classification criteria',dout:'Crisis log, BaFin notification, stakeholder communications, status reports',ai:'AI-assisted incident classification (DORA severity); automated notification drafting.',rg:['DORA Art.19–20','MaRisk AT 7.3 Tz.10','BAIT Tz.61']},
+      {n:9,lane:'bcm',t:'Post-Event Review & Plan Maintenance',d:'Post-event review: root cause analysis, lessons learned, plan updates; annual review cycle; annual BaFin/DORA BCM reporting; assessment by Internal Audit.',din:'Crisis log, exercise reports, TLPT findings, audit findings, regulatory changes',dout:'Lessons-learned report, updated BCP/DRP, annual BCM report, audit protocol',ai:'GenAI-assisted lessons-learned synthesis; automated plan version comparison.',rg:['DORA Art.11(7)','MaRisk AT 7.3 Tz.11','BAIT Tz.62']}
     ],
     matrix:{GenAI:'High', ML:'Medium', NLP:'Low', Automation:'High', Analytics:'Medium'}
   },
   {
-    id:'rcsa', abbr:'RCSA', name:'Risk and Control Self-Assessment',
-    icon:'ti-clipboard-check', color:'#EA580C',
-    desc:'Structured process by which business lines identify, assess, and document operational risks and evaluate the design and effectiveness of associated controls.',
-    regShort:['Basel III/IV Op Risk','EBA Operational Risk Guidelines','ECB Supervisory Expectations'],
-    flow:[
-      {t:'Risk Identification', d:'Process decomposition; risk taxonomy application; brainstorming workshops; horizon risk input'},
-      {t:'Risk Assessment', d:'Inherent likelihood & impact scoring; risk rating; heat map positioning; risk appetite alignment'},
-      {t:'Control Mapping', d:'Control inventory linkage; categorisation (preventive/detective/corrective); design assessment'},
-      {t:'Control Effectiveness Testing', d:'Key Control Indicators; sample-based testing; control gap identification'},
-      {t:'Gap Remediation', d:'Action plan definition; ownership assignment; timeline commitment; risk acceptance where applicable'},
-      {t:'Continuous Monitoring', d:'KRI tracking; trigger-based reassessment; quarterly management reporting; audit linkage'}
+    id:'rcsa', abbr:'RCSA', name:'Risk & Control Self-Assessment', icon:'ti-clipboard-check', color:'#EA580C',
+    sdesc:'Joint risk and control assessment by the 1st and 2nd lines of defence as the basis of the ICAAP operational-risk assessment.',
+    intro:'The Risk and Control Self-Assessment (RCSA) is the primary tool for the first and second lines of defence to jointly identify, assess and document operational risks and evaluate the effectiveness of internal controls. At a DACH bank, the RCSA is mandated by MaRisk AT 4.3.2 and BT 3 and forms the basis of the ICAAP operational-risk assessment. The ECB/BaFin supervisory review (SREP) specifically evaluates the quality of the RCSA as an indicator of risk-culture maturity.',
+    regShort:['MaRisk AT 4.3.2','MaRisk BT 3','ICAAP','ECB SREP','Basel III Op Risk'],
+    lanes:[
+      {key:'fb',label:'Business Unit (1LoD)',type:'business',role:'Process Owner · 1LoD'},
+      {key:'or',label:'Operational Risk (2LoD)',type:'risk',role:'Operational Risk Manager · 2LoD'},
+      {key:'co',label:'Compliance & Legal',type:'compliance',role:'Compliance Officer · 2LoD',note:'Regulatory interpretation and legal questions in control assessment, plus alignment with compliance obligations.'},
+      {key:'it',label:'IT / System Support',type:'it',role:'System Administrator · IT',note:'Provides KCI and transaction data from the core banking systems for control testing.'},
+      {key:'ir',label:'Internal Audit (3LoD)',type:'audit',role:'Auditor · Internal Audit',note:'Independent opinion on the RCSA approach and control testing (MaRisk AT 4.3.2, IIA standards).'},
+      {key:'vs',label:'Board / Risk Committee',type:'board',role:'Risk Committee · Management Board'}
     ],
-    ai:[
-      {type:'NLP', effort:'Medium', title:'AI-Assisted Risk Identification', d:'NLP analysis of process documentation, incident logs, audit findings, and industry loss data to surface emerging risks that may be missed in workshop-based identification, enriching the risk taxonomy.'},
-      {type:'ML', effort:'High', title:'Automated Control Effectiveness Scoring', d:'ML models integrating KCI data, testing results, and incident patterns to produce continuous control effectiveness scores, replacing point-in-time manual assessments with dynamic ratings.'},
-      {type:'NLP', effort:'Low', title:'Incident-to-Risk Linkage', d:'Automated classification and mapping of operational incidents to RCSA risk entries using NLP, ensuring the risk register reflects actual loss experience and supports causal analysis.'},
-      {type:'Automation', effort:'Medium', title:'Dynamic RCSA Triggering', d:'Rule-based and ML-driven triggers that automatically initiate RCSA updates when material changes occur — new products, system changes, regulatory updates, or significant incidents.'}
+    steps:[
+      {n:1,lane:'or',t:'RCSA Planning & Scope',d:'Define the RCSA universe (all material business processes), schedule (annual + event-triggered), assign process owners and set the methodology and materiality threshold.',din:'RCSA policy, prior-year RCSA, business process inventory, risk appetite statement',dout:'RCSA plan, scope document, process-owner matrix',ai:'Process mining on system logs to surface undocumented process variants; GenAI scope recommendations.',rg:['MaRisk AT 4.3.2','MaRisk BT 3.2','ECB SREP']},
+      {n:2,lane:'fb',t:'Risk Identification',d:'Workshop-based risk identification: process walkthrough, failure-mode analysis, internal incident database, external loss data (ORX/Bundesbank data pool) and emerging-risk scan.',din:'Process documentation, incident database, ORX loss data, prior RCSA, audit findings',dout:'Gross risk inventory, risk descriptions, causal-factor mapping',ai:'NLP analysis of incident descriptions and audit reports to surface hidden risks; LLM-assisted standardisation of risk descriptions.',rg:['Basel Op-Risk taxonomy','MaRisk AT 4.3.2 Tz.3','EBA Op-Risk Guidelines']},
+      {n:3,lane:'or',t:'Risk Assessment',d:'Score each risk: inherent likelihood (1–5) × impact (1–5); residual risk after controls; risk-appetite comparison; challenge by the 2nd line of defence.',din:'Risk inventory, risk appetite statement, industry benchmarks, historical loss data',dout:'Rated risk register, risk heat map, appetite-breach list',ai:'ML-calibrated scoring using historical loss data to reduce subjective bias; automated risk-appetite breach alerting.',rg:['MaRisk BT 3.2 Tz.4–6','ECB SREP Op-Risk methodology']},
+      {n:4,lane:'fb',t:'Control Mapping & Assessment',d:'Map existing controls to each risk: preventive/detective/corrective; design assessment (adequate/inadequate); Key Control Indicator (KCI) definition; gap identification.',din:'Control library, process documentation, prior audit findings',dout:'Control matrix, KCI catalogue, design-gap list',ai:'AI-assisted control mapping from process documentation; automated KCI-definition suggestions.',rg:['MaRisk AT 4.4','COSO Framework','MaRisk BT 3.2']},
+      {n:5,lane:'or',t:'Control Effectiveness Testing',d:'Test the operating effectiveness of key controls: sample testing, process observation, KCI threshold review; Internal Audit provides an independent opinion on the testing approach.',din:'KCI data, control documentation, transaction samples, prior test results',dout:'Effectiveness ratings (effective/limited/ineffective), testing evidence, exception list',ai:'Automated KCI data collection from core banking systems; ML anomaly detection on control-performance data.',rg:['MaRisk BT 3.2 Tz.7','IIA standards','DORA Art.6(5)']},
+      {n:6,lane:'fb',t:'Remediation Planning',d:'For each gap/ineffective control: define the remediation measure, owner and deadline, agree residual-risk acceptance where applicable, and escalate material residual risk to the Risk Committee.',din:'Gap list, effectiveness ratings, risk appetite, resource constraints',dout:'Action plan, risk-acceptance decisions, escalation memoranda',ai:'GenAI-assisted remediation-measure drafting; automated prioritisation by risk score.',rg:['MaRisk AT 4.3.2 Tz.5','ECB SREP']},
+      {n:7,lane:'vs',t:'Approval & Reporting',d:'RCSA results to the Risk Committee and Board; ICAAP integration (op-risk capital); management sign-off; BaFin/SREP reporting; annual opinion from Internal Audit.',din:'RCSA results package, prior-period comparison, ICAAP op-risk model',dout:'Risk Committee minutes, board report, ICAAP op-risk chapter, BaFin SREP data',ai:'AI-generated management summary of RCSA results; automated year-on-year trend analysis.',rg:['MaRisk AT 4.3.2','EBA/GL/2016/10','ECB SREP']},
+      {n:8,lane:'or',t:'Continuous Monitoring',d:'KRI/KCI tracking between annual RCSAs; event-triggered re-assessment (new product, incident, system change, regulatory change); quarterly management MI.',din:'KRI/KCI dashboards, incident alerts, change-management notifications, regulatory tracker',dout:'Monthly KRI reports, triggered re-assessment records, management dashboard',ai:'Dynamic KRI threshold calibration using ML; automated event-trigger classification from the change-management system.',rg:['MaRisk BT 3.2 Tz.9','MaRisk AT 4.3.2 Tz.6']}
     ],
-    outputs:['Risk register','Control library','Heat maps','KRI dashboards','Remediation trackers','Management reports'],
-    reg:[
-      {t:'Basel III/IV', d:'Operational risk identification and control standards'},
-      {t:'EBA Op Risk Guidelines', d:'Supervisory expectations for operational risk management'},
-      {t:'BCBS 239', d:'Risk data aggregation and reporting principles'}
-    ],
-    matrix:{GenAI:'Medium', ML:'High', NLP:'High', Automation:'High', Analytics:'Low'}
+    matrix:{GenAI:'Medium', ML:'High', NLP:'High', Automation:'High', Analytics:'Medium'}
   },
   {
-    id:'pks', abbr:'PKS', name:'Policy & Key Standards',
-    icon:'ti-book-2', color:'#0891B2',
-    desc:'Lifecycle management of internal policies, key standards, and procedures — ensuring they remain current, compliant, and embedded across the organisation through effective communication and monitoring.',
-    regShort:['EBA/GL/2021/04','CRR/CRD requirements','ISO 9001'],
-    flow:[
-      {t:'Policy Initiation', d:'Regulatory trigger; gap identification; owner assignment; stakeholder scoping'},
-      {t:'Drafting & Review', d:'Content development; legal and compliance review; cross-policy consistency check; SME input'},
-      {t:'Approval', d:'Governance committee sign-off; board-level approval for material policies; version control'},
-      {t:'Communication & Training', d:'Distribution to impacted staff; mandatory training assignment; attestation collection'},
-      {t:'Compliance Monitoring', d:'Adherence tracking; breach identification; exception management; KCI reporting'},
-      {t:'Review & Update Cycle', d:'Trigger-based or scheduled annual review; regulatory change assessment; version archiving'}
+    id:'pks', abbr:'PKS', name:'Policy & Key Standards Management', icon:'ti-book-2', color:'#0891B2',
+    sdesc:'Lifecycle of the normative framework — from framework policies down to work instructions.',
+    intro:'Policy & Key Standards (PKS) management governs the full lifecycle of the bank\'s normative framework — from framework policies and work instructions to regulatory implementation guidelines. For a DACH bank, the normative framework must align with MaRisk (DE), the internal-audit guidance of the OeNB (AT) and FINMA guidelines (CH). DORA mandates documented ICT policies for all EU financial entities under Art.6.',
+    regShort:['MaRisk AT 5','EBA/GL/2021/04','DORA Art.6','OeNB guidance','FINMA'],
+    lanes:[
+      {key:'fb',label:'Business Unit / Policy Owner (1LoD)',type:'business',role:'Policy Owner · 1LoD'},
+      {key:'co',label:'Compliance & Legal (2LoD)',type:'compliance',role:'Compliance Officer · 2LoD'},
+      {key:'rm',label:'Risk Management (2LoD)',type:'risk',role:'Risk Manager · 2LoD',note:'Assessment of policies with material risk relevance and alignment with the risk framework.'},
+      {key:'ds',label:'Data Protection',type:'it',role:'Data Protection Officer (DPO)',note:'Data protection impact assessment for policies covering personal data (GDPR).'},
+      {key:'ir',label:'Internal Audit (3LoD)',type:'audit',role:'Auditor · Internal Audit',note:'Review of the policy framework and its currency (MaRisk AT 5).'},
+      {key:'vs',label:'Board / Supervisory Board',type:'board',role:'Management Board · Supervisory Board'}
     ],
-    ai:[
-      {type:'GenAI', effort:'Low', title:'GenAI Policy Drafting & Gap Analysis', d:'Large language models assist policy owners in drafting new policies or updating existing ones, cross-referencing relevant regulations and internal standards to identify coverage gaps and inconsistencies.'},
-      {type:'NLP', effort:'Medium', title:'Cross-Policy Consistency Checking', d:'NLP tools compare terminology, definitions, and requirements across the entire policy library to detect contradictions, duplications, and alignment gaps before approval.'},
-      {type:'NLP', effort:'Medium', title:'Regulatory Change Impact Assessment', d:'Automated analysis of new regulatory publications to identify policies requiring update, estimate the scope of change, and generate a prioritised remediation roadmap.'},
-      {type:'Automation', effort:'Low', title:'Attestation & Compliance Tracking', d:'Automated tracking of staff training completion and policy attestation, with targeted escalation workflows for overdue acknowledgements and management dashboards for completion rates.'}
-    ],
-    outputs:['Policy library','Standards register','Compliance monitoring reports','Training completion records','Exception logs'],
-    reg:[
-      {t:'EBA/GL/2021/04', d:'Internal governance arrangements'},
-      {t:'CRD V', d:'Governance and internal control requirements'},
-      {t:'EBA/GL/2017/11', d:'Internal governance and control framework'},
-      {t:'DORA governance', d:'ICT governance and policy requirements'}
+    steps:[
+      {n:1,lane:'fb',t:'Initiation',d:'Trigger identification: new regulation, audit finding, significant incident, annual review cycle, M&A integration; assign the policy owner and define scope and affected stakeholders.',din:'Regulatory change log, audit findings, incident register, policy calendar',dout:'Policy initiation note, stakeholder map, project timeline',ai:'AI regulatory-change monitoring (NLP on BaFin/EBA/ESMA publications) to automatically trigger policy review.',rg:['MaRisk AT 5','DORA Art.6','EBA/GL/2021/04 Tz.21']},
+      {n:2,lane:'fb',t:'Drafting & Content Development',d:'Policy drafting in a structured format (purpose, scope, principles, responsibilities, measures, breaches), regulatory-reference mapping and cross-policy consistency checks.',din:'Regulatory texts, existing policy library, industry standards (ISO, COBIT, NIST)',dout:'Policy draft v0.1, regulatory mapping table, cross-reference list',ai:'GenAI-assisted policy drafting from regulatory input; NLP cross-policy consistency checking.',rg:['EBA/GL/2021/04','MaRisk AT 5 Tz.2']},
+      {n:3,lane:'co',t:'Subject-Matter Review',d:'SME review: legal review for regulatory compliance, IT review for BAIT/DORA alignment, data-protection review for GDPR implications and business review for practicability.',din:'Policy draft, regulatory analysis, prior audit findings, stakeholder input',dout:'Consolidated comments, revised policy draft, legal clearance note',ai:'NLP-based comment consolidation from multiple reviewer inputs; automated gap analysis.',rg:['DORA Art.6(4)','GDPR Art.24','MaRisk AT 5']},
+      {n:4,lane:'vs',t:'Approval',d:'Committee approval by materiality: board level for framework policies, management level for operational policies, Supervisory Board notification for significant changes; formal sign-off with version control.',din:'Final draft, legal clearance, compliance sign-off, cost-impact assessment',dout:'Approved policy (signed), version-controlled record in the policy management system, approval minutes',ai:'GenAI approval-memo generation; automated version tracking.',rg:['MaRisk AT 5 Tz.3','§25c/d KWG','DORA Art.6(1)']},
+      {n:5,lane:'co',t:'Communication & Training',d:'Mandatory communication to all affected staff via intranet/policy portal (Confluence, SharePoint); role-based mandatory training; digital read-and-acknowledge; translation for AT/CH subsidiaries.',din:'Approved policy, staff registry (affected roles), training platform',dout:'Communication records, training certificates, acknowledgement records',ai:'AI-personalised training content; automated escalation for overdue attestations.',rg:['MaRisk AT 5 Tz.4','DORA Art.13']},
+      {n:6,lane:'co',t:'Compliance Monitoring',d:'Continuous monitoring of policy adherence: KCI tracking, sample checks, breach/exception logging, escalation for systematic non-compliance and quarterly reporting.',din:'KCI data, audit reports, exception logs, training records',dout:'Compliance monitoring report, exception register, escalation notes, quarterly MI',ai:'Automated exception detection from system and transaction data; NLP pattern detection in exception descriptions.',rg:['MaRisk AT 4.4','IIA standards','DORA Art.6(5)']},
+      {n:7,lane:'fb',t:'Review & Update Cycle',d:'At least annual review; event-triggered review; regulatory-change impact assessment; version archiving; sunset review of obsolete policies.',din:'Regulatory change log, audit findings, incident data, version history, monitoring results',dout:'Updated policy / change record, regulatory-mapping update, archived prior versions',ai:'GenAI-assisted change-impact assessment; automated regulatory-alignment check.',rg:['MaRisk AT 5','EBA/GL/2021/04 Tz.25','DORA Art.6(6)']}
     ],
     matrix:{GenAI:'High', ML:'Low', NLP:'High', Automation:'High', Analytics:'Low'}
   },
   {
-    id:'orm', abbr:'ORM', name:'Operational Risk Management',
-    icon:'ti-alert-triangle', color:'#DC2626',
-    desc:'Systematic identification, measurement, monitoring, and control of operational risks — including process failures, human error, system outages, fraud, and external events — to minimise financial and reputational losses.',
-    regShort:['Basel II/III/IV (Op Risk SMA)','EBA Op Risk Guidelines','ORX loss data standards'],
-    flow:[
-      {t:'Risk Taxonomy & Appetite', d:'Basel Event Type taxonomy; risk appetite statement; tolerance thresholds; KRI definition'},
-      {t:'Incident Capture', d:'Loss event recording; near-miss logging; threshold-based escalation; timeline documentation'},
-      {t:'Loss Assessment', d:'Direct and indirect loss quantification; recovery tracking; insurance recovery; gross/net determination'},
-      {t:'Causal Analysis', d:'Root cause identification; control failure assessment; process vulnerability mapping; lessons learned'},
-      {t:'Reporting & Escalation', d:'Management MI; board risk reporting; regulatory reporting (EBA, SSM); risk committee escalation'},
-      {t:'Capital & Stress Testing', d:'Basel SMA calculation; stress scenario application; ICAAP integration; forward-looking assessment'}
+    id:'orm', abbr:'ORM', name:'Operational Risk Management', icon:'ti-alert-triangle', color:'#DC2626',
+    sdesc:'Identification, measurement and control of operational risk incl. SMA capital calculation under Basel III.',
+    intro:'Operational Risk Management (ORM) at a DACH bank covers the identification, measurement, monitoring and control of all risks from inadequate or failed internal processes, people, systems or external events. Under Basel III (implemented via CRR/CRD V and KWG/BWG), banks must hold regulatory capital for operational risk using the Standardised Measurement Approach (SMA, replacing the AMA from 2025). BaFin MaRisk BT 3 and the German operational-risk data consortium (Bundesbank data pool) set additional expectations for loss-data quality and scenario analysis.',
+    regShort:['Basel III (SMA)','CRR Art.312–324','MaRisk BT 3','EBA/GL/2019/13','Bundesbank data pool'],
+    lanes:[
+      {key:'fb',label:'Business Unit (1LoD)',type:'business',role:'Loss-Event Reporter · 1LoD'},
+      {key:'or',label:'Operational Risk (2LoD)',type:'risk',role:'Operational Risk Manager · 2LoD'},
+      {key:'co',label:'Compliance',type:'compliance',role:'Compliance Officer · 2LoD',note:'Delineation of compliance breaches as operational-risk events (Basel CPBP).'},
+      {key:'it',label:'IT / System Support',type:'it',role:'System Administrator · IT',note:'Provides loss data from the core banking and HR systems.'},
+      {key:'ir',label:'Internal Audit (3LoD)',type:'audit',role:'Auditor · Internal Audit',note:'Independent review of loss-data quality (MaRisk BT 3).'},
+      {key:'vs',label:'Board / Risk Committee',type:'board',role:'Risk Committee · Management Board',note:'Approval of the risk appetite and escalation on appetite breaches.'}
     ],
-    ai:[
-      {type:'NLP', effort:'Low', title:'Automated Incident Classification', d:'NLP models classify operational incidents against the Basel Event Type taxonomy and internal risk categories in real time, reducing manual effort and improving consistency of loss data quality for regulatory and internal reporting.'},
-      {type:'ML', effort:'High', title:'Predictive Loss Modeling', d:'ML models trained on internal loss history, industry ORX data, and operational KPIs to predict loss frequency and severity distributions, supporting dynamic risk appetite calibration and proactive risk management.'},
-      {type:'Analytics', effort:'Medium', title:'Near-Miss Pattern Detection', d:'Analytics over near-miss and incident data to identify systemic patterns and emerging operational vulnerabilities before they materialise as losses, enabling targeted control enhancement.'},
-      {type:'Automation', effort:'Medium', title:'Automated Regulatory Reporting', d:'Automated aggregation and formatting of loss data for EBA/SSM operational risk reporting requirements and Basel SMA calculations, reducing manual preparation effort and reporting error risk.'}
-    ],
-    outputs:['Loss database','Incident reports','Causal analysis reports','Basel SMA capital figure','Management MI','ICAAP input'],
-    reg:[
-      {t:'Basel II/III/IV', d:'Operational risk capital under the Standardised Measurement Approach'},
-      {t:'EBA/GL/2019/13', d:'Common procedures for the supervisory review process'},
-      {t:'EBA/GL/2021/03', d:'Supervisory reporting on operational risk'},
-      {t:'ORX / ABA standards', d:'Industry operational loss data consortium standards'}
+    steps:[
+      {n:1,lane:'or',t:'Risk Taxonomy & Appetite',d:'Maintain the Basel event-type taxonomy (7 categories); set the risk appetite statement with quantitative thresholds; define KRIs per category.',din:'Basel taxonomy, industry loss data (ORX), prior-year losses, strategic plan',dout:'Op-risk taxonomy, risk appetite statement, KRI catalogue',ai:'ML taxonomy classification model; AI-assisted appetite calibration using industry benchmarks.',rg:['CRR Art.312–324','MaRisk BT 3.1','EBA/GL/2019/13']},
+      {n:2,lane:'fb',t:'Loss-Event Capture',d:'Record operational loss events: discovery within 5 working days (BaFin expectation); gross loss, recoveries, timeline, Basel event type; near-misses on a separate track; threshold-based escalation (>€10k).',din:'Incident notification (from the business), core banking system, HR system',dout:'Loss-event record in the op-risk system (Resolver, MetricStream), escalation memo',ai:'NLP incident-description classification against Basel event types; automated data-quality checks on loss records.',rg:['MaRisk BT 3.3','EBA/GL/2019/13','Bundesbank data pool']},
+      {n:3,lane:'or',t:'Loss Sizing & Recovery Tracking',d:'Finalise gross and net loss; track insurance and other recoveries; distinguish accounting vs. operational loss; finalise the Basel ILM components.',din:'Loss-event records, insurance policy register, accounting system (SAP), recovery confirmations',dout:'Finalised loss records (gross/net/recovered), ILM data for the SMA capital calculation',ai:'ML-based insurance-recovery probability estimation; automated accounting-system reconciliation.',rg:['CRR Art.318','EBA/GL/2019/13 Tz.22–35','FINMA Circ. 2008/21']},
+      {n:4,lane:'or',t:'Root Cause Analysis',d:'Root cause analysis for all losses above the materiality threshold: 5-Why, fishbone; control-failure identification; process-vulnerability mapping; lessons learned; RCSA update trigger.',din:'Loss records, process documentation, RCSA, control-test results, IT incident logs',dout:'Root-cause analysis report, lessons-learned register, RCSA update trigger, remediation action',ai:'ML pattern detection across historical losses to find systemic causes; NLP causal-factor extraction from incident descriptions.',rg:['MaRisk BT 3.3 Tz.5','EBA/GL/2019/13 Tz.40–42','DORA Art.17']},
+      {n:5,lane:'or',t:'Scenario Analysis & Stress Testing',d:'Annual scenario-analysis workshops: low-frequency/high-severity scenarios (cyber attack, rogue trader, pandemic); external benchmarking (ORX/Bundesbank); ICAAP stress integration; capital sensitivity.',din:'Internal loss data, ORX industry data, RCSA results, threat intelligence, ECB stress-test scenarios',dout:'Scenario catalogue, severity/frequency estimates, ICAAP op-risk capital input, scenario report',ai:'ML scenario-severity estimation from industry data; GenAI scenario-narrative generation.',rg:['MaRisk BT 3.4','EBA ICAAP guidelines','CRR Art.177']},
+      {n:6,lane:'or',t:'Reporting & Escalation',d:'Management reporting (monthly loss dashboard, quarterly KRI, annual report); regulatory reporting (EBA XBRL, BaFin/Bundesbank SMA, ECB SREP); Risk Committee escalation on appetite breaches.',din:'Loss database, KRI data, RCSA results, scenario analysis',dout:'Monthly MI package, op-risk annual report, XBRL return, SREP data, Risk Committee paper',ai:'Automated XBRL report generation; AI-generated management commentary; real-time appetite-breach alerting.',rg:['CRR Art.431–455','EBA ITS on reporting','MaRisk BT 3.5']},
+      {n:7,lane:'or',t:'Capital Calculation (SMA)',d:'Quarterly SMA capital calculation: Business Indicator Component (BIC) from P&L × Internal Loss Multiplier (ILM); ICAAP integration; RAF capital allocation; capital-adequacy check.',din:'P&L data (from Finance/SAP), 10-year internal loss data, BIC coefficient table (CRR), approved ILM methodology',dout:'SMA op-risk capital figure, ILM calculation file, ICAAP op-risk chapter, CRR capital return',ai:'Automated SMA calculation pipeline with audit trail; ML data-quality checks on P&L input.',rg:['CRR Art.312–324','EBA/RTS/2021/01','EBA/GL/2016/10']}
     ],
     matrix:{GenAI:'Low', ML:'High', NLP:'High', Automation:'High', Analytics:'High'}
   },
   {
-    id:'compliance', abbr:'Compliance', name:'Regulatory Compliance Management',
-    icon:'ti-scale', color:'#7C3AED',
-    desc:'Proactive management of compliance obligations across the full regulatory landscape — from horizon scanning and impact assessment to evidence management and regulatory reporting.',
-    regShort:['DORA','GDPR','EU AI Act','MiCA','PSD2','EMIR','CRR/CRD IV/V','MAR'],
-    flow:[
-      {t:'Horizon Scanning', d:'Regulatory tracker maintenance; consultation paper monitoring; supervisory expectation tracking; industry engagement'},
-      {t:'Impact Assessment', d:'Obligation extraction; gap analysis against current state; business impact quantification; prioritisation'},
-      {t:'Implementation Planning', d:'Project scoping; workstream definition; resource allocation; milestone planning; governance sign-off'},
-      {t:'Remediation Execution', d:'Policy updates; process changes; system configuration; staff training; controls implementation'},
-      {t:'Evidence Management', d:'Compliance evidence collection; document repository management; audit trail maintenance; retention schedules'},
-      {t:'Regulatory Reporting', d:'Returns preparation; supervisory submissions; self-assessment questionnaires; dialogue management'}
+    id:'compliance', abbr:'Compliance', name:'Regulatory Compliance Management', icon:'ti-scale', color:'#7C3AED',
+    sdesc:'Regulatory horizon scanning, impact assessment and evidencing towards BaFin/FMA/FINMA.',
+    intro:'Regulatory Compliance Management at a DACH bank spans the full horizon — from monitoring EU-level developments (DORA, EU AI Act, MiCA, EMIR Refit, CRD VI/CRR III) to translating obligations into internal policies and demonstrating adherence to BaFin (DE), FMA (AT) or FINMA (CH). MaRisk AT 5 establishes the compliance function\'s mandate in Germany. The volume and pace of regulatory change has accelerated sharply since 2020, making automated horizon scanning and impact assessment critical capabilities.',
+    regShort:['MaRisk AT 5','DORA','EU AI Act','CRR III/CRD VI','MiCA','EMIR Refit'],
+    lanes:[
+      {key:'co',label:'Compliance (2LoD)',type:'compliance',role:'Compliance Officer · 2LoD'},
+      {key:'fb',label:'Business Unit (1LoD)',type:'business',role:'Business Owner · 1LoD'},
+      {key:'re',label:'Legal',type:'sourcing',role:'Legal Counsel · Legal'},
+      {key:'it',label:'IT / System Support',type:'it',role:'IT Change Manager · IT',note:'IT change implementation of regulatory system requirements.'},
+      {key:'ir',label:'Internal Audit (3LoD)',type:'audit',role:'Auditor · Internal Audit',note:'Independent effectiveness review of the compliance function (MaRisk AT 5).'},
+      {key:'ex',label:'Regulator / External',type:'extern',role:'BaFin / FMA / FINMA',note:'Supervisory dialogue and §44 KWG special audits.'}
     ],
-    ai:[
-      {type:'NLP', effort:'Medium', title:'AI Regulatory Horizon Scanning', d:'NLP-powered monitoring of regulatory publications, consultation papers, supervisory speeches, and industry guidance to automatically identify relevant developments, extract obligations, and alert compliance teams with summarised impact notes.'},
-      {type:'GenAI', effort:'Medium', title:'Automated Gap Analysis', d:'GenAI models compare new regulatory requirements against the existing compliance framework — policies, controls, processes — to generate a structured gap report with suggested remediation steps, significantly reducing manual analysis time.'},
-      {type:'GenAI', effort:'Low', title:'Regulatory Text Interpretation', d:'Large language models provide plain-language interpretation of complex regulatory provisions, cross-reference related requirements, and answer compliance team queries with citations, improving the speed and accuracy of obligation mapping.'},
-      {type:'Automation', effort:'Low', title:'Automated Evidence Collection', d:'Workflow automation tools systematically collect, index, and store compliance evidence — approvals, test results, training records, meeting minutes — against mapped obligations, creating a continuously maintained audit-ready repository.'}
+    steps:[
+      {n:1,lane:'co',t:'Regulatory Horizon Scanning',d:'Monitor: EU Official Journal, BaFin consultation database, EBA/ESMA/ECB publications, national gazettes (Bundesanzeiger, BGBl.), industry bodies (Bankenverband, VÖB) and SWIFT/ISO standards.',din:'Regulatory publications, consultation papers, supervisory speeches, industry circulars',dout:'Regulatory change log, early-warning alerts, monthly horizon-scanning report',ai:'NLP monitoring of regulatory publications; automated extraction of obligations, deadlines and impacted entities; per-bank relevance scoring.',rg:['MaRisk AT 5 Tz.1']},
+      {n:2,lane:'co',t:'Relevance Check & Impact Assessment',d:'For each change: applicability assessment (in-scope? extraterritorial?); initial impact estimate (people, process, IT, capital); prioritisation; escalation for material impacts; assignment of an implementation owner.',din:'Regulatory text, organisational structure, product/service inventory, prior impact assessments',dout:'Relevance memo, impact report, implementation-owner assignment, priority rating',ai:'GenAI obligation extraction and gap analysis against the current policy/control framework; automated relevance scoring.',rg:['CRD V/CRR II','DORA','EU AI Act','MaRisk']},
+      {n:3,lane:'re',t:'Gap Analysis',d:'Detailed gap analysis: map each obligation to existing policies, controls, processes and systems; identify missing measures; legal interpretation of ambiguous provisions; engage external counsel where required.',din:'Regulatory text, current policy library, control inventory, prior findings, legal opinions',dout:'Gap-analysis document, open-obligation register, legal opinion, cost estimate',ai:'LLM-based interpretation of regulatory text; automated cross-referencing between new and existing requirements.',rg:['DORA Art.6–55','EU AI Act Art.9–17','EMIR Refit']},
+      {n:4,lane:'co',t:'Implementation Planning',d:'Define the remediation programme: workstreams (policy, process, IT, training), resources, milestone plan, dependencies; IT change request; BaFin pre-consultation for major structural changes.',din:'Gap analysis, IT architecture, HR resource plan, project-management framework',dout:'Implementation plan, project charter, IT change request, regulatory correspondence',ai:'GenAI-assisted project-plan generation; automated dependency identification.',rg:['DORA (17 Jan 2025)','EU AI Act (2024–2026)']},
+      {n:5,lane:'fb',t:'Remediation & Execution',d:'Execute remediation: policy updates (PKS process), process redesign, system configuration, staff training, control implementation; Compliance monitors progress and escalates delays.',din:'Implementation plan, PKS process triggers, IT change requests, training requirements',dout:'Updated policies, process documentation, system-change records, training records',ai:'AI-assisted policy drafting; automated testing of IT controls; NLP training-content generation.',rg:['Regulation-specific']},
+      {n:6,lane:'co',t:'Evidence Management & Audit Readiness',d:'Collect, index and store compliance evidence: policy versions, training records, committee minutes, test results, regulator correspondence; retention per HGB §§238–239 (10 years).',din:'All implementation outputs, approval minutes, certificates, test results, correspondence',dout:'Compliance dossier, evidence repository (DMS), retention schedule, audit-readiness confirmation',ai:'Automated evidence tagging and linkage to obligations; AI completeness check of evidence per requirement.',rg:['HGB §§238–239','GDPR Art.5(2)','DORA Art.6(5)']},
+      {n:7,lane:'re',t:'Regulatory Reporting & Authority Liaison',d:'Regulatory returns: XBRL (EBA), Bundesbank (COREP, FINREP), BaFin self-assessments, FMA/FINMA reporting, ECB SREP; supervisory dialogue; support for §44 KWG examinations.',din:'Compliance dossier, financial data (from Finance), risk data, management commentary',dout:'Regulatory returns (XBRL), supervisory correspondence, §44 KWG examination responses',ai:'Automated XBRL report generation; AI-generated management commentary; discrepancy detection in regulatory data.',rg:['EBA ITS on reporting','§44 KWG','MaRisk AT 5 Tz.5']},
+      {n:8,lane:'co',t:'Monitoring & Effectiveness Review',d:'Ongoing monitoring of obligations: KCI tracking, self-assessment questionnaires, thematic reviews; annual compliance risk assessment; independent assurance from Internal Audit; MaRisk AT 5 annual report.',din:'KCI data, self-assessment results, audit reports, incident logs, monitoring dashboards',dout:'Compliance monitoring reports, annual compliance report to the Board, audit assurance letter',ai:'AI-driven KCI monitoring with anomaly detection; automated analysis of self-assessment questionnaires.',rg:['MaRisk AT 5 Tz.6–7','CRD V Art.76','DORA Art.6(5)']}
     ],
-    outputs:['Regulatory inventory','Gap assessments','Compliance programmes','Evidence repository','Regulatory returns','MI reports'],
-    reg:[
-      {t:'DORA', d:'Digital operational resilience for the financial sector'},
-      {t:'GDPR Art.30–31', d:'Records of processing and cooperation with supervisors'},
-      {t:'EU AI Act Art.9–17', d:'Risk management and requirements for high-risk AI systems'},
-      {t:'CRR/CRD V · EMIR · PSD2 · MiCA · MAR', d:'Prudential, derivatives, payments, crypto-asset and market abuse regimes'}
-    ],
-    matrix:{GenAI:'High', ML:'Low', NLP:'High', Automation:'High', Analytics:'Low'}
+    matrix:{GenAI:'High', ML:'Low', NLP:'High', Automation:'High', Analytics:'Medium'}
   },
   {
-    id:'mrm', abbr:'MRM', name:'Model Risk Management',
-    icon:'ti-brain', color:'#9333EA',
-    desc:'End-to-end governance of quantitative models — from initial validation through ongoing performance monitoring — ensuring models are fit for purpose and comply with regulatory model risk standards.',
-    regShort:['SR 11-7 (Federal Reserve)','EBA GL 2021/04','ECB TRIM','BCBS model risk guidance'],
-    flow:[
-      {t:'Model Inventory', d:'Model registration; materiality tiering (High/Medium/Low); ownership assignment; use case documentation'},
-      {t:'Initial Validation', d:'Conceptual soundness review; data quality assessment; performance testing; limitations documentation'},
-      {t:'Approval & Governance', d:'Model Risk Committee sign-off; risk acceptance for limitations; conditions of use; review schedule'},
-      {t:'Ongoing Monitoring', d:'KPI tracking (accuracy, stability, discrimination); threshold breaches; drift detection; output sampling'},
-      {t:'Periodic Review', d:'Full re-validation; challenger model assessment; methodology review; regulatory alignment check'},
-      {t:'Model Retirement', d:'Use case decommission; documentation archiving; replacement transition; regulatory notification'}
+    id:'mrm', abbr:'MRM', name:'Model Risk Management', icon:'ti-brain', color:'#9333EA',
+    sdesc:'Governance of quantitative models — from IRB models to AI/ML and LLMs — under EBA GL 2021/04 and ECB TRIM.',
+    intro:'Model Risk Management (MRM) governs the risks arising from the use of quantitative models — from credit scoring and IRRBB models to AI/ML tools and LLMs — including the risks of model error, misuse and unanticipated behaviour. In Germany, the primary regulatory anchor is EBA GL 2021/04 (model risk management for IRB banks). The ECB\'s Targeted Review of Internal Models (TRIM) and the ongoing IRB repair programme have significantly elevated MRM expectations for DACH banks using advanced approaches. Model risk is increasingly relevant for AI/ML models under the EU AI Act.',
+    regShort:['EBA/GL/2021/04','ECB TRIM','SR 11-7','EU AI Act','CRR IRB'],
+    lanes:[
+      {key:'md',label:'Model Development (1LoD)',type:'business',role:'Model Developer · Quant'},
+      {key:'mv',label:'Model Risk / Validation (2LoD)',type:'risk',role:'Model Validator · 2LoD'},
+      {key:'co',label:'Compliance & Legal',type:'compliance',role:'Compliance Officer · 2LoD'},
+      {key:'it',label:'IT / Infrastructure',type:'it',role:'MLOps Engineer · IT',note:'Provides the ML infrastructure, deployment logs and model repositories.'},
+      {key:'ir',label:'Internal Audit (3LoD)',type:'audit',role:'Auditor · Internal Audit',note:'Independent review of the model-risk framework (EBA/GL/2021/04).'},
+      {key:'mc',label:'Model Risk Committee / Board',type:'board',role:'Model Risk Committee · Board'}
     ],
-    ai:[
-      {type:'ML', effort:'Medium', title:'Automated Model Performance Monitoring', d:'Continuous ML-based monitoring of deployed models against key performance indicators — predictive accuracy, discriminatory power, population stability — with automated alerts when thresholds are breached, enabling real-time identification of model degradation.'},
-      {type:'ML', effort:'High', title:'AI-Assisted Model Validation', d:'ML tools that systematically stress-test model assumptions, apply benchmarking approaches, and generate challenger model outputs, supporting independent validators with objective data-driven evidence and reducing validation cycle time.'},
-      {type:'Analytics', effort:'Medium', title:'LLM Evaluation Frameworks', d:'RAGAS and similar evaluation frameworks applied to LLM and GenAI models to assess faithfulness, answer relevance, and context precision — extending traditional MRM methodology to AI/ML models used in risk and compliance applications.'},
-      {type:'GenAI', effort:'Low', title:'Automated Model Documentation', d:'GenAI tools that generate structured model documentation — technical specifications, data lineage descriptions, assumption summaries — from model code and validation findings, ensuring documentation standards are maintained consistently.'}
+    steps:[
+      {n:1,lane:'mv',t:'Model Inventory',d:'Maintain a comprehensive model inventory (PD/LGD/EAD, IRRBB, market VaR, liquidity, op-risk, AI/ML, LLMs); materiality tiering (high/medium/low); ownership; review calendar.',din:'Model register, IT system inventory, business-change notifications, prior TRIM findings',dout:'Model inventory, materiality assessment, review calendar, orphan-model alerts',ai:'Automated model discovery from IT deployment logs and code repositories; ML materiality classification.',rg:['EBA/GL/2021/04 Tz.12–22','ECB TRIM','EU AI Act Art.49']},
+      {n:2,lane:'md',t:'Model Development & Documentation',d:'Model development: data preparation, feature selection, training, performance metrics; mandatory documentation per EBA GL (purpose, data lineage, assumptions, limitations, backtesting); developer testing.',din:'Training data, development toolkit (Python/R/SAS), data-quality reports, benchmark models',dout:'Model documentation, development test results, model code, training dataset',ai:'AutoML for model prototyping; GenAI-assisted model documentation from code; RAGAS for LLM evaluation.',rg:['EBA/GL/2021/04 Tz.30–48','SR 11-7 Sec. IV','ECB TRIM']},
+      {n:3,lane:'mv',t:'Independent Validation',d:'Independent validation: conceptual soundness, data quality, performance testing (backtesting, sensitivity, discrimination), regulatory-compliance check, challenger model; before go-live for high/medium-risk models.',din:'Model documentation, development test results, validation dataset (holdout), regulatory guidance',dout:'Validation report, model rating, findings and conditions, recommendation to the MRC',ai:'Automated performance benchmarking; RAGAS/G-Eval for LLM faithfulness; ML-driven sensitivity analysis.',rg:['EBA/GL/2021/04 Tz.49–75','SR 11-7 Sec. V','ECB TRIM']},
+      {n:4,lane:'mc',t:'Model Risk Committee (MRC) Approval',d:'Formal MRC review: validation-report presentation, conditions of use, risk acceptance for known limitations, go-live decision; use restrictions; full re-validation for major changes.',din:'Validation report, model documentation, business-impact assessment, prior MRC minutes',dout:'MRC approval decision, conditions of use, risk-acceptance note, MRC minutes',ai:'GenAI executive summary of validation findings for the MRC; automated findings tracker.',rg:['EBA/GL/2021/04 Tz.76–84','ECB TRIM']},
+      {n:5,lane:'mv',t:'Ongoing Monitoring',d:'Ongoing performance monitoring: monthly/quarterly KPIs (PSI, Gini, accuracy, calibration); threshold-breach alerts; output sampling; drift detection for AI/ML; out-of-cycle triggers.',din:'Model output data, KPI dashboards, business performance data, macroeconomic data',dout:'Model monitoring reports, drift alerts, out-of-cycle review triggers, performance-trend data',ai:'Real-time ML model-monitoring dashboards; automated drift detection via statistical process control; RAGAS for deployed LLMs.',rg:['EBA/GL/2021/04 Tz.85–100','ECB TRIM']},
+      {n:6,lane:'co',t:'Regulatory Notification & TRIM',d:'Regulatory submissions: IRB model-change notifications to ECB/BaFin (significant vs. non-significant); ECB TRIM examinations; EBA benchmarking; EU AI Act registration for high-risk AI models.',din:'Model inventory, validation reports, MRC decisions, performance data, change requests',dout:'ECB change notification, TRIM examination response, EBA benchmarking data, EU AI Act registration',ai:'Automated change-notification drafting; discrepancy detection in benchmarking submissions.',rg:['EBA/RTS/2016/03','ECB TRIM','EU AI Act Art.49']},
+      {n:7,lane:'mv',t:'Model Review & Retirement',d:'Periodic full re-validation (at least annual for high-risk); challenger assessment; retirement of obsolete models: documentation archiving, regulator notification, replacement transition, residual-risk assessment.',din:'Annual review results, strategy changes, regulatory updates, replacement-model performance',dout:'Re-validation report, retirement memo, archived documentation, ECB notification (for IRB models)',ai:'Automated re-validation scheduling; GenAI retirement-memo drafting; automated archiving.',rg:['EBA/GL/2021/04 Tz.101–115','ECB model-change notification']}
     ],
-    outputs:['Model inventory','Validation reports','Monitoring dashboards','MRC minutes','Model cards','TRIM self-assessments'],
-    reg:[
-      {t:'SR 11-7', d:'Federal Reserve supervisory guidance on model risk management'},
-      {t:'EBA GL 2021/04', d:'Internal governance including model governance'},
-      {t:'ECB TRIM', d:'Targeted Review of Internal Models'},
-      {t:'BCBS Op Risk', d:'Model risk component of operational risk guidance'}
-    ],
-    matrix:{GenAI:'Medium', ML:'High', NLP:'Low', Automation:'Low', Analytics:'High'}
+    matrix:{GenAI:'Medium', ML:'High', NLP:'Medium', Automation:'Medium', Analytics:'High'}
   },
   {
-    id:'isrisk', abbr:'IS Risk', name:'Information Security Risk',
-    icon:'ti-shield-lock', color:'#0F766E',
-    desc:'Identification, assessment, and management of information security and cyber risks — spanning threat intelligence, vulnerability management, access control, and incident response — in line with DORA and NIS2 requirements.',
-    regShort:['DORA TLPT (Art.26)','NIS2 Directive','ISO 27001:2022','NIST CSF 2.0'],
-    flow:[
-      {t:'Threat Intelligence', d:'Threat landscape monitoring; ISAC participation; vulnerability feeds; sector-specific threat briefings'},
-      {t:'Risk Assessment', d:'Asset inventory; threat-vulnerability mapping; inherent risk scoring; residual risk after controls'},
-      {t:'Control Implementation', d:'Security control design; access management; encryption; patch management; SIEM deployment'},
-      {t:'Continuous Monitoring', d:'Real-time log analysis; anomaly detection; security operations centre (SOC) alerting; KRI dashboards'},
-      {t:'Incident Response', d:'Detection and triage; containment and eradication; forensic investigation; regulatory notification (DORA 4h/72h)'},
-      {t:'Recovery & Lessons Learned', d:'Service restoration; post-incident review; control enhancement; DORA incident reporting submission'}
+    id:'isrisk', abbr:'IS Risk', name:'Information Security Risk Management', icon:'ti-shield-lock', color:'#0F766E',
+    sdesc:'Protecting information assets against cyber threats — threat intel, SOC, vulnerability and incident management under BAIT and DORA.',
+    intro:'Information Security Risk Management (IS Risk) protects the bank\'s information assets — data, systems and processes — from cyber threats, unauthorised access and technology failures. For DACH banks, the primary framework is BaFin BAIT in Germany, FINMA Circular 2023/1 on operational risks in Switzerland, and DORA (applying to all EU credit institutions from January 2025 with harmonised ICT risk requirements). DORA Threat-Led Penetration Testing (TLPT) under Art.26 is mandatory for significant institutions from 2025.',
+    regShort:['BAIT','DORA','DORA Art.26 (TLPT)','NIS2','ISO 27001:2022','FINMA Circ. 2023/1'],
+    lanes:[
+      {key:'ci',label:'IT Security / CISO (2LoD)',type:'it',role:'CISO · Information Security'},
+      {key:'fb',label:'Business Unit / IT Operations (1LoD)',type:'business',role:'IT Operations · 1LoD'},
+      {key:'soc',label:'Security Operations Centre (SOC)',type:'compliance',role:'SOC Analyst (Tier 1–3)'},
+      {key:'rm',label:'Risk Management (2LoD)',type:'risk',role:'Risk Manager · 2LoD'},
+      {key:'ir',label:'Internal Audit (3LoD)',type:'audit',role:'Auditor · Internal Audit',note:'Annual IS audit and review of BAIT/DORA conformity.'},
+      {key:'ex',label:'Regulator / External',type:'extern',role:'BaFin / BSI · External',note:'BaFin/BSI notifications (DORA Art.19), TLPT scope and the ECB SSM cyber-resilience assessment.'}
     ],
-    ai:[
-      {type:'ML', effort:'High', title:'AI-Powered Threat Detection', d:'ML models trained on network traffic, user behaviour, and system logs to detect anomalous patterns indicative of intrusion, insider threat, or data exfiltration, improving detection accuracy and reducing mean time to detect (MTTD) compared to rule-based SIEM approaches.'},
-      {type:'ML', effort:'Medium', title:'Automated Vulnerability Prioritisation', d:'ML models that combine CVSS scores, asset criticality, exploitability data, and threat intelligence feeds to prioritise vulnerability remediation, ensuring limited patching resources are directed at the highest-impact exposures first.'},
-      {type:'Automation', effort:'Medium', title:'AI Incident Triage & Response', d:'Automated triage of security alerts using ML classification to distinguish true positives from false positives, route confirmed incidents to appropriate response playbooks, and draft initial incident notifications, reducing analyst alert fatigue.'},
-      {type:'Analytics', effort:'Medium', title:'Behavioural Analytics', d:'User and Entity Behaviour Analytics (UEBA) models establishing behavioural baselines for users, devices, and applications, detecting deviations that may indicate credential compromise, insider threat, or supply chain attack patterns.'}
+    steps:[
+      {n:1,lane:'soc',t:'Threat Intelligence',d:'Continuous monitoring: sector threat feeds (FS-ISAC, BSI situation reports), CVE/NVD feeds, dark-web monitoring, geopolitical risk (Russian APT groups) and BaFin/BSI cyber notifications; threat-actor profiling.',din:'FS-ISAC feeds, BSI security reports, CVE/NVD feeds, OSINT, vendor threat intel',dout:'Weekly threat-intelligence bulletin, threat-actor profiles, IOC feeds for the SIEM, priority vulnerability list',ai:'ML threat correlation and prioritisation; NLP for dark-web monitoring and OSINT analysis.',rg:['DORA Art.11(9)','BAIT Tz.40–41','BSIG §8b']},
+      {n:2,lane:'ci',t:'Asset Classification & IS Risk Assessment',d:'Asset inventory (CMDB): classify by criticality and data sensitivity (public/internal/confidential/strictly confidential); threat-vulnerability mapping; inherent and residual risk; risk heat map.',din:'CMDB (ServiceNow), data-classification register, threat intelligence, vulnerability-scan results',dout:'Information-asset register, IS risk register, risk heat map, critical-asset list',ai:'Automated CMDB enrichment from network discovery; ML-based asset-criticality scoring; automated threat-vulnerability mapping.',rg:['BAIT Tz.10–14','ISO 27001:2022 A.5.9','DORA Art.8']},
+      {n:3,lane:'fb',t:'Security Controls & Architecture',d:'Control implementation: network segmentation (DMZ, VPN, micro-segmentation), IAM/PAM, MFA, encryption (TLS 1.3, AES-256), patch management (≤30 days for critical patches), SIEM (Splunk, Sentinel).',din:'IS risk register, security-architecture standards, vendor security guidelines, regulatory control requirements',dout:'Security-control inventory, SIEM rules, IAM/PAM configuration, network architecture diagrams, patch-status report',ai:'AI-driven IAM anomaly detection (UEBA); automated patch prioritisation using ML risk scoring.',rg:['BAIT Tz.25–39','DORA Art.9','ISO 27001 A.8','NIS2 Art.21']},
+      {n:4,lane:'soc',t:'Continuous Monitoring & SOC',d:'24/7 SIEM monitoring: log aggregation (firewall, EDR, IAM, application), correlation-based alerting, Tier 1/2/3 triage, threat hunting; anomaly detection; DLP; insider-threat detection (SLAs: T1 15 min, T2 1h, T3 4h).',din:'SIEM log streams (network, endpoint, application, cloud), threat-intel IOCs, UEBA baselines',dout:'Security alerts, incident tickets, SOC daily report, threat-hunting findings, monthly KPI dashboard',ai:'ML anomaly detection (UEBA) for insider threat and credential compromise; AI alert triage to cut false positives; automated playbook execution.',rg:['BAIT Tz.41–43','DORA Art.10','ISO 27001 A.8.16','NIS2 Art.21(d)']},
+      {n:5,lane:'ci',t:'Vulnerability Management',d:'Vulnerability scanning (weekly network, daily critical systems); CVSS prioritisation; DORA-compliant TLPT (min. 3-year cycle); pen tests for new systems; vendor patch coordination; zero-day response.',din:'Scanner output (Tenable, Qualys, Rapid7), CVE/NVD feeds, TLPT scope from BaFin, system inventory',dout:'Vulnerability report, prioritised remediation list, TLPT report (BaFin submission), patching evidence',ai:'ML vulnerability prioritisation using the Exploit Prediction Scoring System (EPSS); automated remediation-ticket creation.',rg:['DORA Art.26','BAIT Tz.44–46','ISO 27001 A.8.8']},
+      {n:6,lane:'soc',t:'Security Incident Response',d:'Incident response: detection → triage → containment → eradication → recovery → documentation; DORA notification to BaFin (4h initial, 72h intermediate, 1 month final); crisis communication for material incidents.',din:'SOC alert, incident-classification criteria (DORA severity), BCP/IR playbooks, forensic tools',dout:'Incident timeline, containment actions, BaFin notification (4h/72h/1 month), forensic report, press statement (if material)',ai:'AI-assisted incident classification against DORA severity criteria; automated notification drafting; ML-driven containment recommendation.',rg:['DORA Art.19–20','BAIT Tz.47–50','BSIG §8b','NIS2 Art.23']},
+      {n:7,lane:'fb',t:'Recovery & Post-Incident Review',d:'Recovery: system restoration per DRP, validation testing before resumption, root cause analysis, control-gap remediation; post-incident review (within 30 days for major incidents); TLPT remediation; lessons learned into BCM.',din:'Incident report, DRP runbooks, forensic findings, BaFin correspondence, TLPT findings',dout:'Recovery-test evidence, root-cause analysis, remediation action plan, DORA final incident report, updated runbooks',ai:'Automated recovery-validation testing; GenAI lessons-learned synthesis; AI control-gap analysis.',rg:['DORA Art.17(4)','BAIT Tz.47','ISO 27001 A.5.26']},
+      {n:8,lane:'rm',t:'IS Risk Reporting',d:'Reporting: monthly IS risk dashboard to CISO/CRO; quarterly Risk Committee report; annual BAIT/DORA self-assessment; BaFin/BSI incident register; annual IS audit; ECB SSM cyber assessment.',din:'SOC metrics, incident register, vulnerability status, TLPT results, control-testing evidence',dout:'Monthly KPI dashboard, Risk Committee paper, BAIT self-assessment, annual BaFin IS report, ECB SSM questionnaire',ai:'Automated KPI aggregation and dashboard generation; AI-generated regulatory report narratives.',rg:['DORA Art.6(5)','BAIT Tz.6–9','ECB SSM cyber']}
     ],
-    outputs:['Risk register','Vulnerability reports','Incident logs','DORA incident reports','Threat intelligence bulletins','SOC dashboards'],
-    reg:[
-      {t:'DORA Art.26', d:'Threat-led penetration testing (TLPT)'},
-      {t:'DORA Art.19–20', d:'ICT-related incident reporting to competent authorities'},
-      {t:'NIS2 Art.21', d:'Cybersecurity risk management measures'},
-      {t:'ISO 27001:2022 · NIST CSF 2.0', d:'Information security management and cybersecurity frameworks'}
-    ],
-    matrix:{GenAI:'Low', ML:'High', NLP:'Low', Automation:'High', Analytics:'High'}
+    matrix:{GenAI:'Low', ML:'High', NLP:'Medium', Automation:'High', Analytics:'High'}
   }
 ];
 
 var MATRIX_COLS = ['GenAI','ML','NLP','Automation','Analytics'];
 
-/* helper: hex -> rgba */
+/* helper */
 function hexRgba(hex,a){var h=hex.replace('#','');var r=parseInt(h.substr(0,2),16),g=parseInt(h.substr(2,2),16),b=parseInt(h.substr(4,2),16);return 'rgba('+r+','+g+','+b+','+a+')';}
 function styleVars(p){return '--pc:'+p.color+';--pcGlow:'+hexRgba(p.color,.12)+';--pcBorder:'+hexRgba(p.color,.35)+';';}
-function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function esc(s){return (''+s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function laneStyle(t){return LANE_STYLE[t]||LANE_STYLE.business;}
 
 /* ============================================================
    RENDER: UNIVERSE GRID
@@ -695,8 +751,8 @@ function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g
       +'<div class="uni-ico"><i class="ti '+p.icon+'"></i></div>'
       +'<span class="uni-badge">'+esc(p.abbr)+'</span>'
       +'<h3>'+esc(p.name)+'</h3>'
-      +'<p class="uni-desc">'+esc(p.desc)+'</p>'
-      +'<div class="uni-ai"><i class="ti ti-sparkles"></i> '+p.ai.length+' AI opportunities</div>'
+      +'<p class="uni-desc">'+esc(p.sdesc)+'</p>'
+      +'<div class="uni-ai"><i class="ti ti-stack-2"></i> '+p.steps.length+' steps · 5 data layers</div>'
       +'</div>';
   });
   document.getElementById('universeGrid').innerHTML=html;
@@ -709,52 +765,164 @@ function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g
 })();
 
 /* ============================================================
-   RENDER: PROCESS DETAIL
+   RENDER: PROCESS DETAIL (intro + toggles + swimlane)
    ============================================================ */
 (function(){
   var html='';
   PROCESSES.forEach(function(p){
-    var flow='';
-    p.flow.forEach(function(s,i){
-      flow+='<div class="flow-step"><div class="flow-num">'+(i+1)+'</div><div class="flow-txt"><h5>'+esc(s.t)+'</h5><p>'+esc(s.d)+'</p></div></div>';
-    });
-    var ai='';
-    p.ai.forEach(function(o){
-      ai+='<div class="ai-op"><div class="ai-op-top"><span class="ai-type '+o.type+'">'+o.type+'</span>'
-        +'<span class="effort '+o.effort+'">'+o.effort+' effort</span></div>'
-        +'<h5>'+esc(o.title)+'</h5><p>'+esc(o.d)+'</p></div>';
-    });
-    var outs='';
-    p.outputs.forEach(function(o){outs+='<li>'+esc(o)+'</li>';});
-    var regs='';
-    p.reg.forEach(function(r){regs+='<div class="reg-item"><span class="rt">'+esc(r.t)+'</span><span class="rd">'+esc(r.d)+'</span></div>';});
     var pills='';
     p.regShort.forEach(function(r){pills+='<span class="reg-pill">'+esc(r)+'</span>';});
+
+    /* lane lookup + used-lane detection */
+    var laneIndex={}, used={};
+    p.lanes.forEach(function(l,i){laneIndex[l.key]=i;});
+    p.steps.forEach(function(s){used[s.lane]=true;});
+
+    var cells='';
+    /* lane bands + labels + empty-lane notes */
+    p.lanes.forEach(function(l,i){
+      var st=laneStyle(l.type), row=(i+1);
+      var lv='--laneBg:'+st.bg+';--laneBd:'+st.bd+';';
+      cells+='<div class="lane-band" style="grid-column:1 / -1;grid-row:'+row+';'+lv+'"></div>';
+      cells+='<div class="lane-label" style="grid-column:1;grid-row:'+row+';'+lv+'">'
+        +'<span class="ll-chip"></span>'
+        +'<span class="ll-name">'+esc(l.label)+'</span>'
+        +'<span class="ll-role">'+esc(l.role)+'</span>'
+        +'</div>';
+      if(!used[l.key] && l.note){
+        cells+='<div class="lane-note" style="grid-column:2 / -1;grid-row:'+row+';'+lv+'">'
+          +'<i class="ti ti-eye-check"></i>'+esc(l.note)+'</div>';
+      }
+    });
+
+    /* step cards */
+    p.steps.forEach(function(s,idx){
+      var st=laneStyle(p.lanes[laneIndex[s.lane]].type);
+      var row=laneIndex[s.lane]+1, col=s.n+1;
+      var lv='--laneBg:'+st.bg+';--laneBd:'+st.bd+';';
+      var hasAi=s.ai?' has-ai':'';
+      /* handoff to next actor */
+      var handoff='';
+      if(idx<p.steps.length-1){
+        var nx=p.steps[idx+1];
+        if(nx.lane!==s.lane){
+          handoff='<div class="step-handoff"><i class="ti ti-arrow-down"></i> Handoff to: '+esc(p.lanes[laneIndex[nx.lane]].label)+'</div>';
+        }
+      }
+      var roles=s.r?s.r:p.lanes[laneIndex[s.lane]].role;
+      var data='';
+      if(s.din)data+='<span class="data-in"><b>IN:</b> '+esc(s.din)+'</span>';
+      if(s.dout)data+='<span class="data-out"><b>OUT:</b> '+esc(s.dout)+'</span>';
+      var regs='';
+      (s.rg||[]).forEach(function(r){regs+='<span class="reg-tag">'+esc(r)+'</span>';});
+      var aiov=s.ai?'<div class="step-ai-overlay"><i class="ti ti-sparkles"></i><span>'+esc(s.ai)+'</span></div>':'';
+
+      cells+='<div class="step-card'+hasAi+'" data-step="'+s.n+'" data-color="'+st.bd+'" '
+        +'style="grid-column:'+col+';grid-row:'+row+';'+lv+'">'
+        +'<div class="step-header"><span class="step-num">'+s.n+'</span><span class="step-title">'+esc(s.t)+'</span></div>'
+        +'<div class="step-desc">'+esc(s.d)+'</div>'
+        +'<div class="step-roles"><i class="ti ti-user"></i><span>'+esc(roles)+'</span></div>'
+        +'<div class="step-data">'+data+'</div>'
+        +aiov
+        +'<div class="step-regs">'+regs+'</div>'
+        +handoff
+        +'</div>';
+    });
 
     html+='<div class="proc reveal" id="proc-'+p.id+'" style="'+styleVars(p)+'">'
       +'<div class="proc-head">'
         +'<div class="proc-ico"><i class="ti '+p.icon+'"></i></div>'
         +'<div class="proc-head-body">'
           +'<div class="proc-title-row"><h3>'+esc(p.name)+'</h3><span class="proc-abbr">'+esc(p.abbr)+'</span></div>'
-          +'<p class="proc-desc">'+esc(p.desc)+'</p>'
+          +'<p class="proc-desc">'+esc(p.intro)+'</p>'
           +'<div class="reg-tags">'+pills+'</div>'
         +'</div>'
       +'</div>'
       +'<div class="proc-body">'
-        +'<div class="block-label"><i class="ti ti-timeline-event"></i> Process Flow <span class="ln"></span></div>'
-        +'<div class="flow">'+flow+'</div>'
-        +'<div class="block-label"><i class="ti ti-sparkles"></i> AI Opportunities <span class="ln"></span></div>'
-        +'<div class="ai-grid">'+ai+'</div>'
-        +'<div class="block-label"><i class="ti ti-checklist"></i> Key Outputs & Regulatory Alignment <span class="ln"></span></div>'
-        +'<div class="two-col">'
-          +'<div class="col-box"><h6><i class="ti ti-file-text"></i> Key Deliverables</h6><ul class="out-list">'+outs+'</ul></div>'
-          +'<div class="col-box"><h6><i class="ti ti-gavel"></i> Regulatory Frameworks</h6><div class="reg-list">'+regs+'</div></div>'
+        +'<div class="block-label"><i class="ti ti-layout-board-split"></i> Swimlane Process Diagram <span class="ln"></span></div>'
+        +'<div class="toggle-bar" data-swim="swim-'+p.id+'">'
+          +'<span class="tgl-lead">Layers</span>'
+          +'<span class="tgl locked"><span class="dot"></span><i class="ti ti-timeline-event"></i> Process Flow</span>'
+          +'<button type="button" class="tgl" data-layer="roles"><span class="dot"></span><i class="ti ti-users"></i> Roles &amp; Ownership</button>'
+          +'<button type="button" class="tgl" data-layer="data"><span class="dot"></span><i class="ti ti-database"></i> Data &amp; Systems</button>'
+          +'<button type="button" class="tgl" data-layer="ai"><span class="dot"></span><i class="ti ti-sparkles"></i> AI Opportunities</button>'
+          +'<button type="button" class="tgl" data-layer="regs"><span class="dot"></span><i class="ti ti-gavel"></i> Regulatory Touch Points</button>'
         +'</div>'
+        +'<div class="swim-hint"><i class="ti ti-arrows-horizontal"></i> Scroll horizontally to follow the full process flow · layers are additive and can be combined</div>'
+        +'<div class="swim-wrap"><div class="swim" id="swim-'+p.id+'" style="--cols:'+p.steps.length+'">'+cells+'</div></div>'
       +'</div>'
     +'</div>';
   });
   document.getElementById('processDetail').innerHTML=html;
+
+  /* toggle handlers */
+  document.querySelectorAll('.toggle-bar').forEach(function(bar){
+    var swim=document.getElementById(bar.getAttribute('data-swim'));
+    bar.querySelectorAll('.tgl[data-layer]').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var layer=btn.getAttribute('data-layer');
+        var on=btn.classList.toggle('active');
+        swim.classList.toggle('show-'+layer,on);
+        drawConnectors(swim);
+      });
+    });
+  });
 })();
+
+/* ============================================================
+   SWIMLANE CONNECTORS (orthogonal SVG arrows between steps)
+   ============================================================ */
+function drawConnectors(swim){
+  if(!swim)return;
+  var NS='http://www.w3.org/2000/svg';
+  var old=swim.querySelector('.conn-layer'); if(old)old.parentNode.removeChild(old);
+  var cards=[].slice.call(swim.querySelectorAll('.step-card'));
+  if(cards.length<2)return;
+  cards.sort(function(a,b){return (+a.dataset.step)-(+b.dataset.step);});
+  var w=swim.scrollWidth, h=swim.scrollHeight;
+  var svg=document.createElementNS(NS,'svg');
+  svg.setAttribute('class','conn-layer');
+  svg.setAttribute('width',w); svg.setAttribute('height',h);
+  svg.setAttribute('viewBox','0 0 '+w+' '+h);
+  var defs=document.createElementNS(NS,'defs'); svg.appendChild(defs);
+  var markers={};
+  function marker(color){
+    if(markers[color])return markers[color];
+    var id='cm'+Object.keys(markers).length+'_'+swim.id;
+    var m=document.createElementNS(NS,'marker');
+    m.setAttribute('id',id);m.setAttribute('markerWidth','10');m.setAttribute('markerHeight','10');
+    m.setAttribute('refX','7');m.setAttribute('refY','3.5');m.setAttribute('orient','auto');m.setAttribute('markerUnits','userSpaceOnUse');
+    var pa=document.createElementNS(NS,'path');pa.setAttribute('d','M0,0 L7,3.5 L0,7 Z');pa.setAttribute('fill',color);
+    m.appendChild(pa);defs.appendChild(m);markers[color]=id;return id;
+  }
+  for(var i=0;i<cards.length-1;i++){
+    var a=cards[i], b=cards[i+1];
+    var color=a.getAttribute('data-color')||'#C77BFF';
+    var x1=a.offsetLeft+a.offsetWidth, y1=a.offsetTop+30;
+    var x2=b.offsetLeft, y2=b.offsetTop+30;
+    var midX=(x1+x2)/2, r=9, d;
+    if(Math.abs(y2-y1)<3){
+      d='M'+x1+' '+y1+' H'+(x2-2);
+    }else{
+      var dir=y2>y1?1:-1;
+      d='M'+x1+' '+y1
+        +' H'+(midX-r)
+        +' Q'+midX+' '+y1+' '+midX+' '+(y1+dir*r)
+        +' V'+(y2-dir*r)
+        +' Q'+midX+' '+y2+' '+(midX+r)+' '+y2
+        +' H'+(x2-2);
+    }
+    var path=document.createElementNS(NS,'path');
+    path.setAttribute('d',d);path.setAttribute('fill','none');
+    path.setAttribute('stroke',color);path.setAttribute('stroke-width','2');
+    path.setAttribute('stroke-opacity','.5');path.setAttribute('marker-end','url(#'+marker(color)+')');
+    svg.appendChild(path);
+  }
+  swim.insertBefore(svg,swim.firstChild);
+}
+function recomputeConnectors(){
+  document.querySelectorAll('.swim').forEach(function(s){drawConnectors(s);});
+}
 
 /* ============================================================
    RENDER: AI MATRIX
@@ -767,7 +935,7 @@ function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g
     MATRIX_COLS.forEach(function(c){
       var lvl=p.matrix[c];
       var label=lvl==='High'?'H':lvl==='Medium'?'M':'';
-      html+='<td title="'+esc(p.abbr)+' · '+c+' — '+lvl+' impact"><div class="mx-cell"><span class="mx-chip '+lvl+'">'+label+'</span></div></td>';
+      html+='<td title="'+esc(p.abbr)+' · '+c+' — '+lvl+'"><div class="mx-cell"><span class="mx-chip '+lvl+'">'+label+'</span></div></td>';
     });
     html+='</tr>';
   });
@@ -779,32 +947,32 @@ function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g
    ============================================================ */
 (function(){
   var svg=document.getElementById('icSvg');
-  var C={};PROCESSES.forEach(function(p){C[p.abbr.replace(' ','')]=p.color;});
+  var C={};PROCESSES.forEach(function(p){C[p.abbr.replace(/\s/g,'')]=p.color;});
   var nodes={
-    TPRM:{x:290,y:90,c:C.TPRM,label:'TPRM'},
-    ISRisk:{x:720,y:90,c:C.ISRisk,label:'IS Risk'},
-    BCM:{x:120,y:300,c:C.BCM,label:'BCM'},
-    RCSA:{x:360,y:300,c:C.RCSA,label:'RCSA',hub:true},
+    TPRM:{x:250,y:95,c:C.TPRM,label:'TPRM'},
+    ISRisk:{x:770,y:95,c:C.ISRisk,label:'IS Risk'},
+    BCM:{x:110,y:300,c:C.BCM,label:'BCM'},
+    RCSA:{x:365,y:300,c:C.RCSA,label:'RCSA',hub:true},
     ORM:{x:720,y:300,c:C.ORM,label:'ORM',hub:true},
-    MRM:{x:120,y:500,c:C.MRM,label:'MRM'},
-    Compliance:{x:430,y:500,c:C.Compliance,label:'Compliance'},
-    PKS:{x:820,y:500,c:C.PKS,label:'PKS'}
+    MRM:{x:165,y:505,c:C.MRM,label:'MRM'},
+    Compliance:{x:480,y:510,c:C.Compliance,label:'Compliance'},
+    PKS:{x:850,y:505,c:C.PKS,label:'PKS'}
   };
   var edges=[
-    {f:'RCSA',t:'ORM',l:'incident data feeds risk register',curve:0},
-    {f:'TPRM',t:'ORM',l:'vendor incidents feed loss DB',curve:-40},
-    {f:'Compliance',t:'PKS',l:'reg changes trigger policy updates',curve:-40},
-    {f:'MRM',t:'RCSA',l:'model failures are op-risk events',curve:20},
-    {f:'ISRisk',t:'ORM',l:'cyber incidents feed loss DB',curve:0},
-    {f:'BCM',t:'RCSA',l:'continuity risks feed register',curve:0},
-    {f:'BCM',t:'ISRisk',l:'ICT recovery aligns with cyber resilience',curve:-60},
-    {f:'Compliance',t:'TPRM',l:'obligations drive vendor requirements',curve:60}
+    {f:'ORM',t:'RCSA',l:'Loss data triggers RCSA update',curve:0},
+    {f:'TPRM',t:'ORM',l:'Third-party incidents as op-risk events',curve:-34},
+    {f:'Compliance',t:'PKS',l:'Reg changes trigger policy review',curve:44},
+    {f:'MRM',t:'RCSA',l:'Model failures = op-risk events',curve:22},
+    {f:'ISRisk',t:'ORM',l:'Cyber incidents feed loss database',curve:-30},
+    {f:'ISRisk',t:'BCM',l:'ICT DRP is part of the BCM programme',curve:70},
+    {f:'BCM',t:'RCSA',l:'Continuity risks in the RCSA universe',curve:0},
+    {f:'Compliance',t:'TPRM',l:'Regulation defines TPRM minimum standards',curve:66}
   ];
   var NS='http://www.w3.org/2000/svg';
   function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
-  var R=36;
+  function hexRgbaJS(hex,al){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+al+')';}
+  var R=38;
 
-  // defs: arrow markers per edge color
   var defs=el('defs',{});
   edges.forEach(function(e,i){
     var col=nodes[e.f].c;
@@ -814,7 +982,17 @@ function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g
   });
   svg.appendChild(defs);
 
-  // edges (curved) with labels, trimmed to node radius
+  /* PKS -> alle : faint dashed radial lines */
+  for(var key in nodes){
+    if(key==='PKS')continue;
+    var a0=nodes.PKS,b0=nodes[key];
+    var dx0=b0.x-a0.x,dy0=b0.y-a0.y,len0=Math.sqrt(dx0*dx0+dy0*dy0);
+    var ux0=dx0/len0,uy0=dy0/len0;
+    svg.appendChild(el('line',{x1:a0.x+ux0*R,y1:a0.y+uy0*R,x2:b0.x-ux0*R,y2:b0.y-uy0*R,
+      stroke:nodes.PKS.c,'stroke-width':'1','stroke-opacity':'.16','stroke-dasharray':'3 6'}));
+  }
+
+  /* labelled edges */
   edges.forEach(function(e,i){
     var a=nodes[e.f],b=nodes[e.t],col=a.c;
     var dx=b.x-a.x,dy=b.y-a.y,len=Math.sqrt(dx*dx+dy*dy);
@@ -824,40 +1002,46 @@ function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g
     var nx=-uy,ny=ux;var cx=mx+nx*e.curve,cy=my+ny*e.curve;
     var path='M'+x1+','+y1+' Q'+cx+','+cy+' '+x2+','+y2;
     svg.appendChild(el('path',{d:path,fill:'none',stroke:col,'stroke-width':'2','stroke-opacity':'.55','marker-end':'url(#arr'+i+')'}));
-    // label at curve midpoint
     var lx=(x1+2*cx+x2)/4,ly=(y1+2*cy+y2)/4;
     var t=el('text',{x:lx,y:ly-3,class:'ic-flow-label'});
-    // wrap long labels into two lines
     var words=e.l.split(' ');var line1=[],line2=[],half=Math.ceil(words.length/2);
     words.forEach(function(w,wi){(wi<half?line1:line2).push(w);});
-    var bg=el('rect',{x:lx-Math.max(line1.join(' ').length,line2.join(' ').length)*2.6-6,y:ly-16,width:Math.max(line1.join(' ').length,line2.join(' ').length)*5.2+12,height:'26',rx:'5',fill:'#0F0F22','fill-opacity':'.82',stroke:hexRgbaJS(col,.4)});
-    svg.appendChild(bg);
+    var maxlen=Math.max(line1.join(' ').length,line2.join(' ').length);
+    svg.appendChild(el('rect',{x:lx-maxlen*2.6-6,y:ly-16,width:maxlen*5.2+12,height:'26',rx:'5',fill:'#0F0F22','fill-opacity':'.85',stroke:hexRgbaJS(col,.4)}));
     var ts1=el('tspan',{x:lx,dy:'0'});ts1.textContent=line1.join(' ');
     var ts2=el('tspan',{x:lx,dy:'12'});ts2.textContent=line2.join(' ');
     t.appendChild(ts1);t.appendChild(ts2);
     svg.appendChild(t);
   });
 
-  function hexRgbaJS(hex,al){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+al+')';}
-
-  // nodes on top
-  for(var key in nodes){
-    var n=nodes[key];
+  /* nodes */
+  for(var k2 in nodes){
+    var n=nodes[k2];
     var g=el('g',{});
     if(n.hub){g.appendChild(el('circle',{cx:n.x,cy:n.y,r:R+7,fill:'none',stroke:n.c,'stroke-opacity':'.3','stroke-width':'1.5'}));}
     g.appendChild(el('circle',{cx:n.x,cy:n.y,r:R,fill:hexRgbaJS(n.c,.18),stroke:n.c,'stroke-width':'2.2'}));
     var lbl=el('text',{x:n.x,y:n.y,class:'ic-node-label','font-size':n.label.length>5?'11':'14'});
-    lbl.textContent=n.label;
-    g.appendChild(lbl);
+    lbl.textContent=n.label;g.appendChild(lbl);
     if(n.hub){var hb=el('text',{x:n.x,y:n.y+R+15,class:'ic-flow-label','font-weight':'700',fill:n.c});hb.textContent='HUB';g.appendChild(hb);}
     svg.appendChild(g);
   }
 
-  // legend
+  /* legend */
+  var LEG=[
+    {c:C.ORM,ft:'ORM → RCSA',tx:'Loss event data triggers RCSA re-assessment'},
+    {c:C.TPRM,ft:'TPRM → ORM',tx:'Third-party incidents are recorded as operational-risk events'},
+    {c:C.Compliance,ft:'Compliance → PKS',tx:'Regulatory changes trigger policy review'},
+    {c:C.MRM,ft:'MRM → RCSA',tx:'Model failures are operational-risk events (CPBP/EDPM)'},
+    {c:C.ISRisk,ft:'IS Risk → ORM',tx:'Cyber incidents feed the operational loss database'},
+    {c:C.ISRisk,ft:'IS Risk → BCM',tx:'The ICT DRP is an integral part of the BCM programme'},
+    {c:C.BCM,ft:'BCM → RCSA',tx:'Continuity risks are part of the RCSA universe'},
+    {c:C.Compliance,ft:'Compliance → TPRM',tx:'Regulatory requirements define TPRM minimum standards'},
+    {c:C.MRM,ft:'MRM → Compliance',tx:'Model approvals must be reported to the regulator'},
+    {c:C.PKS,ft:'PKS → all',tx:'Policies set minimum standards for all processes'}
+  ];
   var legHtml='';
-  edges.forEach(function(e){
-    var col=nodes[e.f].c;
-    legHtml+='<div class="ic-leg"><span class="fromto" style="color:'+col+'">'+nodes[e.f].label+' → '+nodes[e.t].label+'</span><span>'+esc(e.l)+'</span></div>';
+  LEG.forEach(function(e){
+    legHtml+='<div class="ic-leg"><span class="fromto" style="color:'+e.c+'">'+e.ft+'</span><span>'+esc(e.tx)+'</span></div>';
   });
   document.getElementById('icLegend').innerHTML=legHtml;
 })();
@@ -870,7 +1054,7 @@ function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g
     entries.forEach(function(en){
       if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
     });
-  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  },{threshold:.1,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
 
   var mx=document.getElementById('matrix');
@@ -879,6 +1063,13 @@ function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g
   },{threshold:.2});
   if(mx)mio.observe(mx);
 })();
+
+/* connectors: draw on load, fonts ready, resize */
+window.addEventListener('load',recomputeConnectors);
+if(document.fonts&&document.fonts.ready){document.fonts.ready.then(recomputeConnectors);}
+requestAnimationFrame(function(){requestAnimationFrame(recomputeConnectors);});
+setTimeout(recomputeConnectors,500);
+var _rt;window.addEventListener('resize',function(){clearTimeout(_rt);_rt=setTimeout(recomputeConnectors,160);});
 
 /* ============================================================
    NEURAL NETWORK CANVAS ANIMATION
