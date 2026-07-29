@@ -475,12 +475,13 @@ footer{border-top:1px solid var(--border);background:#06001A;margin-top:20px;}
 /* ---- INTERCONNECT interactive ---- */
 .ic-wrap{position:relative;}
 #icSvg .ic-node-g{cursor:pointer;}
-#icSvg .ic-edge-path,#icSvg .ic-edge-bg,#icSvg .ic-edge-txt{transition:opacity .25s;}
-#icSvg.focused .ic-edge-path{opacity:.08!important;}
-#icSvg.focused .ic-edge-bg,#icSvg.focused .ic-edge-txt{opacity:.07!important;}
-#icSvg.focused .ic-node-g{opacity:.25;transition:opacity .25s;}
-#icSvg.focused .ic-edge-path.lit{opacity:.9!important;}
-#icSvg.focused .ic-edge-bg.lit,#icSvg.focused .ic-edge-txt.lit{opacity:1!important;}
+#icSvg .ic-edge-g .ic-edge-path{transition:stroke-opacity .2s,stroke-width .2s;}
+#icSvg .ic-edge-g:hover .ic-edge-path{stroke-opacity:1!important;stroke-width:3!important;}
+#icSvg .ic-edge-g,#icSvg .ic-node-g{transition:opacity .25s;}
+#icSvg.focused .ic-pks-radials{opacity:.04!important;}
+#icSvg.focused .ic-edge-g{opacity:.09;}
+#icSvg.focused .ic-node-g{opacity:.25;}
+#icSvg.focused .ic-edge-g.lit{opacity:1;}
 #icSvg.focused .ic-node-g.lit{opacity:1;}
 .ic-detail{display:none;border-top:1px solid rgba(161,0,255,.2);padding:18px 20px;background:rgba(161,0,255,.04);}
 .ic-detail.open{display:grid;grid-template-columns:52px 1fr 1fr;gap:12px 18px;}
@@ -1277,81 +1278,78 @@ function recomputeConnectors(){
   var svg=document.getElementById('icSvg');
   var icDetail=document.getElementById('icDetail');
   var NS='http://www.w3.org/2000/svg';
-  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+  function svgEl(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
   function hexRgbaJS(hex,al){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+al+')';}
 
-  /* Build lookup from PROCESSES */
   var C={};
   PROCESSES.forEach(function(p){C[p.abbr.replace(/\s/g,'')]=p.color;});
   function procByAbbr(a){for(var i=0;i<PROCESSES.length;i++){if(PROCESSES[i].abbr.replace(/\s/g,'')===a||PROCESSES[i].abbr===a)return PROCESSES[i];}return null;}
 
-  /* Node positions — hub-centric layout (viewBox 1000x640) */
   var nodes={
-    TPRM:  {x:165,y:120,c:C.TPRM,   label:'TPRM',  abbr:'TPRM'},
-    Compliance:{x:490,y:85, c:C.Compliance,label:'Compliance',abbr:'Compliance'},
-    ISRisk:{x:830,y:120,c:C.ISRisk, label:'IS Risk',abbr:'ISRisk'},
-    BCM:   {x:100,y:350,c:C.BCM,    label:'BCM',   abbr:'BCM'},
-    RCSA:  {x:350,y:310,c:C.RCSA,   label:'RCSA',  abbr:'RCSA',  hub:true},
-    ORM:   {x:630,y:310,c:C.ORM,    label:'ORM',   abbr:'ORM',   hub:true},
-    PKS:   {x:880,y:350,c:C.PKS,    label:'PKS',   abbr:'PKS'},
-    MRM:   {x:250,y:520,c:C.MRM,    label:'MRM',   abbr:'MRM'}
+    TPRM:      {x:165,y:120,c:C.TPRM,       label:'TPRM',       full:'Third-Party Risk Mgmt'},
+    Compliance:{x:490,y:85, c:C.Compliance,  label:'Compliance', full:'Regulatory Compliance'},
+    ISRisk:    {x:830,y:120,c:C.ISRisk,      label:'IS Risk',    full:'Information Security Risk'},
+    BCM:       {x:100,y:350,c:C.BCM,         label:'BCM',        full:'Business Continuity Mgmt'},
+    RCSA:      {x:355,y:310,c:C.RCSA,        label:'RCSA',       full:'Risk & Control Self-Assessment', hub:true},
+    ORM:       {x:630,y:310,c:C.ORM,         label:'ORM',        full:'Operational Risk Mgmt',          hub:true},
+    PKS:       {x:875,y:350,c:C.PKS,         label:'PKS',        full:'Policy & Key Standards'},
+    MRM:       {x:250,y:520,c:C.MRM,         label:'MRM',        full:'Model Risk Management'}
   };
 
-  /* Edges: f=from, t=to, l=label, curve=offset, dash=dashed governance line */
   var edges=[
-    {f:'ORM',       t:'RCSA',       l:'Loss events trigger RCSA',          curve:0,  dash:false},
-    {f:'TPRM',      t:'ORM',        l:'Third-party incidents to op-risk', curve:-28,dash:false},
-    {f:'Compliance',t:'PKS',        l:'Reg. changes to policy review',   curve:40, dash:true},
-    {f:'MRM',       t:'RCSA',       l:'Model failures to op-risk events',curve:28, dash:false},
-    {f:'ISRisk',    t:'ORM',        l:'Cyber incidents to loss database', curve:-28,dash:false},
-    {f:'ISRisk',    t:'BCM',        l:'ICT DRP BCM programme',         curve:60, dash:true},
-    {f:'BCM',       t:'RCSA',       l:'Continuity risks in RCSA universe',   curve:0,  dash:false},
-    {f:'Compliance',t:'TPRM',       l:'Regulation sets TPRM standards',       curve:55, dash:true},
-    {f:'TPRM',      t:'BCM',        l:'Vendor failure BCM scenarios',  curve:0,  dash:false},
-    {f:'BCM',       t:'ORM',        l:'Continuity events to loss records',curve:-22,dash:false},
-    {f:'Compliance',t:'RCSA',       l:'Reg. changes to scope update',      curve:50, dash:true},
-    {f:'Compliance',t:'MRM',        l:'EU AI Act to model governance',     curve:44, dash:true},
-    {f:'ORM',       t:'MRM',        l:'CPBP model risk taxonomy',           curve:-22,dash:true},
-    {f:'PKS',       t:'RCSA',       l:'Policy change to control reassessment',curve:38,dash:true},
-    {f:'ISRisk',    t:'TPRM',       l:'IS risk feeds ICT third-party assessment',curve:-50,dash:false}
+    {f:'ORM',       t:'RCSA',       l:'Operational loss events trigger RCSA re-assessment',                curve:0,   dash:false},
+    {f:'TPRM',      t:'ORM',        l:'Third-party incidents recorded as operational-risk events',          curve:-28, dash:false},
+    {f:'Compliance',t:'PKS',        l:'Regulatory changes trigger policy review and update',                curve:40,  dash:true},
+    {f:'MRM',       t:'RCSA',       l:'Model failures are operational-risk events (CPBP/EDPM)',             curve:28,  dash:false},
+    {f:'ISRisk',    t:'ORM',        l:'Cyber incidents feed the operational loss database',                 curve:-28, dash:false},
+    {f:'ISRisk',    t:'BCM',        l:'ICT disaster recovery plan is integral to BCM programme',            curve:60,  dash:true},
+    {f:'BCM',       t:'RCSA',       l:'Continuity risks are part of the RCSA universe',                    curve:0,   dash:false},
+    {f:'Compliance',t:'TPRM',       l:'Regulation defines TPRM minimum standards (DORA, KWG)',             curve:55,  dash:true},
+    {f:'TPRM',      t:'BCM',        l:'Vendor failure scenarios feed BCM contingency planning',            curve:-20, dash:false},
+    {f:'BCM',       t:'ORM',        l:'Continuity events generate operational loss records',               curve:-22, dash:false},
+    {f:'Compliance',t:'RCSA',       l:'Regulatory changes require RCSA scope update',                      curve:50,  dash:true},
+    {f:'Compliance',t:'MRM',        l:'EU AI Act mandates model governance requirements',                  curve:44,  dash:true},
+    {f:'ORM',       t:'MRM',        l:'CPBP event type connects op-risk and model risk taxonomies',        curve:-22, dash:true},
+    {f:'PKS',       t:'RCSA',       l:'Policy changes require control reassessment',                       curve:38,  dash:true},
+    {f:'ISRisk',    t:'TPRM',       l:'IS risk assessment feeds third-party ICT security reviews',         curve:-50, dash:false}
   ];
 
   var R=36;
-  var defs=el('defs',{});
+  var defs=svgEl('defs',{});
 
-  /* Glow filter for hub nodes */
-  var filt=el('filter',{id:'hubGlow',x:'-30%',y:'-30%',width:'160%',height:'160%'});
-  var fe=el('feGaussianBlur',{stdDeviation:'4',result:'blur'});
-  var feMerge=el('feMerge',{});
-  var feM1=el('feMergeNode',{in:'blur'});
-  var feM2=el('feMergeNode',{in:'SourceGraphic'});
-  feMerge.appendChild(feM1);feMerge.appendChild(feM2);
-  filt.appendChild(fe);filt.appendChild(feMerge);
-  defs.appendChild(filt);
+  /* Hub glow filter */
+  var flt=svgEl('filter',{id:'hubGlow',x:'-40%',y:'-40%',width:'180%',height:'180%'});
+  var fltBlur=svgEl('feGaussianBlur',{in:'SourceGraphic',stdDeviation:'5',result:'blur'});
+  var fltMerge=svgEl('feMerge',{});
+  fltMerge.appendChild(svgEl('feMergeNode',{in:'blur'}));
+  fltMerge.appendChild(svgEl('feMergeNode',{in:'SourceGraphic'}));
+  flt.appendChild(fltBlur);flt.appendChild(fltMerge);
+  defs.appendChild(flt);
 
   /* Arrow markers per edge */
   edges.forEach(function(e,i){
-    var col=nodes[e.f].c;
-    var m=el('marker',{id:'arr'+i,markerWidth:'9',markerHeight:'9',refX:'7',refY:'3',orient:'auto',markerUnits:'strokeWidth'});
-    m.appendChild(el('path',{d:'M0,0 L7,3 L0,6 Z',fill:col}));
+    var col=nodes[e.f]?nodes[e.f].c:'#C77BFF';
+    var m=svgEl('marker',{id:'arr'+i,markerWidth:'9',markerHeight:'9',refX:'7',refY:'3',orient:'auto',markerUnits:'strokeWidth'});
+    m.appendChild(svgEl('path',{d:'M0,0 L7,3 L0,6 Z',fill:col}));
     defs.appendChild(m);
   });
   svg.appendChild(defs);
 
-  /* PKS faint radial lines to all other nodes */
-  for(var key in nodes){
-    if(key==='PKS')continue;
-    var a0=nodes.PKS,b0=nodes[key];
-    var dx0=b0.x-a0.x,dy0=b0.y-a0.y,len0=Math.sqrt(dx0*dx0+dy0*dy0);
-    var ux0=dx0/len0,uy0=dy0/len0;
-    var line=el('line',{x1:a0.x+ux0*R,y1:a0.y+uy0*R,x2:b0.x-ux0*R,y2:b0.y-uy0*R,
-      stroke:nodes.PKS.c,'stroke-width':'1','stroke-opacity':'.12','stroke-dasharray':'3 7'});
-    line.classList.add('ic-edge-path');
-    line.setAttribute('data-from','PKS');line.setAttribute('data-to',key);
-    svg.appendChild(line);
+  /* PKS faint governance radials — grouped so focus dims them together */
+  var pksRadials=svgEl('g',{'class':'ic-pks-radials'});
+  for(var rKey in nodes){
+    if(rKey==='PKS')continue;
+    var rA=nodes.PKS,rB=nodes[rKey];
+    var rDx=rB.x-rA.x,rDy=rB.y-rA.y,rLen=Math.sqrt(rDx*rDx+rDy*rDy);
+    var rUx=rDx/rLen,rUy=rDy/rLen;
+    pksRadials.appendChild(svgEl('line',{
+      x1:rA.x+rUx*R,y1:rA.y+rUy*R,x2:rB.x-rUx*R,y2:rB.y-rUy*R,
+      stroke:nodes.PKS.c,'stroke-width':'1','stroke-opacity':'.14','stroke-dasharray':'3 7'
+    }));
   }
+  svg.appendChild(pksRadials);
 
-  /* Labelled edges */
+  /* Directed edges — no inline labels; SVG <title> for hover tooltip */
   edges.forEach(function(e,i){
     var a=nodes[e.f],b=nodes[e.t];
     if(!a||!b)return;
@@ -1359,52 +1357,54 @@ function recomputeConnectors(){
     var dx=b.x-a.x,dy=b.y-a.y,len=Math.sqrt(dx*dx+dy*dy);
     var ux=dx/len,uy=dy/len;
     var x1=a.x+ux*R,y1=a.y+uy*R,x2=b.x-ux*(R+9),y2=b.y-uy*(R+9);
-    var mx=(x1+x2)/2,my=(y1+y2)/2;
-    var nx=-uy,ny=ux;var cx=mx+nx*e.curve,cy=my+ny*e.curve;
+    var midX=(x1+x2)/2,midY=(y1+y2)/2;
+    var nX=-uy,nY=ux;
+    var cx=midX+nX*e.curve,cy=midY+nY*e.curve;
     var pathD='M'+x1+','+y1+' Q'+cx+','+cy+' '+x2+','+y2;
-    var path=el('path',{d:pathD,fill:'none',stroke:col,'stroke-width':e.dash?'1.5':'2',
-      'stroke-opacity':e.dash?'.4':'.55','stroke-dasharray':e.dash?'5 4':'none','marker-end':'url(#arr'+i+')'});
+    var eg=svgEl('g',{'class':'ic-edge-g'});
+    eg.setAttribute('data-from',e.f);eg.setAttribute('data-to',e.t);
+    /* tooltip */
+    var titleEl=document.createElementNS(NS,'title');
+    titleEl.textContent=a.label+' → '+b.label+': '+e.l;
+    eg.appendChild(titleEl);
+    /* wide invisible hit area */
+    eg.appendChild(svgEl('path',{d:pathD,fill:'none',stroke:'transparent','stroke-width':'14'}));
+    /* visible line */
+    var pathAttrs={d:pathD,fill:'none',stroke:col,
+      'stroke-width':e.dash?'1.6':'2.2',
+      'stroke-opacity':e.dash?'.38':'.6',
+      'marker-end':'url(#arr'+i+')'};
+    if(e.dash)pathAttrs['stroke-dasharray']='6 4';
+    var path=svgEl('path',pathAttrs);
     path.classList.add('ic-edge-path');
-    path.setAttribute('data-from',e.f);path.setAttribute('data-to',e.t);
-    svg.appendChild(path);
-    /* edge label */
-    var lx=(x1+2*cx+x2)/4,ly=(y1+2*cy+y2)/4;
-    var words=e.l.split(' '),line1=[],line2=[],half=Math.ceil(words.length/2);
-    words.forEach(function(w,wi){(wi<half?line1:line2).push(w);});
-    var maxlen=Math.max(line1.join(' ').length,line2.join(' ').length);
-    var bgRect=el('rect',{x:lx-maxlen*2.5-5,y:ly-15,width:maxlen*5+10,height:26,rx:5,fill:'#0F0F22','fill-opacity':'.88',stroke:hexRgbaJS(col,.35),'stroke-width':'1'});
-    bgRect.classList.add('ic-edge-bg');bgRect.setAttribute('data-from',e.f);bgRect.setAttribute('data-to',e.t);
-    svg.appendChild(bgRect);
-    var t=el('text',{x:lx,y:ly-4,'class':'ic-flow-label'});
-    t.classList.add('ic-edge-txt');t.setAttribute('data-from',e.f);t.setAttribute('data-to',e.t);
-    var ts1=el('tspan',{x:lx,dy:'0'});ts1.textContent=line1.join(' ');
-    var ts2=el('tspan',{x:lx,dy:'12'});ts2.textContent=line2.join(' ');
-    t.appendChild(ts1);t.appendChild(ts2);
-    svg.appendChild(t);
+    eg.appendChild(path);
+    svg.appendChild(eg);
   });
 
   /* Node circles */
-  for(var k2 in nodes){
-    var n=nodes[k2];
-    var g=el('g',{'class':'ic-node-g','data-node':k2});
-    if(n.hub){
-      g.appendChild(el('circle',{cx:n.x,cy:n.y,r:R+9,fill:'none',stroke:n.c,'stroke-opacity':'.22','stroke-width':'1.5','stroke-dasharray':'4 3'}));
-    }
-    var mainCirc=el('circle',{cx:n.x,cy:n.y,r:R,fill:hexRgbaJS(n.c,.18),stroke:n.c,'stroke-width':'2.2'});
-    if(n.hub)mainCirc.setAttribute('filter','url(#hubGlow)');
-    g.appendChild(mainCirc);
-    var lbl=el('text',{x:n.x,y:n.y,'class':'ic-node-label','font-size':n.label.length>5?'10':'13'});
-    lbl.textContent=n.label;g.appendChild(lbl);
-    if(n.hub){var hb=el('text',{x:n.x,y:n.y+R+14,'class':'ic-flow-label','font-weight':'700',fill:n.c,'font-size':'9'});hb.textContent='HUB';g.appendChild(hb);}
+  for(var nKey in nodes){
+    var n=nodes[nKey];
+    var g=svgEl('g',{'class':'ic-node-g','data-node':nKey});
+    /* hub outer ring */
+    if(n.hub){g.appendChild(svgEl('circle',{cx:n.x,cy:n.y,r:R+10,fill:'none',stroke:n.c,'stroke-opacity':'.2','stroke-width':'1.5','stroke-dasharray':'4 3'}));}
+    var mc=svgEl('circle',{cx:n.x,cy:n.y,r:R,fill:hexRgbaJS(n.c,.18),stroke:n.c,'stroke-width':'2.2'});
+    if(n.hub)mc.setAttribute('filter','url(#hubGlow)');
+    g.appendChild(mc);
+    /* abbreviation label */
+    var abbr=svgEl('text',{x:n.x,y:n.label.length>5?n.y-5:n.y,'class':'ic-node-label','font-size':n.label.length>5?'10':'13'});
+    abbr.textContent=n.label;g.appendChild(abbr);
+    /* full name below circle */
+    var fullLbl=svgEl('text',{x:n.x,y:n.y+R+14,'class':'ic-flow-label','font-size':'9','fill':n.c,'text-anchor':'middle'});
+    fullLbl.textContent=n.full;g.appendChild(fullLbl);
+    if(n.hub){var hubBadge=svgEl('text',{x:n.x,y:n.y+(n.label.length>5?3:0),'class':'ic-node-label','font-size':'7.5','fill':n.c,'dy':'10','dominant-baseline':'hanging'});hubBadge.textContent='HUB';g.appendChild(hubBadge);}
     svg.appendChild(g);
   }
 
-  /* ---- Node click: focus mode + detail panel ---- */
+  /* ---- Focus mode + detail panel ---- */
   var focusedNode=null;
   function clearFocus(){
     svg.classList.remove('focused');
-    svg.querySelectorAll('.ic-node-g').forEach(function(g){g.classList.remove('lit');});
-    svg.querySelectorAll('.ic-edge-path,.ic-edge-bg,.ic-edge-txt').forEach(function(p){p.classList.remove('lit');});
+    svg.querySelectorAll('.ic-node-g,.ic-edge-g').forEach(function(el){el.classList.remove('lit');});
     focusedNode=null;
     icDetail.className='ic-detail';
     icDetail.innerHTML='';
@@ -1413,45 +1413,41 @@ function recomputeConnectors(){
     if(focusedNode===nodeKey){clearFocus();return;}
     focusedNode=nodeKey;
     svg.classList.add('focused');
-    /* light up this node */
     svg.querySelectorAll('.ic-node-g').forEach(function(g){
       g.classList.toggle('lit',g.getAttribute('data-node')===nodeKey);
     });
-    /* light up connected edges and peer nodes */
     var connectedNodes={};connectedNodes[nodeKey]=true;
-    svg.querySelectorAll('.ic-edge-path,.ic-edge-bg,.ic-edge-txt').forEach(function(p){
-      var f=p.getAttribute('data-from'),t=p.getAttribute('data-to');
-      var connected=(f===nodeKey||t===nodeKey);
-      p.classList.toggle('lit',connected);
-      if(connected){connectedNodes[f]=true;connectedNodes[t]=true;}
+    svg.querySelectorAll('.ic-edge-g').forEach(function(eg){
+      var f=eg.getAttribute('data-from'),t=eg.getAttribute('data-to');
+      var hit=(f===nodeKey||t===nodeKey);
+      eg.classList.toggle('lit',hit);
+      if(hit){connectedNodes[f]=true;connectedNodes[t]=true;}
     });
     svg.querySelectorAll('.ic-node-g').forEach(function(g){
-      var nk=g.getAttribute('data-node');
-      if(connectedNodes[nk])g.classList.add('lit');
+      if(connectedNodes[g.getAttribute('data-node')])g.classList.add('lit');
     });
     /* build detail panel */
-    var proc=procByAbbr(nodeKey)||procByAbbr(nodes[nodeKey]&&nodes[nodeKey].label);
+    var proc=procByAbbr(nodeKey);
     var ndata=nodes[nodeKey];
     var outEdges=edges.filter(function(e){return e.f===nodeKey;});
     var inEdges=edges.filter(function(e){return e.t===nodeKey;});
     var outHtml=outEdges.length?outEdges.map(function(e){
       var peer=nodes[e.t]?nodes[e.t].label:e.t;
       return '<div class="ic-flow-item"><span class="ic-flow-dir out">→</span><div class="ic-flow-txt"><strong>'+esc(peer)+'</strong><br>'+esc(e.l)+'</div></div>';
-    }).join(''):'<div class="ic-flow-empty">No outbound flows.</div>';
+    }).join(''):'<div class="ic-flow-empty">No outbound flows defined.</div>';
     var inHtml=inEdges.length?inEdges.map(function(e){
       var peer=nodes[e.f]?nodes[e.f].label:e.f;
       return '<div class="ic-flow-item"><span class="ic-flow-dir in">←</span><div class="ic-flow-txt"><strong>'+esc(peer)+'</strong><br>'+esc(e.l)+'</div></div>';
-    }).join(''):'<div class="ic-flow-empty">No inbound flows.</div>';
+    }).join(''):'<div class="ic-flow-empty">No inbound flows defined.</div>';
     var iconHtml=proc?'<i class="ti '+proc.icon+'"></i>':'<i class="ti ti-circle-dot"></i>';
-    var descHtml=proc?esc(proc.sdesc):'';
     icDetail.innerHTML=
       '<div class="ic-detail-ico" style="background:'+hexRgbaJS(ndata.c,.18)+';border:1px solid '+hexRgbaJS(ndata.c,.35)+';color:'+ndata.c+'">'+iconHtml+'</div>'
       +'<div class="ic-detail-top">'
-        +'<div class="ic-detail-name">'+esc(proc?proc.name:ndata.label)+'</div>'
+        +'<div class="ic-detail-name">'+esc(proc?proc.name:ndata.full)+'</div>'
         +'<div class="ic-detail-abbr">'+esc(ndata.label)+'</div>'
         +'<button type="button" class="ic-detail-close" id="icDetailClose">✕ Close</button>'
       +'</div>'
-      +'<div class="ic-detail-desc">'+descHtml+'</div>'
+      +'<div class="ic-detail-desc">'+(proc?esc(proc.sdesc):'')+'</div>'
       +'<div class="ic-flow-col"><h4><i class="ti ti-arrow-right"></i> Feeds into ('+outEdges.length+')</h4><div class="ic-flow-list">'+outHtml+'</div></div>'
       +'<div class="ic-flow-col"><h4><i class="ti ti-arrow-left"></i> Receives from ('+inEdges.length+')</h4><div class="ic-flow-list">'+inHtml+'</div></div>';
     icDetail.className='ic-detail open';
@@ -1459,10 +1455,9 @@ function recomputeConnectors(){
     setTimeout(function(){icDetail.scrollIntoView({behavior:'smooth',block:'nearest'});},60);
   }
   svg.querySelectorAll('.ic-node-g').forEach(function(g){
-    g.addEventListener('click',function(){setFocus(g.getAttribute('data-node'));});
+    g.addEventListener('click',function(ev){ev.stopPropagation();setFocus(g.getAttribute('data-node'));});
   });
-  /* click on SVG background clears focus */
-  svg.addEventListener('click',function(e){if(e.target===svg||e.target.nodeName==='svg')clearFocus();});
+  svg.addEventListener('click',function(){clearFocus();});
 
   /* ---- Legend ---- */
   var LEG=[
