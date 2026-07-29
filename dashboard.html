@@ -436,6 +436,72 @@ footer{border-top:1px solid var(--border);background:#06001A;margin-top:20px;}
   .mx-chip{transform:scale(1);opacity:1;transition:none;}
   .show-ai .step-card.has-ai{animation:none;box-shadow:0 0 0 2px var(--brand),0 0 16px rgba(161,0,255,.4);}
 }
+/* ---- AI MATRIX interactive ---- */
+.matrix tbody tr{cursor:pointer;transition:background .15s;}
+.matrix tbody tr:hover td,.matrix tbody tr:hover th{background:rgba(161,0,255,.05);}
+.matrix tbody tr.mx-active td,.matrix tbody tr.mx-active th{background:rgba(161,0,255,.11);}
+.matrix.in .mx-chip:hover{transform:scale(1.18)!important;position:relative;z-index:2;}
+.mx-cov{width:72px;height:5px;border-radius:3px;background:rgba(161,0,255,.15);overflow:hidden;margin:0 auto 3px;}
+.mx-cov-fill{height:100%;background:linear-gradient(90deg,#7C3AED,#C77BFF);}
+.mx-cov-pct{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--tm);display:block;text-align:center;}
+.mx-tfoot td{padding:12px;border-top:2px solid var(--border);vertical-align:middle;}
+.mx-dist{display:flex;align-items:center;justify-content:center;gap:4px;}
+.mx-dist-chip{border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#fff;}
+.mx-dist-chip.H{width:22px;height:22px;font-size:9px;background:radial-gradient(circle at 35% 30%,#FF6ECF,#A100FF);}
+.mx-dist-chip.M{width:17px;height:17px;font-size:8px;background:radial-gradient(circle at 35% 30%,#C77BFF,#7A15C9);}
+.mx-dist-chip.L{width:13px;height:13px;background:rgba(161,0,255,.28);border:1px solid rgba(161,0,255,.5);}
+.mx-drawer{display:none;border-top:2px solid rgba(161,0,255,.3);background:linear-gradient(180deg,rgba(161,0,255,.07),transparent 80%);padding:20px 24px 22px;}
+.mx-drawer.open{display:block;}
+.mx-drawer-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
+.mx-dname{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--tp);}
+.mx-dabbr{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--brand);background:rgba(161,0,255,.15);border:1px solid rgba(161,0,255,.3);padding:3px 10px;border-radius:5px;}
+.mx-dclose{margin-left:auto;background:none;border:1px solid var(--border);color:var(--ts);padding:5px 11px;border-radius:6px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;transition:border-color .15s,color .15s;}
+.mx-dclose:hover{border-color:var(--brand);color:var(--tp);}
+.mx-dtabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px;}
+.mx-dtab{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:5px 13px;border-radius:20px;border:1px solid var(--border);background:var(--s2);color:var(--ts);cursor:pointer;transition:all .15s;user-select:none;}
+.mx-dtab.active{border-color:var(--brand);color:#fff;background:rgba(161,0,255,.22);}
+.mx-dtab:hover:not(.active){border-color:rgba(199,123,255,.4);color:var(--tp);}
+.mx-uc-list{display:flex;flex-direction:column;gap:7px;max-height:360px;overflow-y:auto;}
+.mx-uc-item{display:flex;align-items:flex-start;gap:11px;background:rgba(161,0,255,.06);border-left:3px solid rgba(161,0,255,.4);border-radius:0 7px 7px 0;padding:9px 13px;transition:background .15s,border-left-color .15s;}
+.mx-uc-item:hover{border-left-color:var(--brand);background:rgba(161,0,255,.1);}
+.mx-uc-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--brand);flex-shrink:0;min-width:52px;padding-top:1px;}
+.mx-uc-body{display:flex;flex-direction:column;gap:4px;}
+.mx-uc-title{font-size:12px;font-weight:600;color:var(--tp);}
+.mx-uc-text{font-size:11.5px;color:var(--ts);line-height:1.5;font-style:italic;}
+.mx-uc-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:3px;}
+.mx-uc-tag{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(199,123,255,.9);background:rgba(161,0,255,.1);padding:2px 7px;border-radius:3px;border:1px solid rgba(161,0,255,.3);}
+.mx-empty{font-size:12.5px;color:var(--tm);font-style:italic;padding:8px 0;}
+.mx-drawer-cta{font-size:11px;color:var(--tm);margin-top:10px;border-top:1px solid rgba(161,0,255,.12);padding-top:10px;}
+/* ---- INTERCONNECT interactive ---- */
+.ic-wrap{position:relative;}
+#icSvg .ic-node-g{cursor:pointer;}
+#icSvg .ic-edge-path,#icSvg .ic-edge-bg,#icSvg .ic-edge-txt{transition:opacity .25s;}
+#icSvg.focused .ic-edge-path{opacity:.08!important;}
+#icSvg.focused .ic-edge-bg,#icSvg.focused .ic-edge-txt{opacity:.07!important;}
+#icSvg.focused .ic-node-g{opacity:.25;transition:opacity .25s;}
+#icSvg.focused .ic-edge-path.lit{opacity:.9!important;}
+#icSvg.focused .ic-edge-bg.lit,#icSvg.focused .ic-edge-txt.lit{opacity:1!important;}
+#icSvg.focused .ic-node-g.lit{opacity:1;}
+.ic-detail{display:none;border-top:1px solid rgba(161,0,255,.2);padding:18px 20px;background:rgba(161,0,255,.04);}
+.ic-detail.open{display:grid;grid-template-columns:52px 1fr 1fr;gap:12px 18px;}
+.ic-detail-ico{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:28px;grid-row:1/3;flex-shrink:0;}
+.ic-detail-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.ic-detail-name{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--tp);}
+.ic-detail-abbr{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--brand);background:rgba(161,0,255,.15);border:1px solid rgba(161,0,255,.3);padding:3px 9px;border-radius:5px;}
+.ic-detail-close{margin-left:auto;background:none;border:1px solid var(--border);color:var(--ts);padding:4px 10px;border-radius:6px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;transition:border-color .15s,color .15s;}
+.ic-detail-close:hover{border-color:var(--brand);color:var(--tp);}
+.ic-detail-desc{font-size:12px;color:var(--ts);line-height:1.6;grid-column:2/-1;}
+.ic-flow-col h4{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--tm);margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.ic-flow-col h4 i{color:var(--brand);font-size:13px;}
+.ic-flow-list{display:flex;flex-direction:column;gap:5px;}
+.ic-flow-item{display:flex;align-items:flex-start;gap:8px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:6px;padding:7px 10px;}
+.ic-flow-dir{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;flex-shrink:0;padding-top:1px;}
+.ic-flow-dir.out{color:#C77BFF;}
+.ic-flow-dir.in{color:#6EE7C7;}
+.ic-flow-txt{font-size:11.5px;color:var(--ts);line-height:1.4;}
+.ic-flow-txt strong{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--tp);}
+.ic-flow-empty{font-size:11px;color:var(--tm);font-style:italic;}
+@media(max-width:700px){.ic-detail.open{grid-template-columns:1fr;}.ic-detail-ico{display:none;}.ic-detail-desc{grid-column:1/-1;}}
 </style>
 <script>
 /* Gate check */
@@ -508,7 +574,7 @@ if (sessionStorage.getItem('nfr_auth') !== '1') { location.replace('index.html')
     <p>A heatmap of AI applicability and expected impact across all eight processes and five technology categories. Larger, brighter chips mark higher-impact use cases.</p>
   </div>
   <div class="matrix-wrap reveal">
-    <table class="matrix" id="matrix">
+    <table class="matrix" id="matrix" aria-label="AI applicability matrix">
       <thead>
         <tr>
           <th>NFR Process</th>
@@ -517,16 +583,28 @@ if (sessionStorage.getItem('nfr_auth') !== '1') { location.replace('index.html')
           <th>NLP<span>Text / Language</span></th>
           <th>Automation<span>Workflow</span></th>
           <th>Analytics<span>Data / Pattern</span></th>
+          <th>AI Coverage<span>Steps with AI</span></th>
         </tr>
       </thead>
       <tbody id="matrixBody"></tbody>
+      <tfoot id="matrixFoot" class="mx-tfoot"></tfoot>
     </table>
+    <div class="mx-drawer" id="mxDrawer">
+      <div class="mx-drawer-head">
+        <div class="mx-dname" id="mxDrawerName"></div>
+        <div class="mx-dabbr" id="mxDrawerAbbr"></div>
+        <button type="button" class="mx-dclose" id="mxDrawerClose">&#10005; Close</button>
+      </div>
+      <div class="mx-dtabs" id="mxDrawerTabs"></div>
+      <div class="mx-uc-list" id="mxDrawerList"></div>
+      <div class="mx-drawer-cta" id="mxDrawerCta"></div>
+    </div>
   </div>
   <div class="mx-legend reveal">
-    <div class="mx-leg-item"><span class="lchip" style="width:40px;height:40px;background:radial-gradient(circle at 35% 30%,#FF6ECF,#A100FF);box-shadow:0 0 14px rgba(255,80,200,.5)"></span> High impact</div>
+    <div class="mx-leg-item"><span class="lchip" style="width:40px;height:40px;background:radial-gradient(circle at 35% 30%,#FF6ECF,#A100FF);box-shadow:0 0 14px rgba(255,80,200,.5)"></span> High impact — click any row to explore AI use cases</div>
     <div class="mx-leg-item"><span class="lchip" style="width:31px;height:31px;background:radial-gradient(circle at 35% 30%,#C77BFF,#7A15C9)"></span> Medium impact</div>
     <div class="mx-leg-item"><span class="lchip" style="width:22px;height:22px;background:rgba(161,0,255,.28);border:1px solid rgba(161,0,255,.5)"></span> Low / emerging</div>
-    <div class="mx-leg-note">Impact reflects the relative maturity and value of the AI application for that process — based on proven industry use cases, not a forecast of savings.</div>
+    <div class="mx-leg-note">Impact reflects the relative maturity and value of the AI application for that process — based on proven industry use cases, not a forecast of savings. Click any row or cell to expand the step-level use cases.</div>
   </div>
 </section>
 
@@ -538,7 +616,8 @@ if (sessionStorage.getItem('nfr_auth') !== '1') { location.replace('index.html')
     <p>Non-Financial Risk is a connected system. Incidents, model failures, third-party events and regulatory changes flow between the processes — the operational loss database (ORM) and the RCSA risk register form the two central hubs.</p>
   </div>
   <div class="ic-wrap reveal">
-    <svg id="icSvg" viewBox="0 0 1000 600" role="img" aria-label="Process interconnection diagram"></svg>
+    <svg id="icSvg" viewBox="0 0 1000 640" role="img" aria-label="Process interconnection diagram"></svg>
+    <div class="ic-detail" id="icDetail"></div>
   </div>
   <div class="ic-legend" id="icLegend"></div>
 </section>
@@ -1042,55 +1121,215 @@ function recomputeConnectors(){
 }
 
 /* ============================================================
-   RENDER: AI MATRIX
+   RENDER: AI MATRIX (interactive with use-case drawer)
    ============================================================ */
 (function(){
+  function classifyAI(text){
+    var t=(text||'').toLowerCase();
+    var caps=[];
+    if(/genai|llm|gpt|generative|generat|drafting|synthesis|summariz/.test(t))caps.push('GenAI');
+    if(/\bml\b|machine.learn|predict|scor|classif|anomaly.detect|detect/.test(t))caps.push('ML');
+    if(/\bnlp\b|natural.lang|text.anal|text.extract|adverse.media/.test(t))caps.push('NLP');
+    if(/automat/.test(t))caps.push('Automation');
+    if(/analytic|dashboard|insight|trend|pattern|benchmark/.test(t))caps.push('Analytics');
+    return caps.length?caps:['AI'];
+  }
+
+  /* ---- Table rows ---- */
   var html='';
   PROCESSES.forEach(function(p){
-    html+='<tr><th><div class="mx-proc"><span class="mx-dot" style="background:'+p.color+'"></span>'
-      +'<span class="abbr">'+esc(p.abbr)+'</span><span class="nm">'+esc(p.name)+'</span></div></th>';
+    var stepsWithAI=p.steps.filter(function(s){return s.ai;}).length;
+    var pct=Math.round(100*stepsWithAI/p.steps.length);
+    html+='<tr data-pid="'+p.id+'">'
+      +'<th><div class="mx-proc">'
+        +'<span class="mx-dot" style="background:'+p.color+'"></span>'
+        +'<span class="abbr">'+esc(p.abbr)+'</span>'
+        +'<span class="nm">'+esc(p.name)+'</span>'
+      +'</div></th>';
     MATRIX_COLS.forEach(function(c){
       var lvl=p.matrix[c];
       var label=lvl==='High'?'H':lvl==='Medium'?'M':'';
-      html+='<td title="'+esc(p.abbr)+' · '+c+' — '+lvl+'"><div class="mx-cell"><span class="mx-chip '+lvl+'">'+label+'</span></div></td>';
+      html+='<td data-cap="'+c+'" title="'+esc(p.abbr)+' \xb7 '+c+' — '+lvl+'">'
+        +'<div class="mx-cell"><span class="mx-chip '+lvl+'">'+label+'</span></div></td>';
     });
-    html+='</tr>';
+    html+='<td style="padding:0 16px;text-align:center;vertical-align:middle;">'
+      +'<div class="mx-cov"><div class="mx-cov-fill" style="width:'+pct+'%"></div></div>'
+      +'<span class="mx-cov-pct">'+stepsWithAI+' / '+p.steps.length+'</span>'
+      +'</td></tr>';
   });
   document.getElementById('matrixBody').innerHTML=html;
+
+  /* ---- Tfoot: column distributions ---- */
+  var footHtml='<tr>';
+  footHtml+='<td class="mx-tfoot" style="text-align:left;padding-left:24px;">'
+    +'<span style="font-family:\'JetBrains Mono\',monospace;font-size:9.5px;color:var(--tm);letter-spacing:.1em;text-transform:uppercase;">Distribution</span></td>';
+  MATRIX_COLS.forEach(function(c){
+    var h=PROCESSES.filter(function(p){return p.matrix[c]==='High';}).length;
+    var m=PROCESSES.filter(function(p){return p.matrix[c]==='Medium';}).length;
+    var l=PROCESSES.filter(function(p){return p.matrix[c]==='Low';}).length;
+    footHtml+='<td class="mx-tfoot">'
+      +'<div class="mx-dist">'
+        +'<span class="mx-dist-chip H" title="'+h+' High">'+h+'</span>'
+        +'<span class="mx-dist-chip M" title="'+m+' Medium">'+m+'</span>'
+        +'<span class="mx-dist-chip L" title="'+l+' Low"></span>'
+      +'</div></td>';
+  });
+  var avgPct=Math.round(PROCESSES.reduce(function(s,p){
+    return s+p.steps.filter(function(st){return st.ai;}).length/p.steps.length;
+  },0)/PROCESSES.length*100);
+  footHtml+='<td class="mx-tfoot" style="text-align:center;">'
+    +'<span style="font-family:\'JetBrains Mono\',monospace;font-size:10px;color:var(--ts);">avg '+avgPct+'%</span></td>';
+  footHtml+='</tr>';
+  document.getElementById('matrixFoot').innerHTML=footHtml;
+
+  /* ---- Drawer logic ---- */
+  var drawer=document.getElementById('mxDrawer');
+  var drawerName=document.getElementById('mxDrawerName');
+  var drawerAbbr=document.getElementById('mxDrawerAbbr');
+  var drawerTabs=document.getElementById('mxDrawerTabs');
+  var drawerList=document.getElementById('mxDrawerList');
+  var drawerCta=document.getElementById('mxDrawerCta');
+  var CAPS_ALL=['All'].concat(MATRIX_COLS);
+  var activeRow=null, activeProc=null, activeCap='All';
+
+  function renderDrawerList(proc, cap){
+    var stepsWithAI=proc.steps.filter(function(s){return s.ai;});
+    var filtered=(cap==='All')?stepsWithAI:stepsWithAI.filter(function(s){
+      return classifyAI(s.ai).indexOf(cap)!==-1;
+    });
+    var html='';
+    if(!filtered.length){
+      html='<div class="mx-empty">No specific '+esc(cap)+' use cases identified for '+esc(proc.abbr)+'. The process rating of '+(proc.matrix[cap]||'N/A')+' reflects overall AI readiness for this category.</div>';
+    }else{
+      filtered.forEach(function(s){
+        var tags=classifyAI(s.ai).map(function(t){return '<span class="mx-uc-tag">'+esc(t)+'</span>';}).join('');
+        html+='<div class="mx-uc-item">'
+          +'<div class="mx-uc-num">Step '+(s.n!=null?s.n:(s.type==='decision'?'◆':'—'))+'</div>'
+          +'<div class="mx-uc-body">'
+            +'<div class="mx-uc-title">'+esc(s.t)+'</div>'
+            +'<div class="mx-uc-text"><i class="ti ti-sparkles" style="font-style:normal;color:var(--brand);margin-right:5px;font-size:12px;"></i>'+esc(s.ai)+'</div>'
+            +(tags?'<div class="mx-uc-tags">'+tags+'</div>':'')
+          +'</div>'
+          +'</div>';
+      });
+    }
+    drawerList.innerHTML=html;
+    var total=stepsWithAI.length;
+    drawerCta.textContent=total+' of '+proc.steps.length+' steps have embedded AI opportunities. Click a tab to filter by technology type.';
+  }
+
+  function openDrawer(proc, cap, triggerRow){
+    activeProc=proc; activeCap=cap;
+    drawerName.textContent=proc.name;
+    drawerAbbr.textContent=proc.abbr;
+    var tabsHtml='';
+    CAPS_ALL.forEach(function(c){
+      var lvl=proc.matrix[c];
+      var badge=lvl==='High'?' ●':lvl==='Medium'?' ○':'';
+      tabsHtml+='<button type="button" class="mx-dtab'+(c===activeCap?' active':'')+'" data-tab="'+c+'">'+esc(c)+badge+'</button>';
+    });
+    drawerTabs.innerHTML=tabsHtml;
+    renderDrawerList(proc, cap);
+    drawer.classList.add('open');
+    drawerTabs.querySelectorAll('.mx-dtab').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        activeCap=btn.getAttribute('data-tab');
+        drawerTabs.querySelectorAll('.mx-dtab').forEach(function(b){b.classList.toggle('active',b===btn);});
+        renderDrawerList(activeProc, activeCap);
+      });
+    });
+    /* scroll drawer into view only if below fold */
+    setTimeout(function(){drawer.scrollIntoView({behavior:'smooth',block:'nearest'});},60);
+  }
+
+  document.querySelectorAll('#matrixBody tr').forEach(function(row){
+    var pid=row.getAttribute('data-pid');
+    var proc=null;
+    for(var i=0;i<PROCESSES.length;i++){if(PROCESSES[i].id===pid){proc=PROCESSES[i];break;}}
+    if(!proc)return;
+    row.addEventListener('click',function(e){
+      var td=e.target.closest('td[data-cap]');
+      var cap=td?td.getAttribute('data-cap'):'All';
+      if(activeRow===row&&activeCap===cap){
+        drawer.classList.remove('open');
+        row.classList.remove('mx-active');
+        activeRow=null;activeProc=null;activeCap='All';
+      }else{
+        if(activeRow)activeRow.classList.remove('mx-active');
+        activeRow=row;
+        row.classList.add('mx-active');
+        openDrawer(proc,cap,row);
+      }
+    });
+  });
+
+  document.getElementById('mxDrawerClose').addEventListener('click',function(){
+    drawer.classList.remove('open');
+    if(activeRow)activeRow.classList.remove('mx-active');
+    activeRow=null;activeProc=null;activeCap='All';
+  });
 })();
 
 /* ============================================================
-   RENDER: INTERCONNECT DIAGRAM (SVG)
+   RENDER: INTERCONNECT DIAGRAM (SVG, interactive)
    ============================================================ */
 (function(){
   var svg=document.getElementById('icSvg');
-  var C={};PROCESSES.forEach(function(p){C[p.abbr.replace(/\s/g,'')]=p.color;});
-  var nodes={
-    TPRM:{x:250,y:95,c:C.TPRM,label:'TPRM'},
-    ISRisk:{x:770,y:95,c:C.ISRisk,label:'IS Risk'},
-    BCM:{x:110,y:300,c:C.BCM,label:'BCM'},
-    RCSA:{x:365,y:300,c:C.RCSA,label:'RCSA',hub:true},
-    ORM:{x:720,y:300,c:C.ORM,label:'ORM',hub:true},
-    MRM:{x:165,y:505,c:C.MRM,label:'MRM'},
-    Compliance:{x:480,y:510,c:C.Compliance,label:'Compliance'},
-    PKS:{x:850,y:505,c:C.PKS,label:'PKS'}
-  };
-  var edges=[
-    {f:'ORM',t:'RCSA',l:'Loss data triggers RCSA update',curve:0},
-    {f:'TPRM',t:'ORM',l:'Third-party incidents as op-risk events',curve:-34},
-    {f:'Compliance',t:'PKS',l:'Reg changes trigger policy review',curve:44},
-    {f:'MRM',t:'RCSA',l:'Model failures = op-risk events',curve:22},
-    {f:'ISRisk',t:'ORM',l:'Cyber incidents feed loss database',curve:-30},
-    {f:'ISRisk',t:'BCM',l:'ICT DRP is part of the BCM programme',curve:70},
-    {f:'BCM',t:'RCSA',l:'Continuity risks in the RCSA universe',curve:0},
-    {f:'Compliance',t:'TPRM',l:'Regulation defines TPRM minimum standards',curve:66}
-  ];
+  var icDetail=document.getElementById('icDetail');
   var NS='http://www.w3.org/2000/svg';
   function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
   function hexRgbaJS(hex,al){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+al+')';}
-  var R=38;
 
+  /* Build lookup from PROCESSES */
+  var C={};
+  PROCESSES.forEach(function(p){C[p.abbr.replace(/\s/g,'')]=p.color;});
+  function procByAbbr(a){for(var i=0;i<PROCESSES.length;i++){if(PROCESSES[i].abbr.replace(/\s/g,'')===a||PROCESSES[i].abbr===a)return PROCESSES[i];}return null;}
+
+  /* Node positions — hub-centric layout (viewBox 1000x640) */
+  var nodes={
+    TPRM:  {x:165,y:120,c:C.TPRM,   label:'TPRM',  abbr:'TPRM'},
+    Compliance:{x:490,y:85, c:C.Compliance,label:'Compliance',abbr:'Compliance'},
+    ISRisk:{x:830,y:120,c:C.ISRisk, label:'IS Risk',abbr:'ISRisk'},
+    BCM:   {x:100,y:350,c:C.BCM,    label:'BCM',   abbr:'BCM'},
+    RCSA:  {x:350,y:310,c:C.RCSA,   label:'RCSA',  abbr:'RCSA',  hub:true},
+    ORM:   {x:630,y:310,c:C.ORM,    label:'ORM',   abbr:'ORM',   hub:true},
+    PKS:   {x:880,y:350,c:C.PKS,    label:'PKS',   abbr:'PKS'},
+    MRM:   {x:250,y:520,c:C.MRM,    label:'MRM',   abbr:'MRM'}
+  };
+
+  /* Edges: f=from, t=to, l=label, curve=offset, dash=dashed governance line */
+  var edges=[
+    {f:'ORM',       t:'RCSA',       l:'Loss events trigger RCSA',          curve:0,  dash:false},
+    {f:'TPRM',      t:'ORM',        l:'Third-party incidents to op-risk', curve:-28,dash:false},
+    {f:'Compliance',t:'PKS',        l:'Reg. changes to policy review',   curve:40, dash:true},
+    {f:'MRM',       t:'RCSA',       l:'Model failures to op-risk events',curve:28, dash:false},
+    {f:'ISRisk',    t:'ORM',        l:'Cyber incidents to loss database', curve:-28,dash:false},
+    {f:'ISRisk',    t:'BCM',        l:'ICT DRP BCM programme',         curve:60, dash:true},
+    {f:'BCM',       t:'RCSA',       l:'Continuity risks in RCSA universe',   curve:0,  dash:false},
+    {f:'Compliance',t:'TPRM',       l:'Regulation sets TPRM standards',       curve:55, dash:true},
+    {f:'TPRM',      t:'BCM',        l:'Vendor failure BCM scenarios',  curve:0,  dash:false},
+    {f:'BCM',       t:'ORM',        l:'Continuity events to loss records',curve:-22,dash:false},
+    {f:'Compliance',t:'RCSA',       l:'Reg. changes to scope update',      curve:50, dash:true},
+    {f:'Compliance',t:'MRM',        l:'EU AI Act to model governance',     curve:44, dash:true},
+    {f:'ORM',       t:'MRM',        l:'CPBP model risk taxonomy',           curve:-22,dash:true},
+    {f:'PKS',       t:'RCSA',       l:'Policy change to control reassessment',curve:38,dash:true},
+    {f:'ISRisk',    t:'TPRM',       l:'IS risk feeds ICT third-party assessment',curve:-50,dash:false}
+  ];
+
+  var R=36;
   var defs=el('defs',{});
+
+  /* Glow filter for hub nodes */
+  var filt=el('filter',{id:'hubGlow',x:'-30%',y:'-30%',width:'160%',height:'160%'});
+  var fe=el('feGaussianBlur',{stdDeviation:'4',result:'blur'});
+  var feMerge=el('feMerge',{});
+  var feM1=el('feMergeNode',{in:'blur'});
+  var feM2=el('feMergeNode',{in:'SourceGraphic'});
+  feMerge.appendChild(feM1);feMerge.appendChild(feM2);
+  filt.appendChild(fe);filt.appendChild(feMerge);
+  defs.appendChild(filt);
+
+  /* Arrow markers per edge */
   edges.forEach(function(e,i){
     var col=nodes[e.f].c;
     var m=el('marker',{id:'arr'+i,markerWidth:'9',markerHeight:'9',refX:'7',refY:'3',orient:'auto',markerUnits:'strokeWidth'});
@@ -1099,64 +1338,152 @@ function recomputeConnectors(){
   });
   svg.appendChild(defs);
 
-  /* PKS -> alle : faint dashed radial lines */
+  /* PKS faint radial lines to all other nodes */
   for(var key in nodes){
     if(key==='PKS')continue;
     var a0=nodes.PKS,b0=nodes[key];
     var dx0=b0.x-a0.x,dy0=b0.y-a0.y,len0=Math.sqrt(dx0*dx0+dy0*dy0);
     var ux0=dx0/len0,uy0=dy0/len0;
-    svg.appendChild(el('line',{x1:a0.x+ux0*R,y1:a0.y+uy0*R,x2:b0.x-ux0*R,y2:b0.y-uy0*R,
-      stroke:nodes.PKS.c,'stroke-width':'1','stroke-opacity':'.16','stroke-dasharray':'3 6'}));
+    var line=el('line',{x1:a0.x+ux0*R,y1:a0.y+uy0*R,x2:b0.x-ux0*R,y2:b0.y-uy0*R,
+      stroke:nodes.PKS.c,'stroke-width':'1','stroke-opacity':'.12','stroke-dasharray':'3 7'});
+    line.classList.add('ic-edge-path');
+    line.setAttribute('data-from','PKS');line.setAttribute('data-to',key);
+    svg.appendChild(line);
   }
 
-  /* labelled edges */
+  /* Labelled edges */
   edges.forEach(function(e,i){
-    var a=nodes[e.f],b=nodes[e.t],col=a.c;
+    var a=nodes[e.f],b=nodes[e.t];
+    if(!a||!b)return;
+    var col=a.c;
     var dx=b.x-a.x,dy=b.y-a.y,len=Math.sqrt(dx*dx+dy*dy);
     var ux=dx/len,uy=dy/len;
     var x1=a.x+ux*R,y1=a.y+uy*R,x2=b.x-ux*(R+9),y2=b.y-uy*(R+9);
     var mx=(x1+x2)/2,my=(y1+y2)/2;
     var nx=-uy,ny=ux;var cx=mx+nx*e.curve,cy=my+ny*e.curve;
-    var path='M'+x1+','+y1+' Q'+cx+','+cy+' '+x2+','+y2;
-    svg.appendChild(el('path',{d:path,fill:'none',stroke:col,'stroke-width':'2','stroke-opacity':'.55','marker-end':'url(#arr'+i+')'}));
+    var pathD='M'+x1+','+y1+' Q'+cx+','+cy+' '+x2+','+y2;
+    var path=el('path',{d:pathD,fill:'none',stroke:col,'stroke-width':e.dash?'1.5':'2',
+      'stroke-opacity':e.dash?'.4':'.55','stroke-dasharray':e.dash?'5 4':'none','marker-end':'url(#arr'+i+')'});
+    path.classList.add('ic-edge-path');
+    path.setAttribute('data-from',e.f);path.setAttribute('data-to',e.t);
+    svg.appendChild(path);
+    /* edge label */
     var lx=(x1+2*cx+x2)/4,ly=(y1+2*cy+y2)/4;
-    var t=el('text',{x:lx,y:ly-3,class:'ic-flow-label'});
-    var words=e.l.split(' ');var line1=[],line2=[],half=Math.ceil(words.length/2);
+    var words=e.l.split(' '),line1=[],line2=[],half=Math.ceil(words.length/2);
     words.forEach(function(w,wi){(wi<half?line1:line2).push(w);});
     var maxlen=Math.max(line1.join(' ').length,line2.join(' ').length);
-    svg.appendChild(el('rect',{x:lx-maxlen*2.6-6,y:ly-16,width:maxlen*5.2+12,height:'26',rx:'5',fill:'#0F0F22','fill-opacity':'.85',stroke:hexRgbaJS(col,.4)}));
+    var bgRect=el('rect',{x:lx-maxlen*2.5-5,y:ly-15,width:maxlen*5+10,height:26,rx:5,fill:'#0F0F22','fill-opacity':'.88',stroke:hexRgbaJS(col,.35),'stroke-width':'1'});
+    bgRect.classList.add('ic-edge-bg');bgRect.setAttribute('data-from',e.f);bgRect.setAttribute('data-to',e.t);
+    svg.appendChild(bgRect);
+    var t=el('text',{x:lx,y:ly-4,'class':'ic-flow-label'});
+    t.classList.add('ic-edge-txt');t.setAttribute('data-from',e.f);t.setAttribute('data-to',e.t);
     var ts1=el('tspan',{x:lx,dy:'0'});ts1.textContent=line1.join(' ');
     var ts2=el('tspan',{x:lx,dy:'12'});ts2.textContent=line2.join(' ');
     t.appendChild(ts1);t.appendChild(ts2);
     svg.appendChild(t);
   });
 
-  /* nodes */
+  /* Node circles */
   for(var k2 in nodes){
     var n=nodes[k2];
-    var g=el('g',{});
-    if(n.hub){g.appendChild(el('circle',{cx:n.x,cy:n.y,r:R+7,fill:'none',stroke:n.c,'stroke-opacity':'.3','stroke-width':'1.5'}));}
-    g.appendChild(el('circle',{cx:n.x,cy:n.y,r:R,fill:hexRgbaJS(n.c,.18),stroke:n.c,'stroke-width':'2.2'}));
-    var lbl=el('text',{x:n.x,y:n.y,class:'ic-node-label','font-size':n.label.length>5?'11':'14'});
+    var g=el('g',{'class':'ic-node-g','data-node':k2});
+    if(n.hub){
+      g.appendChild(el('circle',{cx:n.x,cy:n.y,r:R+9,fill:'none',stroke:n.c,'stroke-opacity':'.22','stroke-width':'1.5','stroke-dasharray':'4 3'}));
+    }
+    var mainCirc=el('circle',{cx:n.x,cy:n.y,r:R,fill:hexRgbaJS(n.c,.18),stroke:n.c,'stroke-width':'2.2'});
+    if(n.hub)mainCirc.setAttribute('filter','url(#hubGlow)');
+    g.appendChild(mainCirc);
+    var lbl=el('text',{x:n.x,y:n.y,'class':'ic-node-label','font-size':n.label.length>5?'10':'13'});
     lbl.textContent=n.label;g.appendChild(lbl);
-    if(n.hub){var hb=el('text',{x:n.x,y:n.y+R+15,class:'ic-flow-label','font-weight':'700',fill:n.c});hb.textContent='HUB';g.appendChild(hb);}
+    if(n.hub){var hb=el('text',{x:n.x,y:n.y+R+14,'class':'ic-flow-label','font-weight':'700',fill:n.c,'font-size':'9'});hb.textContent='HUB';g.appendChild(hb);}
     svg.appendChild(g);
   }
 
-  /* legend */
+  /* ---- Node click: focus mode + detail panel ---- */
+  var focusedNode=null;
+  function clearFocus(){
+    svg.classList.remove('focused');
+    svg.querySelectorAll('.ic-node-g').forEach(function(g){g.classList.remove('lit');});
+    svg.querySelectorAll('.ic-edge-path,.ic-edge-bg,.ic-edge-txt').forEach(function(p){p.classList.remove('lit');});
+    focusedNode=null;
+    icDetail.className='ic-detail';
+    icDetail.innerHTML='';
+  }
+  function setFocus(nodeKey){
+    if(focusedNode===nodeKey){clearFocus();return;}
+    focusedNode=nodeKey;
+    svg.classList.add('focused');
+    /* light up this node */
+    svg.querySelectorAll('.ic-node-g').forEach(function(g){
+      g.classList.toggle('lit',g.getAttribute('data-node')===nodeKey);
+    });
+    /* light up connected edges and peer nodes */
+    var connectedNodes={};connectedNodes[nodeKey]=true;
+    svg.querySelectorAll('.ic-edge-path,.ic-edge-bg,.ic-edge-txt').forEach(function(p){
+      var f=p.getAttribute('data-from'),t=p.getAttribute('data-to');
+      var connected=(f===nodeKey||t===nodeKey);
+      p.classList.toggle('lit',connected);
+      if(connected){connectedNodes[f]=true;connectedNodes[t]=true;}
+    });
+    svg.querySelectorAll('.ic-node-g').forEach(function(g){
+      var nk=g.getAttribute('data-node');
+      if(connectedNodes[nk])g.classList.add('lit');
+    });
+    /* build detail panel */
+    var proc=procByAbbr(nodeKey)||procByAbbr(nodes[nodeKey]&&nodes[nodeKey].label);
+    var ndata=nodes[nodeKey];
+    var outEdges=edges.filter(function(e){return e.f===nodeKey;});
+    var inEdges=edges.filter(function(e){return e.t===nodeKey;});
+    var outHtml=outEdges.length?outEdges.map(function(e){
+      var peer=nodes[e.t]?nodes[e.t].label:e.t;
+      return '<div class="ic-flow-item"><span class="ic-flow-dir out">→</span><div class="ic-flow-txt"><strong>'+esc(peer)+'</strong><br>'+esc(e.l)+'</div></div>';
+    }).join(''):'<div class="ic-flow-empty">No outbound flows.</div>';
+    var inHtml=inEdges.length?inEdges.map(function(e){
+      var peer=nodes[e.f]?nodes[e.f].label:e.f;
+      return '<div class="ic-flow-item"><span class="ic-flow-dir in">←</span><div class="ic-flow-txt"><strong>'+esc(peer)+'</strong><br>'+esc(e.l)+'</div></div>';
+    }).join(''):'<div class="ic-flow-empty">No inbound flows.</div>';
+    var iconHtml=proc?'<i class="ti '+proc.icon+'"></i>':'<i class="ti ti-circle-dot"></i>';
+    var descHtml=proc?esc(proc.sdesc):'';
+    icDetail.innerHTML=
+      '<div class="ic-detail-ico" style="background:'+hexRgbaJS(ndata.c,.18)+';border:1px solid '+hexRgbaJS(ndata.c,.35)+';color:'+ndata.c+'">'+iconHtml+'</div>'
+      +'<div class="ic-detail-top">'
+        +'<div class="ic-detail-name">'+esc(proc?proc.name:ndata.label)+'</div>'
+        +'<div class="ic-detail-abbr">'+esc(ndata.label)+'</div>'
+        +'<button type="button" class="ic-detail-close" id="icDetailClose">✕ Close</button>'
+      +'</div>'
+      +'<div class="ic-detail-desc">'+descHtml+'</div>'
+      +'<div class="ic-flow-col"><h4><i class="ti ti-arrow-right"></i> Feeds into ('+outEdges.length+')</h4><div class="ic-flow-list">'+outHtml+'</div></div>'
+      +'<div class="ic-flow-col"><h4><i class="ti ti-arrow-left"></i> Receives from ('+inEdges.length+')</h4><div class="ic-flow-list">'+inHtml+'</div></div>';
+    icDetail.className='ic-detail open';
+    document.getElementById('icDetailClose').addEventListener('click',clearFocus);
+    setTimeout(function(){icDetail.scrollIntoView({behavior:'smooth',block:'nearest'});},60);
+  }
+  svg.querySelectorAll('.ic-node-g').forEach(function(g){
+    g.addEventListener('click',function(){setFocus(g.getAttribute('data-node'));});
+  });
+  /* click on SVG background clears focus */
+  svg.addEventListener('click',function(e){if(e.target===svg||e.target.nodeName==='svg')clearFocus();});
+
+  /* ---- Legend ---- */
   var LEG=[
-    {c:C.ORM,ft:'ORM → RCSA',tx:'Loss event data triggers RCSA re-assessment'},
-    {c:C.TPRM,ft:'TPRM → ORM',tx:'Third-party incidents are recorded as operational-risk events'},
-    {c:C.Compliance,ft:'Compliance → PKS',tx:'Regulatory changes trigger policy review'},
-    {c:C.MRM,ft:'MRM → RCSA',tx:'Model failures are operational-risk events (CPBP/EDPM)'},
-    {c:C.ISRisk,ft:'IS Risk → ORM',tx:'Cyber incidents feed the operational loss database'},
-    {c:C.ISRisk,ft:'IS Risk → BCM',tx:'The ICT DRP is an integral part of the BCM programme'},
-    {c:C.BCM,ft:'BCM → RCSA',tx:'Continuity risks are part of the RCSA universe'},
-    {c:C.Compliance,ft:'Compliance → TPRM',tx:'Regulatory requirements define TPRM minimum standards'},
-    {c:C.MRM,ft:'MRM → Compliance',tx:'Model approvals must be reported to the regulator'},
-    {c:C.PKS,ft:'PKS → all',tx:'Policies set minimum standards for all processes'}
+    {c:C.ORM,        ft:'ORM → RCSA',       tx:'Operational loss events trigger RCSA re-assessment'},
+    {c:C.TPRM,       ft:'TPRM → ORM',        tx:'Third-party incidents are recorded as operational-risk events'},
+    {c:C.Compliance, ft:'Compliance → PKS',   tx:'Regulatory changes trigger policy review'},
+    {c:C.MRM,        ft:'MRM → RCSA',         tx:'Model failures are operational-risk events (CPBP/EDPM)'},
+    {c:C.ISRisk,     ft:'IS Risk → ORM',      tx:'Cyber incidents feed the operational loss database'},
+    {c:C.ISRisk,     ft:'IS Risk → BCM',      tx:'The ICT DRP is an integral part of the BCM programme'},
+    {c:C.BCM,        ft:'BCM → RCSA',         tx:'Continuity risks are part of the RCSA universe'},
+    {c:C.Compliance, ft:'Compliance → TPRM',  tx:'Regulatory requirements define TPRM minimum standards'},
+    {c:C.TPRM,       ft:'TPRM → BCM',         tx:'Vendor failure scenarios feed BCM contingency planning'},
+    {c:C.BCM,        ft:'BCM → ORM',          tx:'Continuity events generate operational loss records'},
+    {c:C.Compliance, ft:'Compliance → RCSA',  tx:'Regulatory changes require RCSA scope update'},
+    {c:C.Compliance, ft:'Compliance → MRM',   tx:'EU AI Act mandates model governance requirements'},
+    {c:C.ORM,        ft:'ORM → MRM',           tx:'CPBP event type connects op-risk and model risk taxonomies'},
+    {c:C.PKS,        ft:'PKS → RCSA',          tx:'Policy changes require control reassessment'},
+    {c:C.ISRisk,     ft:'IS Risk → TPRM',      tx:'IS risk assessment feeds third-party ICT security reviews'},
+    {c:C.PKS,        ft:'PKS → all',            tx:'Policies set minimum standards for every process'}
   ];
-  var legHtml='';
+  var legHtml='<div style="margin-top:6px;font-family:\'JetBrains Mono\',monospace;font-size:9.5px;color:var(--tm);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;">Click any node to explore its connections</div>';
   LEG.forEach(function(e){
     legHtml+='<div class="ic-leg"><span class="fromto" style="color:'+e.c+'">'+e.ft+'</span><span>'+esc(e.tx)+'</span></div>';
   });
